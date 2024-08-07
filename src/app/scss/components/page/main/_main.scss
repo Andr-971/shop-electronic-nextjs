@@ -1,0 +1,46 @@
+body {
+    background-color: Aquamarine;
+}
+.h1 {
+    color: Chocolate;
+    font-size: apx(36, 20);
+    display: grid;
+    user-select: none;
+}
+// .main {}
+// .test-postcard__wrapper {}
+.test-postcard__block {
+    display: flex;
+    flex-wrap: wrap;
+    @include margin-flex(-10, -20);
+}
+.test__card {
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    width: colWidth(3);
+    @include lg-block() {
+        width: colWidth(4);
+    }
+    @include sm-block() {
+        width: colWidth(6);
+    }
+    @include xs-block() {
+        width: colWidth(12);
+    }
+    padding: apx(20, 10);
+    @include margin-flex(10, 20);
+}
+// .test__card-header {}
+.h3 {
+    font-size: apx(20, 14);
+    
+}
+// .test__card-content {}
+.card-content__text {
+    font-size: apx(18, 12);
+    @include sm-block() {
+        background-color: Tan;
+    }
+}
+// .test__card-footer {}
