@@ -1,0 +1,64 @@
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+}
+.header__holder {
+    display: flex;
+    align-items: center;
+}
+.logo {
+    padding: 10px 0;
+}
+.header__btn {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    width: 48px;
+    cursor: pointer;
+}
+.header__btn:last-child {
+    width: apx(99, 80);
+}
+.header__btn_first {
+    width: 107px;
+    border-bottom: 1px solid $grey200;
+    margin-left: 44px;
+    margin-right: 8px;
+}
+.header__btn_user {
+    cursor: pointer;
+}
+.header__btn_comon {
+    width: 100%;
+    height: apx(48, 40);
+    border-radius: 4px;
+    background: $blue42;
+    color: $white255;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+    cursor: pointer;
+}
+// .header__btn_search {}
+// .header__telephone {}
+.header__telephone_first {
+    padding-right: 10px;
+}
+.header__job {
+    padding-left: 5px;
+}
+@include lg-block() {
+    .header__job {
+        display: none;
+    }
+}
+@include md-block() {
+    .header__telephone {
+        display: none;
+    }
+}
+@include xs-block() {
+    .header__btn:not(:last-child) {
+        display: none;
+    }
+}

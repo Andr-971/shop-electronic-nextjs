@@ -1,0 +1,55 @@
+@import "./_config.scss";
+
+:root {
+    --white255: rgb(255, 255, 255);
+    --black000: rgb(0, 0, 0);
+    --black7: rgb(7, 12, 17);
+    --black14: rgb(14, 24, 33);
+    --grey131: rgb(131, 134, 136);
+    --grey200: rgb(200, 202, 203);
+    --blue36: rgb(36, 60, 83);
+    --blue42: rgb(42, 82, 117);
+    --blue237: rgb(237, 242, 246);
+    --yellow251: rgb(251, 177, 60);
+    --red243: rgb(243, 119, 72);
+}
+
+$exo2: Exo2;
+$inter: Inter;
+$sans: Source Sans Pro Regular;
+$roboto: Roboto Regular;
+
+$white255: var(--white255); 
+$black000: var(--black000);
+$black7: var(--black7);
+$black14: var(--black14);
+$grey131: var(--grey131);
+$grey200: var(--grey200);
+$blue36: var(--blue36);
+$blue42: var(--blue42);
+$blue237: var(--blue237);
+$yellow251: var(--yellow251);
+$red243: var(--red243);
+
+$heightHeader: 80px;
+$heightMenuBottom: 60px;
+
+$offset_xxlg: $offset;
+$offset_xlg: $offset;
+$offset_lg: $offset;
+$offset_md: $offset;
+$offset_sm: $offset;
+$offset_xs: $offset;
+$offset_xxs: $offset;
+
+$offset_one_side: ($offset / 2);
+$offset_xxlg_one_side: ($offset_xxlg / 2);
+$offset_xlg_one_side: ($offset_xlg / 2);
+$offset_lg_one_side: ($offset_lg / 2);
+$offset_md_one_side: ($offset_md / 2);
+$offset_sm_one_side: ($offset_sm / 2);
+$offset_xs_one_side: ($offset_xs / 2);
+$offset_xxs_one_side: ($offset_xxs / 2);
+
+
+

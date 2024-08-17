@@ -1,0 +1,80 @@
+
+.account-my {
+    margin-bottom: apx(80, 40);
+}
+.account-my__title-box {
+    margin-bottom: apx(30, 20);
+}
+// .account-my__title {}
+// .title-36-7 {}
+.account-my__holder {
+    display: flex;
+    flex-wrap: wrap;
+    @include margin-flex(-10, -20);
+}
+.account-my__column {
+    &:first-child {
+        width: colWidth(3);
+        @include margin-flex(10, 20);
+        @include sm-block() {
+            display: none;
+        }
+    }
+    &:last-child {
+        width: colWidth(9);
+        @include margin-flex(10, 20);
+        @include sm-block() {
+            width: colWidth(12);
+        }
+    }
+}
+// .account-my__account {}
+.account__enter {
+    padding: 30px;
+}
+.account__text {
+    max-width: 187px;
+    color: $black7;
+    font-size: apx(16, 12);
+    font-weight: 700;
+    line-height: 130%;
+}
+.account__button-box {
+    margin-top: 20px;
+}
+.account__button {
+    border-radius: 4px;
+    background: rgb(42, 82, 117);
+    color: $white255;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 10px 30px;
+}
+// .account__es {}
+// .account__list {}
+.account__item {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    padding: 15px 20px;
+    a {
+        color: $black7;
+    }
+    &:hover {
+        background-color: rgb(237, 242, 246);
+    }
+}
+.account__active {
+    background-color: rgb(237, 242, 246);
+}
+// .account__button-close_box {}
+.account__button-close {
+    color: rgb(241, 81, 82);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: start;
+}

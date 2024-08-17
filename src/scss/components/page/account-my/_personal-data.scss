@@ -1,0 +1,51 @@
+
+.account-my__personal-data_block {
+    max-width: 640px;
+    @include sm-block() {
+        max-width: 100%;
+    }
+    margin: 0px auto;
+}
+.account-my__personal-data {
+    display: flex;
+    flex-wrap: wrap;
+    @include margin-flex(-10, -20);
+}
+.personal-data__column {
+    width: colWidth(6);
+    @include margin-flex(10, 20);
+    @include xs-block() {
+        width: colWidth(12);
+    }
+    .select-text {
+        color: rgb(131, 134, 136);
+        font-size: apx(16, 14);
+        font-weight: 400;
+        line-height: 100%;
+    }
+    .input-text {
+        padding: 15px 20px;
+    }
+}
+// .item__input-box {}
+// .item__input-box_recipient {}
+// .item__input_label {}
+// .item__input {}
+// .input-text {}
+// .item__select {}
+// .item__select-box {}
+// .select-label {}
+// .select-text {}
+// .select-btn {}
+// .item__select-dropdownlist {}
+// .hidden {}
+// .item__select-dropdownitem {}
+// .dropdownitem {}
+.personal-data__button-box {
+    margin-top: apx(46, 35);
+}
+.personal-data__button {
+    width: 100%;
+    padding: 15px 30px;
+}
+// .button {}

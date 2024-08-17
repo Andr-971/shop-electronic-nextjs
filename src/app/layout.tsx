@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./scss/style.scss";
+
+import "@/scss/style.scss"; 
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: "Магазин электроники",
-  description: "Магазин электротоваров",
+  title: "Магазин электротехники",
+  description: "Магазин электротоваров"
 };
 
 export default function RootLayout({
@@ -17,7 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        <div className="wrapper">
+        <Header />
+        <main className="main">
+          {children}
+        </main>
+        <Footer/>
+        </div>
+        </body>
     </html>
   );
 }

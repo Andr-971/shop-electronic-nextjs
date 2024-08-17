@@ -1,0 +1,45 @@
+
+.account-my__history-block {
+    background: rgb(237, 242, 246);
+    padding-top: apx(50, 10);
+    padding-left: apx(50, 10);
+    padding-right: apx(50, 10);
+    padding-bottom: apx(30, 10);
+}
+.history-block__title-box {
+    margin-bottom: apx(20, 10);
+}
+.history-block {
+    color: $black7;
+    font-size: apx(16, 12);
+    font-weight: 400;
+    line-height: 130%;
+}
+.history__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+    border-bottom: 1px solid rgb(200, 202, 203);
+    &:first-child {
+        border-top: 1px solid rgb(200, 202, 203);
+    }
+}
+.history__item_text {
+
+    &:last-child {
+        img {
+            transform: rotate(180deg);
+        }
+    }
+}
+.history__item_data {
+    color: rgb(200, 202, 203);
+}
+.history__text_process {
+    color: rgb(251, 177, 60);
+}
+.history__text_completed {
+    color: rgb(34, 164, 78);
+}

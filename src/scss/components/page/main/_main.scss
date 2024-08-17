@@ -1,0 +1,24 @@
+
+.main {
+    margin-top: calc($heightHeader + $heightMenuBottom);
+}
+@include sm-block() {
+    .main {
+        margin-top: $heightHeader;
+    }
+}
+
+.section-goods__inner {
+    padding-top: apx(80, 50)
+}
+.section-goods__title-box {
+    display: flex;
+    align-items: end;
+    padding-bottom: apx(41, 20);
+}
+.section-goods__title {
+    margin-right: 10px;
+}
+// .title-section {}
+// .section-goods__btn-all {}
+

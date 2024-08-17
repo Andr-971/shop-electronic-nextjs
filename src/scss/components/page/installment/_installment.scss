@@ -1,0 +1,112 @@
+
+.installment {
+    // .installment__title-box {}
+    // .installment__title {}
+    .installment__inner {
+        margin-top: apx(30, 20);
+        margin-bottom: apx(80, 40);
+    }
+    // .installment__banner {}
+    // .banner__wrap-photo {}
+    // .banner__block-photo {}
+    // .banner__img-photo {}
+    .installment__title-box_h4 {
+        margin-top: apx(30, 20);
+        margin-bottom: apx(20, 10);
+    }
+    .installment__text-block_one {
+
+        P {
+            color: $black7;
+            font-size: apx(16, 12);
+            font-weight: 400;
+            line-height: 130%;
+        }
+    }
+    .installment__txt-one {
+        margin-bottom: 10px;
+    }
+    .installment__highlight {
+        margin-top: 10px;
+        background-color: #fbf704;
+    }
+    .installment__graf {
+        margin-top: apx(30, 20);
+        margin-bottom: apx(20, 10);
+    }
+    // .graf__wrap-photo {}
+    // .graf__block-photo {}
+    // .graf__img-photo {}
+    .installment__text-block_two {
+        p {
+            color: $black7;
+            font-size: apx(14, 10);
+            font-weight: 400;
+            line-height: 130%;
+        }
+    }
+    .installment__arrange {
+        padding-top: apx(30, 20);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        @include margin-flex(-10, -20);
+    }
+    .installment__form {
+        width: colWidth(4);
+        @include margin-flex(10, 20);
+        padding: apx(30, 10);
+        @include lg-block() {
+            flex-grow: 1;
+        }
+        @include sm-block() {
+            width: colWidth(12);
+        }
+        .item__input-box {
+            margin-bottom: apx(20, 10);
+        }
+    }
+    // .block-bgc {}
+    .form__title {
+        margin-bottom: apx(20, 10);
+    }
+
+    // .item__input_label {}
+    // .item__input {}
+    // .input-text {}
+    // .installment__button-box {}
+    .installment__button {
+        width: 100%;
+        border-radius: 4px;
+        background: rgb(42, 82, 117);
+        padding: 15px 30px;
+        color: $white255;
+        font-size: apx(16, 12);
+        font-weight: 500;
+        line-height: 100%;
+    }
+    .installment__block-text {
+        width: colWidth(5);
+        @include margin-flex(10, 20);
+        padding: apx(30, 10);
+        @include sm-block() {
+            width: colWidth(12);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            list-style-type: disc;
+        }
+        p {
+            color: $black7;
+            font-size: apx(16, 12);
+            font-weight: 400;
+            line-height: 130%;
+            padding: 5px 0px;
+        }
+    }
+    .installment__title-block_h4 {
+        margin-bottom: apx(20, 10);
+    }
+}

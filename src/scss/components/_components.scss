@@ -1,0 +1,644 @@
+// Тексты ------------------------------------
+.title-page {
+    color: $black7;
+    font-size: apx(36, 24);
+    font-weight: 700;
+    line-height: 130%;
+}
+.title-36-7 {
+    color: $black7;
+    font-size: apx(36, 24);
+    font-weight: 700;
+    line-height: 130%;
+}
+.title-h2 {
+    color: $black7;
+    font-size: apx(28, 18);
+    font-weight: 700;
+    line-height: 120%;
+
+}
+.h4 {
+    color: $black7;
+    font-size: apx(24, 16);
+    font-weight: 600;
+    line-height: 120%;
+}
+.h3 {
+    color: $black7;
+    font-size: apx(24, 18);
+    font-weight: 600;
+    line-height: 120%;
+}
+.jobs {
+    color: $grey131;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+}
+.telephone {
+    color: $black7;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+}
+.title-section {
+    color: $black7;
+    font-size: apx(36, 24);
+    font-weight: 700;
+    line-height: 130%;
+}
+.title-block {
+    color: $black7;
+    font-size: apx(28, 18);
+    font-weight: 700;
+    line-height: 120%;
+}
+.text-block {
+    color: $black7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 120%;
+}
+// Селект ------------------------------
+.select-label {
+        // width: 240px;
+        height: 48px;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        border: 1px solid rgb(234, 234, 240);
+        border-radius: 4px;
+    }
+    .select-text {
+        color: $black7;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 130%;
+    }
+    // .dropdownlist {}
+    .dropdownitem {
+        color: $black7;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 130%;
+        box-sizing: border-box;
+        border: 1px solid rgb(234, 234, 240);
+        border-radius: 4px;
+        padding: 15px 20px;
+    }
+// Хлебные крошки -----------------------
+.bread-crumbs {
+    margin-top: apx(40, 30);
+    margin-bottom: 30px;
+}
+
+.bread-crumbs__block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.bread-crumbs__link {
+    color: $black7;
+    font-size: apx(16, 14);
+    font-weight: 400;
+    line-height: 120%;
+    &:last-child {
+        color: rgb(131, 134, 136);
+    }
+    &::after {
+        content: "";
+        display: inline-block;
+        background-image: url("../../../public/svg/triangle-right.svg");
+        width: 5px;
+        height: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    &:last-child::after {
+        content: "";
+        display: none;
+    }
+}
+// Пагинация -----------------------------------------------
+.pagination__page {
+    margin-top: 40px;
+}
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    box-sizing: border-box;
+    border: 1px solid rgb(234, 234, 240);
+    border-radius: 4px;
+    background: $white255;
+    color: $white255;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    padding: 10px;
+    &.active_page {
+        background: rgb(72, 120, 166);
+        a {
+            color: $white255;
+        }
+    }
+    
+}
+.pagination__btn:not(:last-child) {
+    margin-right: 10px;
+}
+
+.pagination__btn_more {
+    display: flex;
+    align-items: end;
+}
+.pagination__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination__item:last-child {
+    margin-right: 10px;
+}
+@include xs-block() {
+    .pagination__item:last-child, .pagination__btn_numderof {
+        display: none;
+    }
+}
+// Блок сайта -----------------------------------------------
+.block-bgc {
+    border-radius: 8px;
+    background: rgb(237, 242, 246);
+}
+.block-border {
+    box-sizing: border-box;
+    border: 1px solid rgb(200, 202, 203);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+}
+// Всплывающие окна поиск -----------------------------------
+.popup-search {
+    background-color: transparent;
+}
+.popup-search-fon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(42, 82, 117, .6);
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+}
+.popup-search__block {
+    height: 80px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: center;
+    opacity: 1;
+}
+.popup-search__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+        padding: 10px 10px 10px 20px;
+        box-sizing: border-box;
+        border: 1px solid rgb(72, 120, 166);
+        border-radius: 4px;
+        background: $white255;
+        width: 100%;
+    }
+}
+// Всплывающие окна Форма входа -------------------------------
+.popup-form {
+    background-color: transparent;
+}
+.popup-form__fon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(42, 82, 117, .6);
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+}
+.popup-form__container {
+    width: apx(370, 320);
+    // height: 456px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: calc(50vh - 456px / 2);
+    left: 40%;
+    opacity: 1;
+    z-index: 8;
+    overflow: auto;
+}
+.popup-form__title-block {
+    height: 68px;
+    border-radius: 8px 8px 0px 0px;
+    background-color: $blue237;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+.popup-entrance__form {
+    label {
+        display: block;
+        padding-top: 20px;
+    }
+}
+.popup-form__form {
+    padding-left: 30px;
+    padding-right: 20px;
+    label {
+        color: $black7;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 100%;
+    }
+}
+.popup-entrance__input-block {
+    margin-top: 8px;
+}
+.popup-form__input-block {
+    width: 100%;
+    height: 48px;
+    border: 1px solid rgb(234, 234, 240);
+    border-radius: 5px;
+    background: $white255;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+.popup-entrance__btn {
+    margin-top: 24px;
+}
+.popup__link {
+    color: rgb(72, 120, 166); 
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
+    display: block;
+}
+.popup-entrance__link {
+    &:nth-child( 1 ) {
+        padding-top: 10px;
+    }
+    &:last-child {
+        padding-top: 20px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+}
+.popup-entrance__link_first {
+    padding-top: 10px;
+}
+.popup-form__input-checkbox-box {
+    position: relative;
+}
+.popup-form__input-checkbox {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    z-index: -1;
+    opacity: 0;
+    &+label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+        cursor: pointer;
+    }
+    &+label::before {
+        content: '';
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        // width: 20px;
+        // height: 20px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        border: 1px solid #adb5bd;
+        border-radius: 0.25em;
+        margin-right: 0.5em;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+    }
+    &:checked+label::before {
+        border-color: rgb(72, 120, 166); 
+        background-color: rgb(72, 120, 166);
+        background-image: url("../../../public/svg/check-box.svg");
+
+    }
+}
+
+.popup-form__btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    background: rgb(42, 82, 117);
+    color: $white255;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+// Всплывающие окна Форма регистрации ----------------------
+.popup-registration__form {
+    label {
+        display: block;
+        padding-top: 20px;
+        padding-bottom: 8px;
+    }
+}
+.popup-form__input {
+    width: auto;
+}
+.popup-registration__text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 130%;
+    padding-top: 10px;
+}
+.popup-registration__link_first {
+    padding-bottom: 10px;
+}
+.popup-registration__link {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+@include md-block() {
+    .popup-form__container {
+        left: 30%;
+    }
+}
+@include sm-block() {
+    .popup-form__container {
+        left: 24%;
+    }
+}
+@include xs-block() {
+    .popup-form__container {
+        left: 10%;
+    }
+}
+@include xxs-block() {
+    .popup-form__container {
+        left: 0%;
+    }
+}
+
+// Корзина ----------------------------------------------------
+.cart {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    margin-top: $heightHeader;
+}
+.cart__container {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+}
+.cart__title-box {
+    overflow: hidden;
+    padding-top: apx(60, 30);
+    margin-bottom: apx(50, 35);
+}
+
+.cart__fon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+.cart__holder {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    @include margin-flex(-10);
+    margin-bottom: apx(-40, -20);
+}
+.cart__column_one {
+    width: colWidth(8);
+    @include md-block() {
+        width: colWidth(12);
+    }
+    flex: 1 0 auto;
+    @include margin-flex(10);
+    margin-bottom: apx(40, 20);
+}
+.cart__column_two {
+    width: colWidth(4);
+    @include md-block() {
+        width: colWidth(12);
+    }
+    flex: 1 0 auto;
+    @include margin-flex(10);
+    margin-bottom: apx(40, 20);
+}
+.column__holder_two {
+    padding: apx(30, 20);
+}
+// .cart-card {}
+// .cart-card__inner {}
+.cart-card__title {
+    color: $black7;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 18px;
+}
+.cart-card__amount-box, .cart-card__delivery-box, .cart-card__price-box, .cart__checked-box {
+    display: flex;
+    justify-content: space-between;
+}
+.cart-card__amount-text, .cart-card__delivery-text{
+    color: rgb(131, 134, 136);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+}
+.cart-card__amount-number, .cart-card__delivery-res {
+    color: $black7;
+    font-size: apx(20, 16);
+    font-weight: 400;
+    line-height: 120%;
+}
+.cart-card__delivery-box {
+    margin-top: apx(16, 10);
+}
+// .cart-card__delivery-text {}
+// .cart-card__delivery-res {}
+.cart-card__line {
+    margin-top: apx(30, 15);
+    margin-bottom: apx(30, 15);
+}
+// .cart-card__price-box {}
+.cart-card__price-text {
+    color: $black7;
+    font-size: apx(24, 16);
+    font-weight: 600;
+    line-height: 120%;
+    align-self: flex-end;
+    padding-bottom: 4px;
+}
+.cart-card__price-number {
+    color: $black7;
+    font-size: apx(36, 20);
+    font-weight: 700;
+    line-height: 130%;
+}
+.cart-card__button-box {
+    margin-top: apx(20, 10);
+}
+.cart-card__button {
+    border-radius: 4px;
+    background: rgb(131, 134, 136);
+    padding: 15px;
+    color: $white255;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+    width: 100%;
+}
+.cart__checked-box {
+    .popup-form__input-checkbox-box {
+        align-self:center;
+    }
+}
+// .popup-form__input-checkbox-box {}
+// .popup-entrance__input-checkbox {}
+// .popup-form__input-checkbox {}
+// .popup-entrance__input-checklabel {}
+// .popup-form__input-checklabel {}
+.cart__checked-text {
+    flex: 1 0 auto;
+    p, a {
+        font-size: apx(16, 10);
+        font-weight: 400;
+        line-height: 130%;
+    }
+}
+// .popup-registration__text {}
+// .popup-registration__link_first {}
+// .popup__link {}
+
+// Радио кнопки -----------------------------------------
+.form_radio {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    label {
+        width: 100%;
+        cursor: pointer;
+    }
+    input {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        visibility: hidden;
+        // opacity: 0;
+        cursor: pointer;
+        &:checked + div::before {
+            border: 2px solid rgb(72, 120, 166);
+        } 
+        &:checked + div::after {
+            background-color: rgb(72, 120, 166);
+        }
+        &:checked ~ label {
+            color: rgb(72, 120, 166);
+        }
+    }
+    
+    div {
+        position: relative;
+        color: rgb(131, 134, 136);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 130%;
+        top: 0px;
+        left: -34px;
+        z-index: 1;
+        &::before {
+            display: inline-block;
+            position: absolute;
+            margin: auto;
+            // margin-left: auto;
+            // margin-right: auto;
+            // text-align: center;
+            // box-sizing: border-box;
+            content: "";
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgb(234, 234, 240);
+            border-radius: 50%;
+        }
+        &::after {
+            display: inline-block;
+            position: absolute;
+            margin: auto;
+            // box-sizing: border-box;
+            content: "";
+            top: 0px;
+            left: 5.6px;
+            right: 0px;
+            bottom: 0px;
+            // transform: translate(-50%, -50%) scale(0);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            // background-color: rgb(72, 120, 166);
+        }
+    }
+
+}
+// Инпут текст ------------------------------------------
+.input-text {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgb(234, 234, 240);
+    border-radius: 5px;
+    background: $white255;
+    padding: 10px 10px 10px 20px;
+}
+// Класс цвет серый -------------------------------------
+.color-gray {
+    color: rgb(131, 134, 136);
+}
+.button {
+    border-radius: 5px;
+    background: rgb(42, 82, 117);
+    color: $white255;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 10px 30px;
+}
+

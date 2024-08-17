@@ -1,0 +1,69 @@
+
+// .cart {}
+.cart__container {
+    .cart__holder {
+        align-items: flex-start;
+    }
+}
+// .g-container {}
+// .cart__title-box {}
+// .title-36-7 {}
+// .cart__holder {}
+// .cart__column_one {}
+// .column__holder_one {}
+.parameters {
+    display: flex;
+    flex-direction: column;
+}
+.parameters__btn-box {
+    margin-top: apx(-40, -20);
+    margin-bottom: apx(40, 20);
+    order: 0;
+}
+.parameters__btn {
+    width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+    background: rgb(72, 120, 166);
+    color: $white255;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 130%;
+}
+// .parameters__header {}
+// .parameters__title-box {}
+.parameters__title {
+    color: rgb(131, 134, 136);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 120%;
+}
+.parameters__active {
+    color: $black7;
+}
+.order-1 {
+    order: -1;
+}
+.order-2 {
+    order: -1;
+}
+.order-3 {
+    order: -1;
+}
+.order-4 {
+    order: -1;
+}
+.cart__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.cart__footer_left, .cart__footer_right {
+    color: rgb(131, 134, 136);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
+    padding-top: 20px;
+}

@@ -1,0 +1,27 @@
+
+
+.favorites__choose-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @include margin-flex(-10, -20);
+    padding-bottom: apx(20, 10);
+}
+.viewed__select {
+    width: colWidth(3);
+    @include margin-flex(10, 20);
+    @include lg-block() {
+        width: colWidth(4);
+    }
+    @include md-block() {
+        width: colWidth(6);
+    }
+    @include xs-block() {
+        width: colWidth(12);
+    }
+}
+// .select-label {}
+// .select-text {}
+// .select-btn {}
+// .dropdownlist {}
+// .dropdownitem {}

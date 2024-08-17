@@ -1,0 +1,90 @@
+
+// .stock__inner {}
+.stock__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include margin-flex(-10, -20);
+}
+.stock__col {
+
+    &:first-child {
+        width: colWidth(7);
+        @include margin-flex(10, 20);
+        @include sm-block() {
+            width: colWidth(12);
+        }
+
+        p {
+            color: $black7;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 130%;
+        }
+    }
+    &:last-child {
+        width: colWidth(5);
+        @include margin-flex(10, 20);
+        @include sm-block() {
+            width: colWidth(12);
+        }
+    }
+}
+.stock__col-title_box {
+    margin-top: apx(40, 20);
+    margin-bottom: apx(20, 10);
+}
+.stock__col-title {
+    color: $black7;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 120%;
+}
+// .stock__col-list {}
+.stock__col-item {
+    display: flex;
+    padding-left: 0px;
+    // align-items: center;
+    span {
+        display: inline-block;
+        padding-right: 5px;
+        color: $black7;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 130%;
+        text-align: end;
+    }
+    p {
+        color: $black7;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 130%;
+    }
+}
+.stock__wrap-photo {
+    width: 100%;
+    height: auto;
+    // width: apx(530, 490);
+    // height: apx(354, 300);
+    
+}
+.stock__block-photo {
+    
+    padding-top: 63%;
+    /* 1:1 Aspect Ratio padding-top: 100% */
+    /* 16:9 Aspect Ratio padding-top: 56.25% */
+    /* 4:3 Aspect Ratio padding-top: 75% */
+    /* 3:2 Aspect Ratio padding-top: 66.67% */
+    overflow: hidden;
+    position: relative;
+}
+.stock__img-photo {
+
+    width: 100%;
+    height: 100%; /* auto */
+    object-fit: cover; /* fill, contain, cover, none, scale-down */
+    object-position: 50% 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

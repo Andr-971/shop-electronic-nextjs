@@ -1,0 +1,108 @@
+
+.catalog__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.catalog__button-block {
+    display: flex;
+    align-items: center;
+}
+
+// .hidden {}
+// .select__btn-icon {}
+.select__btn-text {
+    color: $black7;
+    font-size: apx(14, 10);
+    font-weight: 400;
+    line-height: 100%;
+}
+.select__btn_filter {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    background: rgb(72, 120, 166);
+    .select__btn-icon {
+        padding-top: 14px;
+        padding-left: 30px;
+        padding-right: 0px;
+        padding-bottom: 11px;
+    }
+    .select__btn-text {
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 100%;
+        padding-top: 16px;
+        padding-left: 11px;
+        padding-right: 30px;
+        padding-bottom: 16px;
+    }
+}
+.select__btn {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+        border-radius: 102px;
+        background: rgb(237, 242, 246);
+        padding: 6px 10px;
+        margin-right: apx(20, 10);
+    }
+}
+.select__btn-close {
+    font-size: apx(16, 10);
+    color: rgb(241, 81, 82);
+    margin-left: 3px;
+}
+.select__btn-text_clear {
+    color: rgb(241, 81, 82);
+    font-size: apx(14, 10);
+    font-weight: 400;
+    line-height: 100%;
+    text-decoration-line: underline;
+}
+
+// .select-label {}
+// .select-text {}
+// .select-btn {}
+// .dropdownlist {}
+// .dropdownitem {}
+// .catalog__list {}
+// .catalog__wrapper {}
+.catalog__block {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+}
+.section-goods__card {
+    width: colWidth(4);
+    @include xlg-block() {
+        width: colWidth(6);
+    }
+    @include xs-block() {
+        width: colWidth(12);
+    }
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+@include mediaMin($break_md) {
+    .select__btn_filter {
+        display: none;
+    }
+    .select__block-header {
+        display: none;
+    }
+}
+@include mediaMax($break_md) {
+    .select__btn {
+        display: none;
+    }
+}

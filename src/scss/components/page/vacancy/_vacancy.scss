@@ -1,0 +1,143 @@
+
+// .vacancy {}
+// .vacancy__title-box {}
+// .vacancy__title {}
+.vacancy__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    @include margin-flex(-10, -20);
+    margin-top: apx(40, 20);
+    margin-bottom: apx(80, 0);
+    .select__block {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+.vacancy__column {
+
+    &:first-child {
+        width: colWidth(7);
+        @include margin-flex(10, 20);
+        @include sm-block() {
+            width: colWidth(12);
+        }
+    }
+    &:last-child {
+        width: colWidth(5);
+        @include margin-flex(10, 20);
+        @include sm-block() {
+            width: colWidth(12);
+        }
+    }
+}
+// .select__block {}
+// .select__header {}
+// .select__header_title {}
+// .select__header_btn {}
+.select__body {
+    padding-top: 0px;
+    padding-left: apx(30, 10);
+    padding-right: apx(30, 10);
+    padding-bottom: apx(20, 10);
+}
+.vacancy__titlt-box_h4 {
+    margin-top: apx(20, 10);
+    margin-bottom: apx(20, 10);
+}
+// .vacancy__list {}
+.vacancy__item {
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+.vacancy__text {
+    color: $black7;
+    font-size: apx(16, 14);
+    font-weight: 400;
+    line-height: 130%;
+    span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgb(42, 82, 117);
+        display: inline-block;
+        margin-bottom: 1px;
+        margin-right: 10px;
+    }
+}
+.vacancy__holder {
+    max-width: 370px;
+    margin: 0px auto;
+    .vacancy__titlt-box_h4 {
+        margin-left: 30px;
+    }
+    @include sm-block() {
+        max-width: 100%;
+        // width: 100%;
+        // margin: 0px;
+    }
+}
+
+// .h4 {}
+.vacancy__form {
+    padding-top: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    .form__button-box {
+        width: 100%;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+    .vacancy__titlt-box_h4 {
+        margin-left: 0px;
+        margin-top: 0px;
+        padding-top: apx(20, 10);
+        border-top: 1px solid rgb(200, 202, 203);
+    }
+    .popup-form__input-checkbox-box {
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 130%;
+        width: 100%;
+        a {
+            color: rgb(72, 120, 166);
+            padding-left: 20px;
+        }
+    }
+    .popup-form__input-checklabel {
+        display: block;
+        width: 100%;
+        
+    }
+    .form__checked-box {
+        width: 100%;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 20px;
+    }
+}
+// .item__input-box {}
+// .item__input_label {}
+// .item__input {}
+// .input-text {}
+
+// .form__button {}
+
+
+// .popup-entrance__input-checkbox {}
+// .popup-form__input-checkbox {}
+// .popup-entrance__input-checklabel {}
+// .popup-form__input-checklabel {}
+// .form__confendiality {}
+.vacancy__telephone-box {
+    font-size: apx(28, 18);
+    font-weight: 700;
+    line-height: 120%;
+    a {
+        color: rgb(72, 120, 166);
+    }
+}

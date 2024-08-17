@@ -1,0 +1,168 @@
+.header {
+    height: $heightHeader;
+    background-color: #fff;
+    position: fixed;
+    z-index: 5;
+    box-shadow: 0px -5px 20px 5px rgb(237, 242, 246); 
+}
+
+@include mediaMin($break_sm) {
+    .img__backet_mob,
+    .header__main-mob,
+    .img__search_mob,
+    .img__more_mob,
+    .mobile-menu__bottom,
+    .select-catalog-title,
+    .select-catalog__txt,
+    .select-catalog__btn-close,
+    .header__catalog_mob {
+        display: none;
+    }
+    .header__menu-inner {
+        background: $black14;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        transform: translate(0px, -4px);
+    }
+    .header__holder {
+        display: flex;
+        align-items: center;
+    }
+    .header__catalog {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 14px 0px 14px 0px;
+        // background-color: $blue36;
+        img {
+            margin-left: 20px;
+        }
+        span {
+            margin-left: 10px;
+            margin-right: apx(115, 20);
+        }
+    }
+    .header__menu-text {
+        color: $white255;
+        padding-left: apx(20, 7);
+        padding-right: apx(20, 7);
+        font-size: apx(16, 7);
+        font-weight: 500;
+        line-height: 19px;
+    }
+    .header__menu-box {
+        display: flex;
+        align-items: center;
+        margin-left: 4px;
+    }
+    // .header__menu {}
+    .header__catalog_des {
+        pointer-events: none;
+    }
+    .header__catalog_hidden {
+        display: none;
+    }
+    .header__catalog_select {
+        background-color: #fff;
+    }
+    .header__user-menu {
+        width: 280px;
+        position: absolute;
+        top: 61px;
+        right: 0px;
+        background-color: $white255;
+        z-index: 7;
+        box-sizing: border-box;
+        /* card border */
+        border: 1px solid rgb(234, 234, 240);
+        border-radius: 0px 0px 8px 8px;
+
+    }
+    // .header__user-holder {}
+    .header__user-item {
+        color: $black7;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19px;
+        padding: 20px 15px;
+    }
+    .header__user-item_last {
+        border-top: 1px solid rgb(234, 234, 240);
+        color: red;
+    }
+}
+@include mediaMax($break_sm) {
+    .header__catalog_des, .img__backet_des, .header__btn_first, .header__menu-text, .select-catalog__title-catalog {
+        display: none;
+    }
+    .header__btn_backet {
+        position: fixed;
+        left: 0;
+        bottom: 0vh;
+    }
+    .mobile-menu__bottom {
+        position: fixed;
+        left: 0;
+        bottom: 0vh;
+        width: 100%;
+        // height: 64px;
+        background-color: $blue42;
+    }
+    // .header__holder {}
+
+    .mobile-menu__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // @include margin-LR($fields_sm);
+        @include margin-flex(50);
+    }
+    // .mobile-menu__item {}
+    // .mobile-menu__main {}
+    // .mobile-menu__catalog {}
+    // .mobile-menu__backet {}
+    // .mobile-menu__search {}
+    // .mobile-menu__more {}
+    .select-catalog__title-catalog {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 60px);
+        z-index: 5;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 27px;
+        box-sizing: border-box;
+        background-color: rgb(191, 203, 214);
+    }
+    .select-catalog__inner {
+        border-radius: 8px 8px 0px 0px;
+        background: $blue237;
+        height: calc(100vh - 112px);
+        overflow: auto;
+        padding-top: 24px;
+        padding-left: apx(50, 20);
+        padding-right: apx(25, 15);
+    }
+    .select-catalog__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .select-catalog__txt {
+        color: $black7;
+        font-size: apx(28, 20);
+        font-weight: 700;
+        line-height: 130%;
+    }
+}
+@include mediaMax($break_xs) {
+    .mobile-menu__list {
+        // @include margin-LR($fields_xs);
+        @include margin-flex(20);
+
+    }
+    
+}

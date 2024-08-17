@@ -11,30 +11,30 @@ module.exports = {
     sassOptions: {
         includePaths: [path.join(__dirname, "scss")],
     },
-    module: {
-        rules: [
-            {
-                test: /\.(c|sa|sc)ss$/i,
-                use: [
-                    devMode ? "style-loader" : MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [require("postcss-preset-env")],
-                            },
-                        },
-                    },
-                    "group-css-media-queries-loader",
-                    "sass-loader",
-                ],
-            },
-        ],
-        plugins: [
-            new MiniCssExtractPlugin({
-                filename: "css/[name]-[contenthash].css",
-            }),
-        ],
-    },
+    // module: {
+    //     rules: [
+    //         {
+    //             test: /\.(c|sa|sc)ss$/i,
+    //             use: [
+    //                 devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+    //                 "css-loader",
+    //                 {
+    //                     loader: "postcss-loader",
+    //                     options: {
+    //                         postcssOptions: {
+    //                             plugins: [require("postcss-preset-env")],
+    //                         },
+    //                     },
+    //                 },
+    //                 "group-css-media-queries-loader",
+    //                 "sass-loader",
+    //             ],
+    //         },
+    //     ],
+    //     plugins: [
+    //         new MiniCssExtractPlugin({
+    //             filename: "css/[name]-[contenthash].css",
+    //         }),
+    //     ],
+    // },
 };

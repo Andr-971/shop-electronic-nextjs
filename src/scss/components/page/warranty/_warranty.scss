@@ -1,0 +1,130 @@
+
+// .warranty {}
+// .warranty__title {}
+// .title-page {}
+// .warranty__inner {}
+.warranty__title-h3 {
+    padding-top: apx(40, 20);
+    padding-bottom: apx(30, 10);
+    h3 {
+        color: $grey131; 
+        font-size: apx(24, 20);
+        font-weight: 600;
+        line-height: 120%;
+    }
+}
+.warranty__text {
+
+    p {
+        color: $black7;
+        font-size: apx(16, 14);
+        font-weight: 400;
+        line-height: 130%;
+    }
+}
+.warranty__table-block {
+    overflow: auto;
+}
+.warranty__table {
+    width: 100%;
+	margin-bottom: 20px;
+    th {
+        border: 1.8px solid $grey131;
+        border-collapse: collapse;
+        color: $black7;
+        font-size: apx(16, 7);
+        font-weight: 700;
+        line-height: 130%;
+        padding: apx(10, 3);
+    }
+    td {
+        border: 1.8px solid $grey131;
+        border-collapse: collapse;
+        color: $black7;
+        font-size: apx(16, 7);
+        font-weight: 500;
+        line-height: 130%;
+        padding: apx(10, 3);
+        &:not(:first-child) {
+            color: $grey131;
+        }
+    }
+}
+.warranty__text_two {
+    p {
+        color: $black7;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 130%;
+    }
+}
+// .warranty__text_varning {}
+
+.warranty__text_list, .warranty__forbidden_list {
+    padding: 0px 17px;
+    ul,li {
+        list-style: disc;
+    }
+}
+.warranty__text_item {
+    color: $black7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+}
+// .warranty__forbidden_list {}
+.warranty__forbidden_item {
+    color: $black7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+}
+.warranty__service_list {
+    ol {
+        padding: 0px;
+    }
+    span {
+        display: inline-block;
+        width: 20px;
+        padding-right: 5px;
+        text-align: right;
+    }
+}
+.warranty__service_item {
+    color: $black7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+}
+.warranty__appeal_list {
+    color: $black7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+    ol {
+        padding: 0px;
+    }
+    span {
+        display: inline-block;
+        width: 20px;
+        padding-right: 5px;
+        text-align: right;
+    }
+}
+// .warranty__appeal_item {}
+.warranty__text_letter {
+
+    p {
+        color: $black7;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 130%;
+    }
+    p:not(:last-child) {
+        margin-bottom: 8px;
+    }
+}
+// .warranty__title-h3_ps {}
+.ps__contact {
+    color: rgb(72, 120, 166); 
+}

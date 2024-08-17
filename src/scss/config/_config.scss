@@ -1,0 +1,39 @@
+// Максимальная ширина полотна без пикселей
+$maxWidth: 1920;
+// Максимальная ширина полотна с пикселями
+$maxWidthScrinPX: 1920px;
+// Минимальная ширина полотна без пикселей
+$minWidth: 320;
+// Минимальная ширина полотна с пикселями
+$minWidthScrinPX: 320px;
+// Ширина рабочего полотна без пикселей
+$maxWidthContainerAdap: 1300;
+// Ширина рабочего полотна с пикселями
+$maxWidthContainer: 1300px;
+// Количество колонок в макете
+$columns: 12;
+$atom: (100% / $columns);
+// Отступы между колонками
+$offset: 20px;
+$offset_no_px: 20;
+// Поля отступов от рабочего полотна
+$varAdaptiv: 90vw;
+$fields: 70px;
+$fields_xxlg: 70px;
+$fields_xlg: 70px;
+$fields_lg: 70px;
+$fields_md: 50px;
+$fields_sm: 20px;
+$fields_xs: 20px;
+$fields_xxs: 20px;
+
+$break_xxlg: 1500.98px;
+$break_xlg: 1366.98px;
+$break_lg: 1280.98px;
+$break_md: 1024.98px;
+$break_sm: 768.98px;
+$break_xs: 560.98px;
+$break_xxs: 390.98px;
+// Минимальный экран с отступами по краям
+$minWidthScrin: $minWidthScrinPX - $fields_xxs * 2;
+

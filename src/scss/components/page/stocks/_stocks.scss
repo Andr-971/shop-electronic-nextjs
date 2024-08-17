@@ -1,0 +1,100 @@
+
+.stocks__title-box {
+    margin-top: apx(30, 20);
+    margin-bottom: apx(30, 20);
+}
+.stocks__title {
+    color: $black7;
+    font-size: apx(36, 24);
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.stocks__block {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+    .stocks__wrap {
+        width: 100%;
+        height: 100%;
+    }
+    .stocks__box {
+        width: 100%;
+        height: 100%;
+        padding-top: 100%;
+    }
+    .section-info__block {
+        padding-left: apx(50, 20);
+        cursor: pointer;
+        &:hover {
+            background: linear-gradient(90deg, rgb(176, 207, 208) 48.922%,rgba(189, 215, 216, 0.3) 79.766%);
+        }
+    }
+    .section-info__photo {
+        padding-left: 10px;
+    }
+    .stocks__box {
+        padding-top: 100%;
+        /* 1:1 Aspect Ratio padding-top: 100% */
+        /* 16:9 Aspect Ratio padding-top: 56.25% */
+        /* 4:3 Aspect Ratio padding-top: 75% */
+        /* 3:2 Aspect Ratio padding-top: 66.67% */
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .section-info__photo_img {
+        width: 100%;
+        height: 100%; /* auto */
+        object-fit: cover; /* fill, contain, cover, none, scale-down */
+        /* object-position: 50% 50%; */
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .photo-1 {
+        width: apx(200, 140);
+        height: apx(179, 120);
+        padding-top: 0%;
+    }
+    .photo-2 {
+        width: apx(139, 117);
+        height: apx(158, 127);
+        padding-top: 0%;
+    }
+    .photo-3 {
+        width: apx(144, 100);
+        height: apx(124, 90);
+        padding-top: 0%;
+    }
+    .photo-4 {
+        width: apx(241, 132);
+        height: apx(161, 100);
+        padding-top: 0%;
+    }
+    .photo-5 {
+        width: apx(179, 147);
+        height: apx(172, 145);
+        padding-top: 0%;
+    }
+    .photo-6 {
+        width: apx(139, 117);
+        height: apx(158, 127);
+        padding-top: 0%;
+    }
+    .photo-7 {
+        width: apx(144, 100);
+        height: apx(124, 90);
+        padding-top: 0%;
+    }
+    .photo-8 {
+        width: apx(241, 132);
+        height: apx(161, 100);
+        padding-top: 0%;
+    }
+}
+.stocks__page-nav {
+    margin-bottom: apx(80, 20);
+}

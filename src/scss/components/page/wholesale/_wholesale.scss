@@ -1,0 +1,119 @@
+
+// .wholesale {}
+.wholesale__title-box {
+    margin-bottom: apx(30, 20);
+}
+// .wholesale__title {}
+// .title-36-7 {}
+.wholesale__text-block {
+    color: $black7;
+    font-size: apx(16, 14);
+    font-weight: 400;
+    line-height: 130%;
+    margin-bottom: apx(40, 20);
+}
+.wholesale__text {
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+.wholesale__list {
+    padding-left: 24px;
+    margin-bottom: 10px;
+}
+.wholesale__item {
+    list-style-type: disc;
+}
+.wholesale__form {
+    width: colWidth(8);
+    @include lg-block() {
+        width: 100%;
+    }
+    margin-bottom: apx(80, 40);
+    .popup-registration__text {
+        padding-top: 0;
+
+    }
+    .popup-entrance__input-checkbox {
+        align-self: flex-end;
+    }
+    .popup-entrance__input-checklabel {
+        color: $black7;
+        font-size: apx(16, 12);
+        font-weight: 400;
+        line-height: 130%;
+    }
+}
+//-------------------------------------
+.form__block {
+    display: flex;
+    flex-wrap: wrap;
+    @include margin-flex(-10, -20);
+}
+.form__column {
+
+    &:first-child {
+        width: colWidth(5);
+        flex-grow: 1;
+        @include margin-flex(10, 20);
+        @include xs-block() {
+            width: 100%;
+        }
+    }
+    &:last-child {
+        width: colWidth(7);
+        flex: 1 1 auto;
+        @include margin-flex(10, 20);
+        @include xs-block() {
+            width: 100%;
+        }
+    }
+}
+// .item__input-box {}
+// .item__input_label {}
+// .item__input {}
+.input-text {
+    color: rgb(131, 134, 136);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
+}
+.form__row {
+    display: flex;
+    flex-wrap: wrap;
+    @include margin-flex(-10, -20);
+    margin-top: apx(20, 10);
+}
+.form__button-box {
+    width: colWidth(5);
+    flex-grow: 1;
+    @include margin-flex(10, 20);
+}
+.form__button {
+    width: 100%;
+    border-radius: 5px;
+    background: rgb(72, 120, 166);
+    padding: 10px 30px;
+    color: $white255;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 130%;
+}
+.form__checked-box {
+    display: flex;
+    align-items: center;
+    width: colWidth(7);
+    @include sm-block() {
+        width: 100%;
+        order: -1;
+    }
+    flex-grow: 1;
+    @include margin-flex(10, 20);
+}
+//------------------------------------------
+// .popup-form__input-checkbox-box {}
+
+// .popup-form__input-checkbox {}
+// .popup-entrance__input-checklabel {}
+// .popup-form__input-checklabel {}
+
