@@ -1,6 +1,6 @@
 // contact
 
-import Breadcrumbs from "@/utils/breadcrumbs";
+import Breadcrumbs from "@/utils/Breadcrumbs";
 
 export default function Contact() {
     return (

@@ -1,13 +1,17 @@
-
-import Breadcrumbs from "@/utils/breadcrumbs"
+import Breadcrumbs from "@/utils/Breadcrumbs";
+import { Metadata } from "next";
 import Image from "next/image";
-import iconMenu_1 from "../../../public/svg/icon-menu/icon-menu-1.svg"
-import iconMenu_2 from "../../../public/svg/icon-menu/icon-menu-4.svg"
-import iconMenu_3 from "../../../public/svg/icon-menu/icon-menu-11.svg"
-import iconMenu_4 from "../../../public/svg/icon-menu/icon-menu-5.svg"
-import iconMenu_5 from "../../../public/svg/icon-menu/icon-menu-2.svg"
+import iconMenu_1 from "../../../public/svg/icon-menu/icon-menu-1.svg";
+import iconMenu_2 from "../../../public/svg/icon-menu/icon-menu-4.svg";
+import iconMenu_3 from "../../../public/svg/icon-menu/icon-menu-11.svg";
+import iconMenu_4 from "../../../public/svg/icon-menu/icon-menu-5.svg";
+import iconMenu_5 from "../../../public/svg/icon-menu/icon-menu-2.svg";
 import iconMenu_6 from "../../../public/svg/icon-menu/icon-more.svg";
 
+export const metadata: Metadata = {
+    title: "О нас",
+    description: "Всё о нашей компании",
+};
 
 const nameProduct = [
     {
@@ -37,7 +41,6 @@ const nameProduct = [
 ];
 
 export default function About() {
-    
     return (
         <>
             <section className="section-about">

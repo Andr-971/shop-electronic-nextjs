@@ -142,26 +142,29 @@
     border: 1px solid rgb(234, 234, 240);
     border-radius: 4px;
     background: $white255;
-    color: $white255;
+    // color: $white255;
     font-size: 16px;
     font-weight: 400;
     line-height: 19px;
     padding: 10px;
+    cursor: pointer;
     &.active_page {
         background: rgb(72, 120, 166);
-        a {
-            color: $white255;
-        }
+        color: $white255;
     }
-    
 }
 .pagination__btn:not(:last-child) {
     margin-right: 10px;
 }
-
+.not_active>svg>path {
+    fill: #838688;
+}
 .pagination__btn_more {
     display: flex;
     align-items: end;
+}
+.pagination__item:nth-last-child(-2n+2) {
+    order: 1;
 }
 .pagination__block {
     display: flex;
@@ -170,6 +173,10 @@
 }
 .pagination__item:last-child {
     margin-right: 10px;
+}
+.pagination__num:last-child {
+    order: 0;
+    background-color: red;
 }
 @include xs-block() {
     .pagination__item:last-child, .pagination__btn_numderof {

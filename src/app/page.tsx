@@ -20,11 +20,9 @@ import heart from "../../public/svg/heart-1.svg";
 import heart_red from "../../public/svg/heart-2.svg";
 import graf from "../../public/svg/icon-graph-1.svg";
 import graf_true from "../../public/svg/icon-graph-2.svg";
-import productPhoto_2 from "../../public/png_webp/product-2.webp";
-import productPhoto_3 from "../../public/png_webp/product-3.webp";
-import productPhoto_4 from "../../public/png_webp/product-4.webp";
-import productPhoto_5 from "../../public/png_webp/product-5.png";
-import {Stock} from "@/components/Stock";
+import stock_one_block from "../../public/stock_one_block"
+import stock_two_block from "../../public/stock_two_block"
+import Stock from "@/components/Stock";
 import {PrevNew} from "@/components/PrevNew";
 import { prevNewsTwo } from "../../public/prevNewsTwo"
 
@@ -624,12 +622,19 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <Stock
-                photoOne={productPhoto_2}
-                titleOne="Скидки до 30% на сигвеи"
-                phototwo={productPhoto_5}
-                titleTwo="Неделя смарт-часов"
-            ></Stock>
+            <section className="section-info section-discount">
+                <div className="section-info__inner">
+                    {stock_one_block.map((el, i) => {
+                        return (
+                            <Stock
+                                photo={el.photo}
+                                title={el.title}
+                                key={i}
+                            ></Stock>
+                        );
+                    })}
+                </div>
+            </section>
             <section className="section-goods section-sigvey">
                 <div className="section-goods__inner">
                     <SectionTitle title="Сигвей"></SectionTitle>
@@ -795,12 +800,19 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <Stock
-                photoOne={productPhoto_4}
-                titleOne="Распродажа до — 50%"
-                phototwo={productPhoto_3}
-                titleTwo="Smart Balance Premium по специальной цене"
-            ></Stock>
+            <section className="section-info section-discount">
+                <div className="section-info__inner">
+                    {stock_two_block.map((el, i) => {
+                        return (
+                            <Stock
+                                photo={el.photo}
+                                title={el.title}
+                                key={i}
+                            ></Stock>
+                        );
+                    })}
+                </div>
+            </section>
             <section className="section-goods section-sigvey">
                 <div className="section-goods__inner">
                     <SectionTitle title="Электровелосипеды"></SectionTitle>
@@ -983,6 +995,6 @@ export default function Home() {
                     })}
                 </div>
             </section>
-        </div> 
+        </div>
     );
 }

@@ -1,6 +1,10 @@
-// warranty
+import Breadcrumbs from "@/utils/Breadcrumbs";
+import { Metadata } from "next";
 
-import Breadcrumbs from "@/utils/breadcrumbs";
+export const metadata: Metadata = {
+    title: "Сервис и гарантия",
+    description: "Самый лучий сервис",
+};
 
 export default function Warranty() {
     return (
