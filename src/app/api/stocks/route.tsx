@@ -4,7 +4,6 @@ import {splitArray} from "../../../services/function"
 import stocksBlock from "./stocksBlock.js";
 import { stocksApi } from "../../../../public/path";
 
-let bodyStock;
 // Отправка GET json на клиента
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url); // Получение url из запроса
@@ -38,4 +37,3 @@ export async function POST(req: Request) {
         arrayPage[+page.page - 1]
     );
 }
-// console.log(pageNum.id);

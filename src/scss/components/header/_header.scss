@@ -33,8 +33,9 @@
         display: flex;
         align-items: center;
         height: 100%;
-        padding: 14px 0px 14px 0px;
-        // background-color: $blue36;
+        // padding: 14px 0px 14px 0px;
+        height: $heightMenuBottom;
+        cursor: pointer;
         img {
             margin-left: 20px;
         }
@@ -43,6 +44,9 @@
             margin-right: apx(115, 20);
         }
     }
+    .menu__active {
+        background-color: $blue36; 
+    }
     .header__menu-text {
         color: $white255;
         padding-left: apx(20, 7);
@@ -50,13 +54,21 @@
         font-size: apx(16, 7);
         font-weight: 500;
         line-height: 19px;
+        box-sizing: border-box;
+        padding-top: apx(22, 10);
+        padding-bottom: apx(22, 10);
     }
     .header__menu-box {
         display: flex;
         align-items: center;
         margin-left: 4px;
+        align-items: center;
     }
-    // .header__menu {}
+    .header__menu {
+        height: $heightMenuBottom;
+        display: flex;
+        align-items: center;
+    }
     .header__catalog_des {
         pointer-events: none;
     }

@@ -5,23 +5,23 @@ export default [
         text: "О компании",
     },
     {
-        link: "stocks",
+        link: "/stocks",
         text: "Акции",
     },
     {
-        link: "installment",
+        link: "/installment",
         text: "Рассрочка 0|0|18",
     },
     {
-        link: "warranty",
+        link: "/warranty",
         text: "Сервис и гарантия",
     },
     {
-        link: "dropshipping",
+        link: "/dropshipping",
         text: "Опт/дропшиппинг",
     },
     {
-        link: "contact",
+        link: "/contact",
         text: "Контакты",
     },
 ];

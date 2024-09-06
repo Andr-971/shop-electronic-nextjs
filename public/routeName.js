@@ -5,6 +5,10 @@ export default [
         page: "/",
     },
     {
+        title: "Каталог товаров",
+        page: "catalog",
+    },
+    {
         title: "О нас",
         page: "about_us",
     },

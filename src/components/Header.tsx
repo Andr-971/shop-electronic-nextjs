@@ -17,6 +17,7 @@ import mobSearch from "@/../public/svg/mob-menu/mob-search-btn.svg";
 import mobMore from "@/../public/svg/mob-menu/mob-more-btn.svg"
 import { HeaderMenu } from "./HeaderMenu";
 import mainMenu from "../../public/mainMenu"
+import CatalogMenu from "./CatalogMenu"
 
 const Header = () => {
     return (
@@ -114,16 +115,7 @@ const Header = () => {
                 </div>
                 <nav className="header__menu-inner">
                     <div className="header__holder g-container">
-                        <div className="header__catalog" id="selectCatalog">
-                            <Image
-                                src={burger}
-                                alt="burger-btn"
-                                className="header__catalog_des"
-                            ></Image>
-                            <span className="header__menu-text">
-                                Каталог товаров
-                            </span>
-                        </div>
+                        <CatalogMenu></CatalogMenu>
                         <ul className="header__menu-box">
                             {mainMenu.map((el, i) => {
                                 return (

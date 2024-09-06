@@ -13,7 +13,6 @@ import iconMenu_11 from "../../public/svg/icon-menu/icon-menu-11.svg"
 import closeBtn from "../../public/svg/close-btn.svg"
 import SectionTitle from "../components/SectionTitle";
 import mainSliderImg from "../../public/png_webp/main-slider.webp"
-import { photoProduct } from "../../public/png_webp/photo-product.js";
 import commitBtn from "../../public/svg/commit-btn.svg";
 import backetBtn from "../../public/svg/backet-2.svg";
 import heart from "../../public/svg/heart-1.svg";
@@ -25,105 +24,7 @@ import stock_two_block from "../../public/stock_two_block"
 import Stock from "@/components/Stock";
 import {PrevNew} from "@/components/PrevNew";
 import { prevNewsTwo } from "../../public/prevNewsTwo"
-
-const product = [
-    {
-        pathPhotoProduct: photoProduct[0].mainPucture,
-        hit: "Да",
-        new: "Да",
-        category: "Сигвеи",
-        nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-        buttonCommit: commitBtn,
-        commitNumber: "14",
-        oldPrice: "5500",
-        price: "4990",
-        percent: "20",
-        priceFor: "1000",
-        heartBtn: "Нет",
-        graphBtn: "Да",
-        basketBtn: backetBtn,
-    },
-    {
-        pathPhotoProduct: photoProduct[0].mainPucture,
-        hit: "Нет",
-        new: "Да",
-        category: "Сигвеи",
-        nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-        buttonCommit: commitBtn,
-        commitNumber: "17",
-        oldPrice: "5400",
-        price: "4990",
-        percent: "20",
-        priceFor: "1000",
-        heartBtn: "Да",
-        graphBtn: "Нет",
-        basketBtn: backetBtn,
-    },
-    {
-        pathPhotoProduct: photoProduct[0].mainPucture,
-        hit: "Нет",
-        new: "Нет",
-        category: "Сигвеи",
-        nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-        buttonCommit: commitBtn,
-        commitNumber: "17",
-        oldPrice: "5400",
-        price: "4990",
-        percent: "20",
-        priceFor: "1000",
-        heartBtn: "Да",
-        graphBtn: "Нет",
-        basketBtn: backetBtn,
-    },
-    {
-        pathPhotoProduct: photoProduct[0].mainPucture,
-        hit: "Нет",
-        new: "Да",
-        category: "Сигвеи",
-        nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-        buttonCommit: commitBtn,
-        commitNumber: "17",
-        oldPrice: "5400",
-        price: "4990",
-        percent: "20",
-        priceFor: "1000",
-        heartBtn: "Да",
-        graphBtn: "Да",
-        basketBtn: backetBtn,
-    },
-    {
-        pathPhotoProduct: photoProduct[0].mainPucture,
-        hit: "Да",
-        new: "Нет",
-        category: "Сигвеи",
-        nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-        buttonCommit: commitBtn,
-        commitNumber: "17",
-        oldPrice: "5400",
-        price: "4990",
-        percent: "20",
-        priceFor: "1000",
-        heartBtn: "Да",
-        graphBtn: "Да",
-        basketBtn: backetBtn,
-    },
-    {
-        pathPhotoProduct: photoProduct[0].mainPucture,
-        hit: "Нет",
-        new: "Нет",
-        category: "Сигвеи",
-        nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-        buttonCommit: commitBtn,
-        commitNumber: "17",
-        oldPrice: "5400",
-        price: "3900",
-        percent: "20",
-        priceFor: "1000",
-        heartBtn: "Нет",
-        graphBtn: "Нет",
-        basketBtn: backetBtn,
-    },
-];
+import product from "../../public/product"
 
 
 export default function Home() {
@@ -627,9 +528,11 @@ export default function Home() {
                     {stock_one_block.map((el, i) => {
                         return (
                             <Stock
+                                id=""
                                 photo={el.photo}
                                 title={el.title}
                                 key={i}
+                                nameClass={""}
                             ></Stock>
                         );
                     })}
@@ -802,9 +705,10 @@ export default function Home() {
             </section>
             <section className="section-info section-discount">
                 <div className="section-info__inner">
-                    {stock_two_block.map((el, i) => {
+                    {stock_two_block.map((el:any, i:any) => {
                         return (
                             <Stock
+                                id={el.id}
                                 photo={el.photo}
                                 title={el.title}
                                 key={i}

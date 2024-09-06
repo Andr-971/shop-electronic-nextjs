@@ -7,9 +7,10 @@
     display: flex;
     align-items: center;
     padding-top: 22px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: apx(50, 20);
+    padding-right: apx(50, 20);
     padding-bottom: 24px;
+    order: -1;
 }
 .block-header__icon-box {
     margin-right: 11px;
@@ -24,6 +25,13 @@
     margin-left: auto;
     color: rgb(241, 81, 82);
     font-size: 19px;
+    padding-right: apx(50, 20);
+}
+.catalog__select {
+    margin-right: apx(15, 10);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 @include mediaMax($break_md) {
     .catalog__select {
@@ -31,20 +39,28 @@
     }
 
 }
-.catalog__select {
-    margin-right: apx(15, 10);
-    flex-grow: 1;
-}
-
 .select__block {
     margin-top: 10px;
     margin-bottom: 10px;
+    // cursor: pointer;
     &:first-child {
         margin-top: 0;
+        order: -1;
+    }
+    &:nth-child( 3 ) {
+        order: -1;
     }
     &:last-child {
         margin-bottom: 0;
     }
+    @include mediaMaxMin($break_md, $break_xs) {
+        width: 60%;
+        margin: 10px auto;
+    }
+}
+.select__holder {
+    display: flex;
+    flex-direction: column;
 }
 .select__header {
     border-radius: 4px;
@@ -53,8 +69,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 10px 10px 20px;
+    // pointer-events: none;
+    
 }
 .select__header_title {
+    pointer-events: none;
     color: $black7;
     font-size: apx(16, 12);
     font-weight: 700;
@@ -62,6 +81,7 @@
 }
 .select__header_btn {
     background: rgb(237, 242, 246);
+    padding: 8px 10px;
 }
 // .select__body {}
 // .catalog__select-checkbox {}
@@ -77,6 +97,9 @@
         font-size: apx(16, 12);
         font-weight: 400;
         line-height: 130%;
+    }
+    span {
+        margin-left: 5px;
     }
     &:first-child {
         margin-top: 20px;
@@ -110,12 +133,14 @@
 }
 .select__item_slider {
     margin-top: 20px;
+    padding: 0px 0px 10px 0px;
 }
 // .select__button_box {}
 .select__button {
+    height: 52px;
     border-radius: 4px;
     background: rgb(72, 120, 166);
-    padding: apx(30, 10);
+    padding: apx(16, 10);
     color: $white255;
     // font-size: apx(24, 12);
     font-weight: 500;
@@ -125,7 +150,26 @@
     display: block;
 }
 .catalog__select_sel {
-    margin-top: 10px;
+    position: relative;
+    width: 50%;
+    @include xs-block() {
+        width: 100%;
+    }
+
+    .select-btn {
+        margin-left: 10px;
+    }
+    @media (max-width: 345px) {
+        margin-top: 10px;
+        
+    }
+
+}
+.dropdownlist  {
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    // right: 50px;
 }
 // .catalog__select-checkbox {}
 // .popup-entrance__input-checkbox {}

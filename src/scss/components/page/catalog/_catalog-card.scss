@@ -9,6 +9,10 @@
 .catalog__button-block {
     display: flex;
     align-items: center;
+    width: 50%;
+    @include xs-block() {
+        width: 100%;
+    }
 }
 
 // .hidden {}
@@ -64,7 +68,13 @@
     text-decoration-line: underline;
 }
 
-// .select-label {}
+.select-label {
+    width: 200px;
+    margin-left: auto;
+    @include xs-block() {
+        margin: 0px;
+    }
+}
 // .select-text {}
 // .select-btn {}
 // .dropdownlist {}

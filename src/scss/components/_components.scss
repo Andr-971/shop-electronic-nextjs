@@ -136,8 +136,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
+    width: apx(48, 40);
+    height: apx(48, 40);
     box-sizing: border-box;
     border: 1px solid rgb(234, 234, 240);
     border-radius: 4px;
@@ -326,7 +326,8 @@
     top: 4px;
     left: 2px;
     z-index: -1;
-    opacity: 0;
+    // opacity: 0;
+    display: none;
     &+label {
         display: inline-flex;
         align-items: center;
@@ -647,5 +648,29 @@
     font-weight: 500;
     line-height: 100%;
     padding: 10px 30px;
+}
+// Диапазон цен слайдер ----------------------------------------
+.priceSlider {
+    height: 5px;
+    width: 100%;
+    background-color: rgb(42, 82, 117);
+    border-radius: 10px;
+    .thumb {
+        width: 15px;
+        height: 15px;
+        background-color: rgb(237, 242, 246);
+        border: 2px solid rgb(42, 82, 117);
+        border-radius: 50%;
+        top: -7px;
+        cursor: grab;
+    }
+}
+.track-0 {
+    background-color: rgb(237, 242, 246);
+    height: 5px;
+}
+.track-2 {
+    background-color: rgb(237, 242, 246);
+    height: 5px;
 }
 
