@@ -1,26 +1,39 @@
-"use client"
-import React from "react"
-import InputRange from "../components/InputRange"
-import ImputCheckbox from "@/components/ImputCheckbox"
-import { useState } from "react";
+"use client";
+import React from "react";
+import InputRange from "./InputRange";
+import ImputCheckbox from "@/components/ImputCheckbox";
+import { useFilterCatalog } from "@/store"
+import { useFilterData } from "@/store";
+import { useState, useEffect } from "react";
 
-const SelectBlock = ({ el, i }: any) => {
+const SelectBlocks = ({ el, i }: any) => {
     const [hidden, setHidden] = useState(true);
-    function handlerSeleckBlock(e: any) {
+    const { changeFilterValue, filterValue } = useFilterCatalog();
+    const { rangeEvent } = useFilterData();
+
+    useEffect(() => {
+        
+    }, [filterValue]);
+
+    function handlerSeleckBlock(e: any, el: any) {
+        if (hidden) {
+            changeFilterValue({
+                id: el.id,
+                title: el.title,
+                input: el.input.map((e: any) => e),
+                rangeEvent: rangeEvent,
+            });
+        }
         setHidden((curr) => !curr);
     }
-    
     return (
         <>
-            <div
-                className="select__block"
-                style={{ order: hidden ? 0 : -1 }}
-            >
+            <div className="select__block" style={{ order: hidden ? 0 : -1 }}>
                 <div className="select__header">
                     <div className="select__header_title">{el.title}</div>
                     <button
                         className="select__header_btn"
-                        onClick={handlerSeleckBlock}
+                        onClick={(e) => handlerSeleckBlock(e, el)}
                         style={{
                             transform: hidden
                                 ? "rotate(0deg)"
@@ -50,13 +63,16 @@ const SelectBlock = ({ el, i }: any) => {
                     {el.id > 1 &&
                         el.input.map((el: any, i: number) => {
                             return (
-                                <ImputCheckbox propsInput={el}></ImputCheckbox>
+                                <ImputCheckbox
+                                    propsInput={el}
+                                    key={i}
+                                ></ImputCheckbox>
                             );
                         })}
                 </ul>
             </div>
         </>
     );
-}
+};
 
-export default SelectBlock;
+export default SelectBlocks;

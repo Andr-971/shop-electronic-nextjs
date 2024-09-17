@@ -1,13 +1,39 @@
 
 import React from "react"
 import Slider from "react-slider";
-import { useState, useEffect } from "react";
-
-const MIN = 3000;
-const MAX = 17000
+import { useState, useEffect, useRef } from "react";
+import { useFilterData } from "@/store";
 
 const InputRange = ({ inputProps }) => {
-    const [valPrice, setValPrice] = useState([MIN, MAX]);
+    const {
+        rangeDefaultValue,
+        currentRangeValue,
+        changeRangeEvent,
+        rangeEvent,
+    } = useFilterData();
+    const [valPrice, setValPrice] = useState([
+        rangeDefaultValue[0],
+        rangeDefaultValue[1],
+    ]);
+
+    let minValue = useRef(rangeDefaultValue[0]);
+    let maxValue = useRef(rangeDefaultValue[1]);
+
+    useEffect(() => {
+        if (
+            valPrice[0] > rangeDefaultValue[0] ||
+            valPrice[1] < rangeDefaultValue[1]
+        ) {
+            changeRangeEvent(true);
+            currentRangeValue(valPrice);
+        }
+        if (!rangeEvent) {
+            currentRangeValue(rangeDefaultValue);
+            valPrice[0] = rangeDefaultValue[0];
+            valPrice[1] = rangeDefaultValue[1];
+        }
+    }, [valPrice, rangeEvent]);    
+
     return (
         <>
             <li className="select__item">
@@ -17,7 +43,8 @@ const InputRange = ({ inputProps }) => {
                         type="text"
                         name={inputProps[0].name}
                         size={5}
-                        placeholder={valPrice[0]}
+                        ref={minValue}
+                        value={valPrice[0]}
                         id="from-price"
                     ></input>
                     <label htmlFor="before-price" className="label-last">
@@ -27,7 +54,8 @@ const InputRange = ({ inputProps }) => {
                         type="text"
                         name={inputProps[1].name}
                         size={5}
-                        placeholder={valPrice[1]}
+                        ref={maxValue}
+                        value={valPrice[1]}
                         id="before-price"
                     ></input>
                 </div>
@@ -36,8 +64,8 @@ const InputRange = ({ inputProps }) => {
                         className={`priceSlider`}
                         onChange={setValPrice}
                         value={valPrice}
-                        min={MIN}
-                        max={MAX}
+                        min={rangeDefaultValue[0]}
+                        max={rangeDefaultValue[1]}
                     ></Slider>
                 </div>
             </li>

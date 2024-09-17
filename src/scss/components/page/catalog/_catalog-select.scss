@@ -151,7 +151,7 @@
 }
 .catalog__select_sel {
     position: relative;
-    width: 50%;
+    width: 40%;
     @include xs-block() {
         width: 100%;
     }
@@ -165,12 +165,12 @@
     }
 
 }
-.dropdownlist  {
-    position: absolute;
-    width: 100%;
-    background-color: #fff;
-    // right: 50px;
-}
+// .dropdownlist  {
+//     position: absolute;
+//     width: 100%;
+//     background-color: #fff;
+//     // right: 50px;
+// }
 // .catalog__select-checkbox {}
 // .popup-entrance__input-checkbox {}
 // .popup-form__input-checkbox {}

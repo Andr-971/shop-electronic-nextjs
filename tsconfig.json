@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/PrevNew.tsx", "src/app/stocks/page.tsx", "src/components/InputRange.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/PrevNew.tsx", "src/app/stocks/page.tsx", "src/components/InputRange.jsx", "src/utils/Select.js"],
   "exclude": ["node_modules"]
 }

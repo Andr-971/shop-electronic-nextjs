@@ -1,30 +1,50 @@
-"use client"
-import React from "react"
-import { useState, useEffect } from "react";
-import SelectBlock from "@/components/SelectBlock";
+"use client";
+import React from "react";
+import { useState, useEffect, useRef } from "react";
+import SelectBlocks from "@/components/SelectBlocks";
 import selectBlock from "../../public/selectBlock";
 import SelectSubmit from "@/components/SelectSubmit";
 import Image from "next/image";
 import filter_black from "../../public/svg/filter-black.svg";
 import filter from "../../public/svg/filter.svg";
+import Select from "../utils/Select";
+import nameCategory from "../../public/categoryProducts";
+import { useFilterCatalog } from "@/store"
+import {useFilterData} from "@/store"
+
 
 const CatalogPage = () => {
-
+    const {
+        rangeCurrentValue,
+        currentRangeValue,
+        rangeDefaultValue,
+        rangeEvent,
+        changeRangeEvent,
+    } = useFilterData();
+    const filterValue = useFilterCatalog((state) => state.filterValue);
+    const deleteAll = useFilterCatalog((state) => state.deleteAll);
+    const removeFilter = useFilterCatalog((state) => state.removeFilter);
     const [filterOpen, setFilterOpen] = useState(false);
-    const [filterCategory, setFilterCategory] = useState(true);
+
+    function handlerDeleteSelect(id: any) {
+        currentRangeValue(rangeDefaultValue);
+        changeRangeEvent(false);
+        removeFilter(id);
+    }
+
+    function allDelete() {
+        deleteAll();
+    }
+
     function handlerBtnFilter(e: any) {
         setFilterOpen((curr) => !curr);
     }
-    function handlerBtnFilterCategory(e: any) {
-        setFilterCategory((curr) => !curr);
-    }
-
     return (
         <>
             <div
                 className={`catalog__select`}
                 style={
-                    window.screen.width < 1025 && filterOpen
+                    window.screen.width <= 1024 && filterOpen
                         ? { display: "block" }
                         : undefined
                 }
@@ -46,11 +66,11 @@ const CatalogPage = () => {
                     {selectBlock.map((el: any, i: number) => {
                         return (
                             <>
-                                <SelectBlock
+                                <SelectBlocks
                                     key={i}
                                     el={el}
                                     i={i}
-                                ></SelectBlock>
+                                ></SelectBlocks>
                             </>
                         );
                     })}
@@ -69,74 +89,88 @@ const CatalogPage = () => {
                                 </div>
                                 <div className="select__btn-text">Фильтры</div>
                             </div>
-                            <div className="select__btn">
-                                <div className="select__btn-text">
-                                    Подсветка: есть
-                                </div>
-                                <div className="select__btn-close">
-                                    &#10006;
-                                </div>
-                            </div>
-                            <div className="select__btn">
-                                <div className="select__btn-text">
-                                    Цена: от <span>3 600</span> ₽ до{" "}
-                                    <span>17 000</span> ₽
-                                </div>
-                                <div className="select__btn-close">
-                                    &#10006;
-                                </div>
-                            </div>
-                            <div className="select__btn">
-                                <div className="select__btn-text_clear">
-                                    Очистить фильтры
-                                </div>
-                            </div>
+                            <ul className="select__list_btn">
+                                {filterValue.map((el: any, index: number) => {
+                                    console.log(el);
+                                    return (
+                                        <>
+                                            {el.id === 1 ? (
+                                                <div className="select__btn">
+                                                    <div className="select__btn-text">
+                                                        {el.title}: от{" "}
+                                                        <span>
+                                                            {
+                                                                rangeCurrentValue[0]
+                                                            }
+                                                        </span>{" "}
+                                                        ₽ до{" "}
+                                                        <span>
+                                                            {
+                                                                rangeCurrentValue[1]
+                                                            }
+                                                        </span>{" "}
+                                                        ₽
+                                                    </div>
+                                                    <div
+                                                        className="select__btn-close"
+                                                        onClick={() =>
+                                                            handlerDeleteSelect(
+                                                                el.id,
+                                                            )
+                                                        }
+                                                    >
+                                                        &#10006;
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <div className="select__btn">
+                                                    <div className="select__btn-text">
+                                                            {el.title}
+                                                            {": "}
+                                                            {el.input.map((e: any) => {
+                                                                let res
+                                                                if (e.checked) {
+                                                                    res = e.label
+                                                                }
+                                                                return res + " "
+                                                            })}
+                                                            {" "}
+                                                    </div>
+                                                    <div
+                                                        className="select__btn-close"
+                                                        onClick={() =>
+                                                            handlerDeleteSelect(
+                                                                el.id,
+                                                            )
+                                                        }
+                                                    >
+                                                        &#10006;
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </>
+                                    );
+                                })}
+                                {filterValue.length > 0 && (
+                                    <div
+                                        className="select__btn select__btn_clear"
+                                        onClick={allDelete}
+                                    >
+                                        <div className="select__btn-text_clear">
+                                            Очистить фильтры
+                                        </div>
+                                    </div>
+                                )}
+                            </ul>
                         </div>
                         <div className="catalog__select_sel">
-                            <div
-                                className="select-label"
-                                onClick={handlerBtnFilterCategory}
-                            >
-                                <div className="select-text">Все товары</div>
-                                <button
-                                    className={`select-btn`}
-                                    style={{
-                                        transform: filterCategory
-                                            ? "rotate(0deg)"
-                                            : "rotate(180deg)",
-                                    }}
-                                >
-                                    <svg
-                                        width="10.212402"
-                                        height="5.815430"
-                                        viewBox="0 0 10.2124 5.81543"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            id="Polygon 1"
-                                            d="M5.39 5.68L10.1 0.67C10.34 0.41 10.16 0 9.81 0L0.4 0C0.05 0 -0.14 0.41 0.1 0.67L4.81 5.68C4.97 5.85 5.23 5.85 5.39 5.68Z"
-                                            fill="#070C11"
-                                            fill-opacity="1.000000"
-                                            fill-rule="evenodd"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                            <ul
-                                className={`dropdownlist ${
-                                    filterCategory ? "hidden" : ""
-                                }`}
-                            >
-                                <li className="dropdownitem">Сигвеи</li>
-                                <li className="dropdownitem">Сигвеи</li>
-                                <li className="dropdownitem">Сигвеи</li>
-                            </ul>
+                            <Select options={nameCategory}></Select>
                         </div>
                     </div>
                 </div>
             </div>
         </>
     );
-}
+};
 
 export default CatalogPage;
