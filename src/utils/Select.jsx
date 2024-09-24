@@ -10,7 +10,6 @@ const Select = ({ options }) => {
     const [showOptions, setShowOptions] = useState(false);
     const selectOptionCat = useOption((state) => state.option);
     const changeOptionCat = useOption((state) => state.changeOption);
-
     const handleSelect = (option) => {
         changeOptionCat(option);
         options.map((el) => {
@@ -23,7 +22,7 @@ const Select = ({ options }) => {
     return (
         <div className="custom-select">
             <div
-                className="select-label" // select-box
+                className="select-label"
                 onClick={() => setShowOptions(!showOptions)}
             >
                 <div className="select-text">

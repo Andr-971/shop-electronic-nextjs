@@ -9,18 +9,27 @@ import { useState, useEffect } from "react";
 const SelectBlocks = ({ el, i }: any) => {
     const [hidden, setHidden] = useState(true);
     const { changeFilterValue, filterValue } = useFilterCatalog();
-    const { rangeEvent } = useFilterData();
+    const { rangeEvent, inputSelect, checkboxInput } = useFilterData();
 
     useEffect(() => {
-        
-    }, [filterValue]);
+        inputSelect.map((element: any) => {
+            // console.log(element);
+        });
+    }, [inputSelect.map((el: any) => el.checked)]);
 
     function handlerSeleckBlock(e: any, el: any) {
         if (hidden) {
+            // inputSelect.map((element: any) => {
+            //     if(element.id === 3) console.log(element.checked);
+            //     console.log(el.input);
+            //     if (element.id === el.id) {
+            //         // console.log(element);
+            //     }
+            // });
             changeFilterValue({
                 id: el.id,
                 title: el.title,
-                input: el.input.map((e: any) => e),
+                input: el.input.map((e: any) => (e)),
                 rangeEvent: rangeEvent,
             });
         }

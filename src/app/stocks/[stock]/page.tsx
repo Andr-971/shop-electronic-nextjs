@@ -26,6 +26,7 @@ export async function generateMetadata({ params: { stock } }: StockProps) {
 }
 
 export default function Stock({ params: { stock } }: StockProps) {
+
     return (
         <>
             <section className="section-stock">

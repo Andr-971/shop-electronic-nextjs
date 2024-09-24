@@ -685,6 +685,7 @@
     display: none;
     overflow: auto;
     height: 300px;
+    z-index: 4;
 }
 .dropdownitem {
     color: $black7;

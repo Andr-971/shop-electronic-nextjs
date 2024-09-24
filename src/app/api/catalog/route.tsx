@@ -1,8 +1,7 @@
-
 import { NextResponse } from "next/server";
 import {splitArray} from "../../../services/function" // Разбивка массива функция
-import stocksBlock from "./stocksBlock.js";
-import { stocksApi } from "../../../../public/path";
+import { catalogApi } from "../../../../public/path"
+import productAll from "../../../../public/productAll.js"
 
 // Отправка GET json на клиента
 export async function GET(req: Request) {
@@ -11,17 +10,20 @@ export async function GET(req: Request) {
     const query = searchParams.get("s"); // Определить get параметр ?s=
     // query - ?s=тело get запроса
     // Отфильтровка объектов по id
-    let currentStocksBlock = stocksBlock;
+    // console.log(productAll);
+    let currentProduct = productAll;
+    // console.log(currentProduct);
     if (query) {
-        currentStocksBlock = stocksBlock.filter((stock) =>
-            stock.id.toLowerCase().includes(query.toLowerCase()),
+        currentProduct = productAll.filter((product) =>
+            product.id.toLowerCase().includes(query.toLowerCase()),
         );
     }
-    return NextResponse.json(currentStocksBlock);
+    // return NextResponse.json();
+    return NextResponse.json(currentProduct);
 }
 
-async function getData() {
-    let response = await fetch(`${stocksApi}`);
+export async function getData() {
+    let response = await fetch(`${catalogApi}`);
     if (response.ok) {
         return response.json();
     }
@@ -30,10 +32,8 @@ async function getData() {
 // Получение POST на сервере
 export async function POST(req: Request) {
     const page: any = await req.json(); // Пришло с клиента
-    const stockArray = await getData(); // Запрос с сервера на массив
-    const arrayPage = splitArray(stockArray, 4); // Разбивка массива на страницы по 4
+    const catalogArray = await getData(); // Запрос с сервера на массив
+    const arrayPage = splitArray(catalogArray, 6); // Разбивка массива на страницы по 6
 
-    return NextResponse.json(
-        arrayPage[+page.page - 1]
-    );
+    return NextResponse.json(arrayPage[+page.page - 1]);
 }

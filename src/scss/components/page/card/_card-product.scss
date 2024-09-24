@@ -302,6 +302,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height: 100%;
     @include margin-flex(-10, -20);
     .section-goods__card {
         width: colWidth(3);

@@ -27,7 +27,7 @@ export default [
         category: "Сигвеи",
         nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
         buttonCommit: commitBtn,
-        commitNumber: "17",
+        commitNumber: "12",
         oldPrice: "5400",
         price: "4990",
         percent: "20",

@@ -34,13 +34,68 @@ export const useFilterData = create((set, get) => ({
     rangeCurrentValue: [3000, 17000],
     currentRangeValue(params) {
         set({ rangeCurrentValue: [params[0], params[1]] });
-        // set({ rangeMinValue: params[0], rangeMaxValue: params[1] });
+    },
+    defaultRangeValue() {
+        set({
+            rangeCurrentValue: [
+                get().rangeDefaultValue[0],
+                get().rangeDefaultValue[1],
+            ],
+        });
     },
     rangeEvent: false,
     changeRangeEvent(params) {
         set({ rangeEvent: params });
+    },
+    inputDefaultSelect: [],
+    inputSelect: [],
+    defautArray() {
+        let newArr = structuredClone(get().inputSelect)
+        set({ inputDefaultSelect: newArr });
+    },
+    changeRadioInput(params) {
+        get().inputSelect.map((el) => {
+            if (el.type === "radio" && el.name === params.name) {
+                let arr = [];
+                arr.push(el);
+                arr.map((e) => {
+                    if (e.id === params.id) {
+                        el.checked = params.checked;
+                    } else {
+                        e.checked = !params.checked;
+                    }
+                });
+            }
+            if (el.type === "checkbox" && el.name === params.name) {
+                let arr = [];
+                arr.push(el);
+                arr.map((e) => {
+                    if (e.id === params.id) {
+                        el.checked = params.checked;
+                    }
+                });
+            }
+        });
+        set({ inputSelect: [...get().inputSelect] });
+    },
+    defaultSelectInput(params) {
+        get().inputSelect.map((el) => {
+            params.map((curr) => {
+                if (el.id === curr.id) {
+                    get().inputDefaultSelect.map((def) => {
+                        if (def.id === curr.id) {
+                            el.checked = def.checked
+                        }
+                    });
+                }
+            });
+        })
+        set({ inputSelect: [...get().inputSelect] });
+    },
+    defaultSelectImputAll() {
+        
+        set({ inputSelect: [...get().inputDefaultSelect] });
     }
-    
-}))
+}));
 
 

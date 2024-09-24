@@ -7,38 +7,102 @@ import SelectSubmit from "@/components/SelectSubmit";
 import Image from "next/image";
 import filter_black from "../../public/svg/filter-black.svg";
 import filter from "../../public/svg/filter.svg";
-import Select from "../utils/Select";
+import Select from "../utils/Select.jsx";
 import nameCategory from "../../public/categoryProducts";
 import { useFilterCatalog } from "@/store"
-import {useFilterData} from "@/store"
+import { useFilterData } from "@/store"
+import { catalogApi } from "../../public/path";
+import Pagination from "@/utils/Pagination";
+import ProductСard from "@/components/ProductСard"
+import productAll from "../../public/productAll";
 
 
-const CatalogPage = () => {
+const CatalogPage = ({ arrayPage }: any) => {
     const {
+        inputSelect,
         rangeCurrentValue,
         currentRangeValue,
         rangeDefaultValue,
-        rangeEvent,
+        defaultSelectInput,
         changeRangeEvent,
+        defaultRangeValue,
+        defautArray,
+        defaultSelectImputAll,
     } = useFilterData();
     const filterValue = useFilterCatalog((state) => state.filterValue);
     const deleteAll = useFilterCatalog((state) => state.deleteAll);
     const removeFilter = useFilterCatalog((state) => state.removeFilter);
     const [filterOpen, setFilterOpen] = useState(false);
 
-    function handlerDeleteSelect(id: any) {
-        currentRangeValue(rangeDefaultValue);
-        changeRangeEvent(false);
-        removeFilter(id);
+    useEffect(() => {
+        defautArray();
+    }, []);
+
+    selectBlock.map((element: any) => {
+        if (element.id !== 1) {
+            element.input.map((el: any) => {
+                if (
+                    inputSelect.findIndex((item: any) => item.id === el.id) ===
+                    -1
+                ) {
+                    inputSelect.push(el);
+                }
+            });
+        }
+    });
+
+    function handlerDeleteSelect(el: any) {
+        if (el.id === 1) {
+            changeRangeEvent(false);
+            defaultRangeValue();
+            removeFilter(el.id);
+        } else {
+            let newElem: any = [];
+            el.input.map((e: any) => newElem.push(e));
+            defaultSelectInput(newElem);
+            removeFilter(el.id);
+        }
     }
 
     function allDelete() {
+        currentRangeValue(rangeDefaultValue);
+        changeRangeEvent(false);
+        defaultSelectImputAll();
         deleteAll();
     }
 
     function handlerBtnFilter(e: any) {
         setFilterOpen((curr) => !curr);
     }
+
+    let startPage = "1";
+    const [pageNum, setPageNum] = useState(startPage);
+    const [arrPage, setArrPage] = useState(arrayPage[0]);
+    const stockData = async () => {
+        let response = await fetch(`${catalogApi}`, {
+            method: "POST",
+            body: JSON.stringify({
+                title: `Каталог | страница ${pageNum}`,
+                page: pageNum,
+            }),
+            headers: {
+                "Content-type": "application/json",
+            },
+        });
+        response = await response.json();
+        setArrPage(() => {
+            return response;
+        });
+    };
+    useEffect(() => {
+        stockData();
+    }, [setArrPage]);
+
+    useEffect(() => {
+        stockData();
+        document.title = "Каталог | страница " + pageNum;
+    }, [pageNum]);
+
     return (
         <>
             <div
@@ -91,7 +155,6 @@ const CatalogPage = () => {
                             </div>
                             <ul className="select__list_btn">
                                 {filterValue.map((el: any, index: number) => {
-                                    console.log(el);
                                     return (
                                         <>
                                             {el.id === 1 ? (
@@ -115,7 +178,7 @@ const CatalogPage = () => {
                                                         className="select__btn-close"
                                                         onClick={() =>
                                                             handlerDeleteSelect(
-                                                                el.id,
+                                                                el,
                                                             )
                                                         }
                                                     >
@@ -125,22 +188,25 @@ const CatalogPage = () => {
                                             ) : (
                                                 <div className="select__btn">
                                                     <div className="select__btn-text">
-                                                            {el.title}
-                                                            {": "}
-                                                            {el.input.map((e: any) => {
-                                                                let res
+                                                        {el.title}
+                                                        {": "}
+                                                        {el.input.map(
+                                                            (e: any) => {
+                                                                let res;
                                                                 if (e.checked) {
-                                                                    res = e.label
+                                                                    res =
+                                                                        e.label +
+                                                                        " ";
                                                                 }
-                                                                return res + " "
-                                                            })}
-                                                            {" "}
+                                                                return res;
+                                                            },
+                                                        )}
                                                     </div>
                                                     <div
                                                         className="select__btn-close"
                                                         onClick={() =>
                                                             handlerDeleteSelect(
-                                                                el.id,
+                                                                el,
                                                             )
                                                         }
                                                     >
@@ -154,7 +220,7 @@ const CatalogPage = () => {
                                 {filterValue.length > 0 && (
                                     <div
                                         className="select__btn select__btn_clear"
-                                        onClick={allDelete}
+                                        onClick={() => allDelete()}
                                     >
                                         <div className="select__btn-text_clear">
                                             Очистить фильтры
@@ -167,6 +233,23 @@ const CatalogPage = () => {
                             <Select options={nameCategory}></Select>
                         </div>
                     </div>
+                    <div className="catalog__block">
+                        {arrPage.map((el: any, i: number) => {
+                            return (
+                                <ProductСard
+                                    key={i}
+                                    el={el}
+                                ></ProductСard>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div className="catalog__page-nav">
+                    <Pagination
+                        arrayPage={arrayPage}
+                        pageNum={pageNum}
+                        setPageNum={setPageNum}
+                    ></Pagination>
                 </div>
             </div>
         </>

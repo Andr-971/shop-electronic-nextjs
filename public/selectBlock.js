@@ -13,6 +13,7 @@ export default [
                 checked: true,
                 placeholder: "3600",
                 totalNumber: 78,
+                type: "text",
             },
             {
                 id: 2,
@@ -21,9 +22,9 @@ export default [
                 checked: false,
                 placeholder: "17000",
                 totalNumber: 168,
+                type: "text",
             },
         ],
-        
     },
     {
         id: 2,
@@ -95,7 +96,7 @@ export default [
                 id: 8,
                 label: "40",
                 name: "maximum_speed",
-                checked: true,
+                checked: false,
                 placeholder: "",
                 totalNumber: 163,
                 type: "radio",
@@ -229,7 +230,7 @@ export default [
                 id: 19,
                 label: "32",
                 name: "maximum_speed",
-                checked: true,
+                checked: false,
                 placeholder: "",
                 totalNumber: 10,
                 type: "radio",

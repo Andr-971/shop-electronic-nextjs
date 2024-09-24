@@ -1,19 +1,47 @@
 
+import Breadcrumbs from "@/utils/Breadcrumbs";
+import routeName from "../../../../public/routeName";
+import ProductCardDetall from "@/components/ProductCardDetall"
+import {getData} from "../../api/catalog/[product]/route"
 
 type ProductProps = {
     params: {
-        stock: string;
+        product: string;
     };
 };
+export async function generateMetadata({ params: { product } }: ProductProps) {
+    let description;
+    routeName.map((el) => {
+        if (el.page === product) {
+            return (description = el.description);
+        }
+    });
+    routeName.map((el) => {
+        if (el.page === product) {
+            return (product = el.title);
+        }
+    });
+    return {
+        title: product,
+        description: description,
+    };
+}
 
-export default function Products({ params: { stock } }: ProductProps) {
+export default async function Products({ params: { product } }: ProductProps) {
+    const catalogArray = await getData();
+    // console.log(product + " Это?");
     return (
         <>
-            <section className="section-About">
-                <div className="g-container">
-                    <h1 className="h1">Динамическая Каталог</h1>
-                </div>
-            </section>
+            <div className="g-container">
+                <Breadcrumbs></Breadcrumbs>
+                <section className="card">
+                    <div className="card__inner">
+                        <ProductCardDetall
+                            catalogArray={catalogArray}
+                        ></ProductCardDetall>
+                    </div>
+                </section>
+            </div>
         </>
     );
 }

@@ -1,16 +1,39 @@
 "use client"
 import React from "react"
-import {useRef} from "react"
-
+import {useRef, useState, useEffect} from "react"
+import {useFilterData} from "@/store"
 
 const ImputCheckbox = ({ propsInput }: any) => {
+    const { changeRadioInput, inputSelect } = useFilterData();
+    // const [checked, SetCheked] = useState(radioInput);
     const checkedInput: any = useRef();
-    const input = []
-    input.push(checkedInput.current);
-    input.map((el: any) => {
-        // console.log(el);
-    })
-    // console.log(propsInput);
+
+    // console.log(checkedInput.current);
+    useEffect(() => {
+        inputSelect.map((el: any) => {
+            if (el.id === +checkedInput.current.id) {
+                checkedInput.current.checked = el.checked;
+            }
+        });
+    }, [inputSelect.map((el:any) => (el.checked))]);
+
+    function handlerCheckedInput(param: any, e: any) {
+        // e.target.checked;
+        if (propsInput.type === "radio") {
+        };
+        let newParam = {
+            checked: e.target.checked,
+            id: param.id,
+            label: param.label,
+            name: param.name,
+            placeholder: param.placeholder,
+            totalNumber: param.totalNumber,
+            type: param.type,
+            value: param.value,
+        };
+        changeRadioInput(newParam)
+    }
+
     return (
         <>
             <li className="select__item">
@@ -20,8 +43,10 @@ const ImputCheckbox = ({ propsInput }: any) => {
                         name={propsInput.name}
                         id={propsInput.id}
                         defaultValue={propsInput.value}
-                        checked={propsInput.checked}
+                        defaultChecked={propsInput.checked}
+                        // checked={}
                         ref={checkedInput}
+                        onChange={(e) => handlerCheckedInput(propsInput, e)}
                         className="popup-entrance__input-checkbox popup-form__input-checkbox"
                     ></input>
                     <label

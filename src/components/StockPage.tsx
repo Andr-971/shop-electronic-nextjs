@@ -3,7 +3,6 @@ import React from "react"
 import { useEffect, useState } from "react";
 import Pagination from "@/utils/Pagination";
 import Stock from "../components/Stock";
-
 import { stocksApi } from "../../public/path";
 
 

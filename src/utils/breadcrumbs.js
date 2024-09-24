@@ -14,7 +14,8 @@ const Breadcrumbs = () => {
             linkPath.shift();
             const titlePath = [] // Создаём массив из названий страниц
             linkPath.map((el, i) => {
-                routeName.map((item, index) => { // Перебираем и присваеваем вместо страниц папок названия страниц
+                routeName.map((item, index) => {
+                    // Перебираем и присваеваем вместо страниц папок названия страниц
                     if (el === item.page) {
                         return titlePath.push(item.title);
                     }
