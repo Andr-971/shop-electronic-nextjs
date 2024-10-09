@@ -10,6 +10,9 @@
     display: flex;
     flex-wrap: wrap;
     @include margin-flex(-10, -20);
+    .select-label {
+        width: 100%;
+    }
 }
 .personal-data__column {
     width: colWidth(6);
@@ -34,7 +37,7 @@
 // .input-text {}
 // .item__select {}
 // .item__select-box {}
-// .select-label {}
+
 // .select-text {}
 // .select-btn {}
 // .item__select-dropdownlist {}

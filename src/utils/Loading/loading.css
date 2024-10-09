@@ -1,0 +1,66 @@
+.container__loading {
+    padding-top: 2vh;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 8vh;
+    background-color: rgb(42, 82, 117);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loading__text {
+    -webkit-box-reflect: below 0 linear-gradient(transparent, rgba(255,255,255,.4));
+}
+.loading__text {
+    font-size: 3vw;
+    color: #fff;
+}
+.letter {
+    display: inline-block;
+    font-weight: 600;
+    animation: leter 1.5s infinite calc(.1s * var(--i));
+    &:not(:last-child) {
+        margin-right: 18px;
+    }
+}
+@keyframes leter {
+    0%, 40%, 100% {
+        transform: translateY(0px);
+    }
+    20% {
+        transform: translateY(-20px);
+    }
+}
+.letter:nth-child(1) {
+    --i: 1;
+}
+.letter:nth-child(2) {
+    --i: 2;
+}
+.letter:nth-child(3) {
+    --i: 3;
+}
+.letter:nth-child(4) {
+    --i: 4;
+}
+.letter:nth-child(5) {
+    --i: 5;
+}
+.letter:nth-child(6) {
+    --i: 6;
+}
+.letter:nth-child(7) {
+    --i: 7;
+}
+.letter:nth-child(8) {
+    --i: 8;
+}
+.letter:nth-child(9) {
+    --i: 9;
+}
+.letter:nth-child(10) {
+    --i: 10;
+}
+.letter:nth-child(11) {
+    --i: 11;
+}

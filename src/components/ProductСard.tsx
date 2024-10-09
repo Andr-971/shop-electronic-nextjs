@@ -1,17 +1,24 @@
-
+// "use client"
 import React from "react"
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import commitBtn from "../../public/svg/commit-btn.svg";
-import heart from "../../public/svg/heart-1.svg";
-import heart_red from "../../public/svg/heart-2.svg";
-import graf from "../../public/svg/icon-graph-1.svg";
-import graf_true from "../../public/svg/icon-graph-2.svg";
+import Favourites from "@/components/Favourites/Favourites"
+import Statistics from "@/components/Statistics/Statistics"
 import backetBtn from "../../public/svg/backet-2.svg";
+import StarRating from "@/components/StarRating/StarRating"
+import {useBasket} from "@/store"
 
 const ProductСard = ({ el }: any) => {
-    const pathname = usePathname();
+    const [currentItem, setCurrentItem] = useState();
+    const { changeBasket } = useBasket();
+
+    function handlerBacket(e:any, el:any) {
+        e.preventDefault();
+        changeBasket(el);
+    }
+
     return (
         <>
             <Link href={el.path} className="section-goods__card">
@@ -20,7 +27,6 @@ const ProductСard = ({ el }: any) => {
                         src={el.pathPhotoProduct}
                         alt="goots-photo"
                         className="photo-img"
-                        // key={i}
                     ></Image>
                     <div className="section-goods__button">
                         {el.new === "Да" && (
@@ -45,47 +51,11 @@ const ProductСard = ({ el }: any) => {
                 </div>
                 <div className="section-goods__card-footer">
                     <div className="section-goods__comment-rating">
-                        <div
-                            id="rating-star-01"
-                            data-ajax="true"
-                            data-num-rating="3.6"
-                            className="section-goods__rating rating-star__holder rating_set"
-                        >
-                            <div className="rating-star__inner">
-                                <div className="rating-star__items">
-                                    <input
-                                        type="radio"
-                                        name="rating-star"
-                                        className="rating-star__input"
-                                        value="1"
-                                    ></input>
-                                    <input
-                                        type="radio"
-                                        name="rating-star"
-                                        className="rating-star__input"
-                                        value="2"
-                                    ></input>
-                                    <input
-                                        type="radio"
-                                        name="rating-star"
-                                        className="rating-star__input"
-                                        value="3"
-                                    ></input>
-                                    <input
-                                        type="radio"
-                                        name="rating-star"
-                                        className="rating-star__input"
-                                        value="4"
-                                    ></input>
-                                    <input
-                                        type="radio"
-                                        name="rating-star"
-                                        className="rating-star__input"
-                                        value="5"
-                                    ></input>
-                                </div>
-                            </div>
-                        </div>
+                        <StarRating
+                            currentItem={currentItem}
+                            setCurrentItem={setCurrentItem}
+                            starRating={el.starRating}
+                        ></StarRating>
                         <div className="section-goods__comment">
                             <button className="section-goods__comment_icon">
                                 <Image
@@ -121,33 +91,17 @@ const ProductСard = ({ el }: any) => {
                             </div>
                         </div>
                         <div className="section-goods__favourites-block">
-                            <button className="section-goods__icon-box">
-                                {el.heartBtn === "Да" ? (
-                                    <Image
-                                        src={heart_red}
-                                        alt="heart-icon"
-                                    ></Image>
-                                ) : (
-                                    <Image src={heart} alt="heart-icon"></Image>
-                                )}
-                            </button>
-                            <button className="section-goods__icon-box">
-                                {el.graphBtn === "Да" ? (
-                                    <Image src={graf} alt="graph-icon"></Image>
-                                ) : (
-                                    <Image
-                                        src={graf_true}
-                                        alt="graph-icon"
-                                    ></Image>
-                                )}
-                            </button>
+                            <Favourites id={el.id}></Favourites>
+                            <Statistics id={el.id}></Statistics>
                         </div>
                     </div>
                     <div className="section-goods__buttom-block">
                         <button className="section-goods__buttom">
                             Купить в 1 клик
                         </button>
-                        <button className="section-goods__basket">
+                        <button className="section-goods__basket"
+                            onClick={(e) => handlerBacket(e, el)}
+                        >
                             {<Image src={backetBtn} alt="icon-backet"></Image>}
                         </button>
                     </div>

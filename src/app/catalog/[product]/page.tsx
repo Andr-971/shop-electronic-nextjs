@@ -3,6 +3,8 @@ import Breadcrumbs from "@/utils/Breadcrumbs";
 import routeName from "../../../../public/routeName";
 import ProductCardDetall from "@/components/ProductCardDetall"
 import {getData} from "../../api/catalog/[product]/route"
+import { revalidatePath } from "next/cache";
+// revalidatePath("../../api/catalog/[product]/route");
 
 type ProductProps = {
     params: {

@@ -43,6 +43,36 @@ export default [
         page: "wholesale",
     },
     {
+        title: "Общие сведения",
+        description: "Персональная страница пользователя",
+        page: "personal",
+    },
+    {
+        title: "Личные данные",
+        description: "Персональная страница пользователя | личные данные",
+        page: "user_data",
+    },
+    {
+        title: "История покупок",
+        description: "Персональная страница пользователя | история покупок",
+        page: "history_purchase",
+    },
+    {
+        title: "Избранное",
+        description: "Персональная страница пользователя | Избранное",
+        page: "favourite",
+    },
+    {
+        title: "Изменить пароль",
+        description: "Персональная страница пользователя | Изменить пароль",
+        page: "change_password",
+    },
+    {
+        title: "Корзина покупателя",
+        description: "Корзина покупателя",
+        page: "backet",
+    },
+    {
         title: "Скидки в день рождения",
         description: "Хорошие скидки в день рождения",
         page: "1",

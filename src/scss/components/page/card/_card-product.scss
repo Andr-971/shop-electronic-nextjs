@@ -171,8 +171,16 @@
 // .section-goods__percent {}
 // .section-goods__tire {}
 // .section-goods__percent-price {}
-// .section-goods__favourites-block {}
-// .section-goods__icon-box {}
+.section-goods__favourites-block {
+    @include mediaMaxMin($break_md, $break_xs) {
+        margin-left: 5px;
+    }
+}
+.section-goods__icon-box {
+    @include mediaMaxMin($break_md, $break_xs) {
+        margin-bottom: 5px;
+    }
+}
 // .hidden {}
 // .section-goods__buttom-block {}
 // .section-goods__buttom {}
@@ -260,6 +268,12 @@
     .section-goods__comment-rating {
         padding-top: 0px;
         padding-bottom: 24px;
+    }
+    .section-goods__rating {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 30px;
     }
 }
 .card-product__footer {

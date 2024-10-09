@@ -168,11 +168,10 @@
     order: 0;
     background-color: red;
 }
-@include xs-block() {
-    .pagination__item:last-child,
-    .pagination__btn_numderof {
-        display: none;
-    }
+@include xxs-block() {
+    // .pagination__btn:nth-child( 3 ) {
+    //     display: none;
+    // }
 }
 // Блок сайта -----------------------------------------------
 .block-bgc {
@@ -285,6 +284,9 @@
     padding-left: 20px;
     padding-right: 10px;
     box-sizing: border-box;
+}
+.popup-entrance__title-close {
+    cursor: pointer;
 }
 .popup-entrance__btn {
     margin-top: 24px;
@@ -412,13 +414,13 @@
     left: 0px;
     width: 100%;
     height: 100%;
-    z-index: 6;
     margin-top: $heightHeader;
 }
 .cart__container {
     background-color: #fff;
     width: 100%;
     height: 100%;
+    // z-index: 10;
 }
 .cart__title-box {
     overflow: hidden;
@@ -434,7 +436,7 @@
 .cart__holder {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    // align-items: center;
     @include margin-flex(-10);
     margin-bottom: apx(-40, -20);
 }

@@ -5,10 +5,8 @@ import {useFilterData} from "@/store"
 
 const ImputCheckbox = ({ propsInput }: any) => {
     const { changeRadioInput, inputSelect } = useFilterData();
-    // const [checked, SetCheked] = useState(radioInput);
     const checkedInput: any = useRef();
 
-    // console.log(checkedInput.current);
     useEffect(() => {
         inputSelect.map((el: any) => {
             if (el.id === +checkedInput.current.id) {
@@ -18,7 +16,6 @@ const ImputCheckbox = ({ propsInput }: any) => {
     }, [inputSelect.map((el:any) => (el.checked))]);
 
     function handlerCheckedInput(param: any, e: any) {
-        // e.target.checked;
         if (propsInput.type === "radio") {
         };
         let newParam = {
@@ -44,7 +41,6 @@ const ImputCheckbox = ({ propsInput }: any) => {
                         id={propsInput.id}
                         defaultValue={propsInput.value}
                         defaultChecked={propsInput.checked}
-                        // checked={}
                         ref={checkedInput}
                         onChange={(e) => handlerCheckedInput(propsInput, e)}
                         className="popup-entrance__input-checkbox popup-form__input-checkbox"

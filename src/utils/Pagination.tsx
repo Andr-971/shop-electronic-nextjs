@@ -1,10 +1,19 @@
+"use client"
 import React from "react"
 import { useState, useEffect } from "react";
 import pagination_more from "../../public/svg/paganation-more.svg";
 import Image from "next/image";
 
 const Pagination = ({ arrayPage, pageNum, setPageNum }: any) => {
+    function changingScreen(num: number, screen: number) {
+        if (window.screen.width < 390.98) {
+            return num;
+        } else {
+            return screen;
+        }
+    }
     let showNumBtn = 3; // Колличество показываемых кнопок
+    // let showNumBtn = changingScreen(2, 3); // Колличество показываемых кнопок
     let startPage = 0;
     let lengthArray = arrayPage.length;
     let currentPage = +pageNum;

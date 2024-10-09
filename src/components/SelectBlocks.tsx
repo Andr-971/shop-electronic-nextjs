@@ -19,13 +19,6 @@ const SelectBlocks = ({ el, i }: any) => {
 
     function handlerSeleckBlock(e: any, el: any) {
         if (hidden) {
-            // inputSelect.map((element: any) => {
-            //     if(element.id === 3) console.log(element.checked);
-            //     console.log(el.input);
-            //     if (element.id === el.id) {
-            //         // console.log(element);
-            //     }
-            // });
             changeFilterValue({
                 id: el.id,
                 title: el.title,

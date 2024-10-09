@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef} from "react";
 import SelectBlocks from "@/components/SelectBlocks";
 import selectBlock from "../../public/selectBlock";
 import SelectSubmit from "@/components/SelectSubmit";
@@ -14,8 +14,6 @@ import { useFilterData } from "@/store"
 import { catalogApi } from "../../public/path";
 import Pagination from "@/utils/Pagination";
 import ProductСard from "@/components/ProductСard"
-import productAll from "../../public/productAll";
-
 
 const CatalogPage = ({ arrayPage }: any) => {
     const {
@@ -33,6 +31,7 @@ const CatalogPage = ({ arrayPage }: any) => {
     const deleteAll = useFilterCatalog((state) => state.deleteAll);
     const removeFilter = useFilterCatalog((state) => state.removeFilter);
     const [filterOpen, setFilterOpen] = useState(false);
+    
 
     useEffect(() => {
         defautArray();
@@ -71,13 +70,15 @@ const CatalogPage = ({ arrayPage }: any) => {
         deleteAll();
     }
 
-    function handlerBtnFilter(e: any) {
-        setFilterOpen((curr) => !curr);
+    function handlerBtnFilter() {
+
+        setFilterOpen(curr => !curr);
     }
 
     let startPage = "1";
     const [pageNum, setPageNum] = useState(startPage);
     const [arrPage, setArrPage] = useState(arrayPage[0]);
+    const catalogSelect:any = useRef(null)
     const stockData = async () => {
         let response = await fetch(`${catalogApi}`, {
             method: "POST",
@@ -102,16 +103,23 @@ const CatalogPage = ({ arrayPage }: any) => {
         stockData();
         document.title = "Каталог | страница " + pageNum;
     }, [pageNum]);
+    useEffect(() => {
+        if (window.screen.width <= 1024 && filterOpen) {
+            catalogSelect.current.style.cssText = "display: block;";
+        }
+        if (window.screen.width <= 1024 && !filterOpen) {
+            catalogSelect.current.style.cssText = "display: none";
+        }
+        if (window.screen.width >= 1024 && filterOpen) {
+            catalogSelect.current.style.cssText = "display: flex";
+        }
+    }, [filterOpen]);
 
     return (
         <>
             <div
                 className={`catalog__select`}
-                style={
-                    window.screen.width <= 1024 && filterOpen
-                        ? { display: "block" }
-                        : undefined
-                }
+                ref={catalogSelect}
             >
                 <div className="select__holder">
                     <div className="select__block-header">
@@ -131,7 +139,7 @@ const CatalogPage = ({ arrayPage }: any) => {
                         return (
                             <>
                                 <SelectBlocks
-                                    key={i}
+                                    key={el.id}
                                     el={el}
                                     i={i}
                                 ></SelectBlocks>
@@ -186,7 +194,7 @@ const CatalogPage = ({ arrayPage }: any) => {
                                                     </div>
                                                 </div>
                                             ) : (
-                                                <div className="select__btn">
+                                                    <div className="select__btn">
                                                     <div className="select__btn-text">
                                                         {el.title}
                                                         {": "}
@@ -235,12 +243,7 @@ const CatalogPage = ({ arrayPage }: any) => {
                     </div>
                     <div className="catalog__block">
                         {arrPage.map((el: any, i: number) => {
-                            return (
-                                <ProductСard
-                                    key={i}
-                                    el={el}
-                                ></ProductСard>
-                            );
+                            return <ProductСard key={i} el={el}></ProductСard>;
                         })}
                     </div>
                 </div>

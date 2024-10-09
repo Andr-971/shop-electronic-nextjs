@@ -1,6 +1,7 @@
 
 import { create } from "zustand";
 import categoryProducts from "../public/categoryProducts.js";
+import tab_menu_card from "../public/tab_menu_card.js";
 
 export const useOption = create((set) => ({
     option: [categoryProducts[0]],
@@ -93,9 +94,42 @@ export const useFilterData = create((set, get) => ({
         set({ inputSelect: [...get().inputSelect] });
     },
     defaultSelectImputAll() {
-        
         set({ inputSelect: [...get().inputDefaultSelect] });
     }
 }));
 
+export const useTabCard = create((set, get) => ({
+    tabCard: [...tab_menu_card],
+    changeTabCard(params) {
+        get().tabCard.map((el) => {
+            if (el.title === params.title) {
+                el.active = true
+            } else {
+                el.active = false
+            }
+        });
+        set({ tabCard: [...get().tabCard] });
+    }
+}));
+
+export const usePopapInterActive = create((set, get) => ({
+    popapInter: false,
+    changePopapInter() {
+        set({ popapInter: !get().popapInter });
+    }
+}))
+
+export const usePopapBacketActive = create((set, get) => ({
+    popapBacket: false,
+    changePopapBacket() {
+        set({ popapBacket: !get().popapBacket });
+    },
+}));
+
+export const useBasket = create((set, get) => ({
+    basket: [],
+    changeBasket(params) {
+        set({ basket: [...get().basket, params] });
+    }
+}))
 

@@ -7,9 +7,6 @@ import eye from "@/../public/svg/eye-1.svg";
 import heart from "@/../public/svg/heart-1.svg"
 import heartRed from "@/../public/svg/heart-2.svg"
 import graph from "@/../public/svg/icon-graph-1.svg"
-import backet from "@/../public/svg/backet-1.svg"
-import user from "@/../public/svg/user.svg"
-import burger from "@/../public/svg/menu-burger.svg";
 import mobHome from "@/../public/svg/mob-menu/mob-home-btn.svg"
 import mobCatalog from "@/../public/svg/mob-menu/mob-catalog-btn.svg"
 import mobBacket from "@/../public/svg/mob-menu/mob-backet-btn.svg";
@@ -18,8 +15,11 @@ import mobMore from "@/../public/svg/mob-menu/mob-more-btn.svg"
 import { HeaderMenu } from "./HeaderMenu";
 import mainMenu from "../../public/mainMenu"
 import CatalogMenu from "./CatalogMenu"
+import Authorization from "@/components/Authorization/Authorization"
+import BtnCart from "@/components/BtnCart/BtnCart"
 
 const Header = () => {
+
     return (
         <>
             <header className="header">
@@ -68,48 +68,8 @@ const Header = () => {
                             <button type="button" className="header__btn">
                                 <Image src={graph} alt="graph-icon"></Image>
                             </button>
-                            <button
-                                type="button"
-                                className="header__btn header__btn_backet"
-                            >
-                                <Image src={backet} alt="backet-icon"></Image>
-                            </button>
-                            <div className="header__btn">
-                                {/* <img src="./img/svg/user.svg" alt="user-icon" className="header__btn_user"> */}
-                                <Image
-                                    src={user}
-                                    alt="user-icon"
-                                    className="header__btn_user"
-                                ></Image>
-                                <button
-                                    type="button"
-                                    className="header__btn_comon hidden"
-                                >
-                                    Войти
-                                </button>
-                                <div className="header__user-menu hidden">
-                                    <ul className="header__user-holder">
-                                        <li className="header__user-item">
-                                            Общие сведения
-                                        </li>
-                                        <li className="header__user-item">
-                                            Личные данные
-                                        </li>
-                                        <li className="header__user-item">
-                                            История покупок
-                                        </li>
-                                        <li className="header__user-item">
-                                            Избранное
-                                        </li>
-                                        <li className="header__user-item">
-                                            Сменить пароль
-                                        </li>
-                                        <li className="header__user-item header__user-item_last">
-                                            Выйти
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <BtnCart></BtnCart>
+                            <Authorization></Authorization>
                         </div>
                     </nav>
                 </div>

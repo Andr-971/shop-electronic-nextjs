@@ -10,18 +10,17 @@ import iconMenu_8 from "../../public/svg/icon-menu/icon-menu-8.svg"
 import iconMenu_9 from "../../public/svg/icon-menu/icon-menu-9.svg"
 import iconMenu_10 from "../../public/svg/icon-menu/icon-menu-10.svg"
 import iconMenu_11 from "../../public/svg/icon-menu/icon-menu-11.svg"
+import Favourites from "@/components/Favourites/Favourites"
+import Statistics from "@/components/Statistics/Statistics"
 import closeBtn from "../../public/svg/close-btn.svg"
 import SectionTitle from "../components/SectionTitle";
 import mainSliderImg from "../../public/png_webp/main-slider.webp"
 import commitBtn from "../../public/svg/commit-btn.svg";
 import backetBtn from "../../public/svg/backet-2.svg";
-import heart from "../../public/svg/heart-1.svg";
-import heart_red from "../../public/svg/heart-2.svg";
-import graf from "../../public/svg/icon-graph-1.svg";
-import graf_true from "../../public/svg/icon-graph-2.svg";
 import stock_one_block from "../../public/stock_one_block"
 import stock_two_block from "../../public/stock_two_block"
 import Stock from "@/components/Stock";
+import StarRatingBack from "@/components/StarRatingBack"
 import {PrevNew} from "@/components/PrevNew";
 import { prevNewsTwo } from "../../public/prevNewsTwo"
 import product from "../../public/product"
@@ -193,7 +192,7 @@ export default function Home() {
                 <div className="section-goods__inner">
                     <SectionTitle title="Хиты продаж"></SectionTitle>
                     <div className="section-goods-postcard__wrapper">
-                        <div className="section-goods-postcard__block">
+                        <div className="section-goods-postcard__block recommendation__wrapper">
                             {product.map((el, i) => {
                                 return (
                                     <div className="section-goods__card">
@@ -229,47 +228,9 @@ export default function Home() {
                                         </div>
                                         <div className="section-goods__card-footer">
                                             <div className="section-goods__comment-rating">
-                                                <div
-                                                    id="rating-star-01"
-                                                    data-ajax="true"
-                                                    data-num-rating="3.6"
-                                                    className="section-goods__rating rating-star__holder rating_set"
-                                                >
-                                                    <div className="rating-star__inner">
-                                                        <div className="rating-star__items">
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="1"
-                                                            ></input>
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="2"
-                                                            ></input>
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="3"
-                                                            ></input>
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="4"
-                                                            ></input>
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="5"
-                                                            ></input>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <StarRatingBack
+                                                    starRating={el.starRating}
+                                                ></StarRatingBack>
                                                 <div className="section-goods__comment">
                                                     <button className="section-goods__comment_icon">
                                                         <Image
@@ -305,34 +266,12 @@ export default function Home() {
                                                     </div>
                                                 </div>
                                                 <div className="section-goods__favourites-block">
-                                                    <button className="section-goods__icon-box">
-                                                        {el.heartBtn ===
-                                                        "Да" ? (
-                                                            <Image
-                                                                src={heart_red}
-                                                                alt="heart-icon"
-                                                            ></Image>
-                                                        ) : (
-                                                            <Image
-                                                                src={heart}
-                                                                alt="heart-icon"
-                                                            ></Image>
-                                                        )}
-                                                    </button>
-                                                    <button className="section-goods__icon-box">
-                                                        {el.graphBtn ===
-                                                        "Да" ? (
-                                                            <Image
-                                                                src={graf}
-                                                                alt="graph-icon"
-                                                            ></Image>
-                                                        ) : (
-                                                            <Image
-                                                                src={graf_true}
-                                                                alt="graph-icon"
-                                                            ></Image>
-                                                        )}
-                                                    </button>
+                                                    <Favourites
+                                                        id={el.id}
+                                                    ></Favourites>
+                                                    <Statistics
+                                                        id={el.id}
+                                                    ></Statistics>
                                                 </div>
                                             </div>
                                             <div className="section-goods__buttom-block">
@@ -360,7 +299,7 @@ export default function Home() {
                 <div className="section-goods__inner">
                     <SectionTitle title="Новинки"></SectionTitle>
                     <div className="section-goods-postcard__wrapper">
-                        <div className="section-goods-postcard__block">
+                        <div className="section-goods-postcard__block recommendation__wrapper">
                             {product.map((el, i) => {
                                 return (
                                     <div className="section-goods__card">
@@ -396,47 +335,9 @@ export default function Home() {
                                         </div>
                                         <div className="section-goods__card-footer">
                                             <div className="section-goods__comment-rating">
-                                                <div
-                                                    id="rating-star-01"
-                                                    data-ajax="true"
-                                                    data-num-rating="3.6"
-                                                    className="section-goods__rating rating-star__holder rating_set"
-                                                >
-                                                    <div className="rating-star__inner">
-                                                        <div className="rating-star__items">
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="1"
-                                                            ></input>
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="2"
-                                                            ></input>
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="3"
-                                                            ></input>
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="4"
-                                                            ></input>
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-star"
-                                                                className="rating-star__input"
-                                                                value="5"
-                                                            ></input>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <StarRatingBack
+                                                    starRating={el.starRating}
+                                                ></StarRatingBack>
                                                 <div className="section-goods__comment">
                                                     <button className="section-goods__comment_icon">
                                                         <Image
@@ -472,34 +373,12 @@ export default function Home() {
                                                     </div>
                                                 </div>
                                                 <div className="section-goods__favourites-block">
-                                                    <button className="section-goods__icon-box">
-                                                        {el.heartBtn ===
-                                                        "Да" ? (
-                                                            <Image
-                                                                src={heart_red}
-                                                                alt="heart-icon"
-                                                            ></Image>
-                                                        ) : (
-                                                            <Image
-                                                                src={heart}
-                                                                alt="heart-icon"
-                                                            ></Image>
-                                                        )}
-                                                    </button>
-                                                    <button className="section-goods__icon-box">
-                                                        {el.graphBtn ===
-                                                        "Да" ? (
-                                                            <Image
-                                                                src={graf}
-                                                                alt="graph-icon"
-                                                            ></Image>
-                                                        ) : (
-                                                            <Image
-                                                                src={graf_true}
-                                                                alt="graph-icon"
-                                                            ></Image>
-                                                        )}
-                                                    </button>
+                                                    <Favourites
+                                                        id={el.id}
+                                                    ></Favourites>
+                                                    <Statistics
+                                                        id={el.id}
+                                                    ></Statistics>
                                                 </div>
                                             </div>
                                             <div className="section-goods__buttom-block">
@@ -543,7 +422,7 @@ export default function Home() {
                     <SectionTitle title="Сигвей"></SectionTitle>
                 </div>
                 <div className="section-goods-postcard__wrapper">
-                    <div className="section-goods-postcard__block">
+                    <div className="section-goods-postcard__block recommendation__wrapper">
                         {product.map((el, i) => {
                             return (
                                 <div className="section-goods__card">
@@ -579,47 +458,9 @@ export default function Home() {
                                     </div>
                                     <div className="section-goods__card-footer">
                                         <div className="section-goods__comment-rating">
-                                            <div
-                                                id="rating-star-01"
-                                                data-ajax="true"
-                                                data-num-rating="3.6"
-                                                className="section-goods__rating rating-star__holder rating_set"
-                                            >
-                                                <div className="rating-star__inner">
-                                                    <div className="rating-star__items">
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="1"
-                                                        ></input>
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="2"
-                                                        ></input>
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="3"
-                                                        ></input>
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="4"
-                                                        ></input>
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="5"
-                                                        ></input>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <StarRatingBack
+                                                starRating={el.starRating}
+                                            ></StarRatingBack>
                                             <div className="section-goods__comment">
                                                 <button className="section-goods__comment_icon">
                                                     <Image
@@ -655,32 +496,12 @@ export default function Home() {
                                                 </div>
                                             </div>
                                             <div className="section-goods__favourites-block">
-                                                <button className="section-goods__icon-box">
-                                                    {el.heartBtn === "Да" ? (
-                                                        <Image
-                                                            src={heart_red}
-                                                            alt="heart-icon"
-                                                        ></Image>
-                                                    ) : (
-                                                        <Image
-                                                            src={heart}
-                                                            alt="heart-icon"
-                                                        ></Image>
-                                                    )}
-                                                </button>
-                                                <button className="section-goods__icon-box">
-                                                    {el.graphBtn === "Да" ? (
-                                                        <Image
-                                                            src={graf}
-                                                            alt="graph-icon"
-                                                        ></Image>
-                                                    ) : (
-                                                        <Image
-                                                            src={graf_true}
-                                                            alt="graph-icon"
-                                                        ></Image>
-                                                    )}
-                                                </button>
+                                                <Favourites
+                                                    id={el.id}
+                                                ></Favourites>
+                                                <Statistics
+                                                    id={el.id}
+                                                ></Statistics>
                                             </div>
                                         </div>
                                         <div className="section-goods__buttom-block">
@@ -705,7 +526,7 @@ export default function Home() {
             </section>
             <section className="section-info section-discount">
                 <div className="section-info__inner">
-                    {stock_two_block.map((el:any, i:any) => {
+                    {stock_two_block.map((el: any, i: any) => {
                         return (
                             <Stock
                                 id={el.id}
@@ -722,7 +543,7 @@ export default function Home() {
                     <SectionTitle title="Электровелосипеды"></SectionTitle>
                 </div>
                 <div className="section-goods-postcard__wrapper">
-                    <div className="section-goods-postcard__block">
+                    <div className="section-goods-postcard__block recommendation__wrapper">
                         {product.map((el, i) => {
                             return (
                                 <div className="section-goods__card">
@@ -758,47 +579,9 @@ export default function Home() {
                                     </div>
                                     <div className="section-goods__card-footer">
                                         <div className="section-goods__comment-rating">
-                                            <div
-                                                id="rating-star-01"
-                                                data-ajax="true"
-                                                data-num-rating="3.6"
-                                                className="section-goods__rating rating-star__holder rating_set"
-                                            >
-                                                <div className="rating-star__inner">
-                                                    <div className="rating-star__items">
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="1"
-                                                        ></input>
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="2"
-                                                        ></input>
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="3"
-                                                        ></input>
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="4"
-                                                        ></input>
-                                                        <input
-                                                            type="radio"
-                                                            name="rating-star"
-                                                            className="rating-star__input"
-                                                            value="5"
-                                                        ></input>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <StarRatingBack
+                                                starRating={el.starRating}
+                                            ></StarRatingBack>
                                             <div className="section-goods__comment">
                                                 <button className="section-goods__comment_icon">
                                                     <Image
@@ -834,32 +617,12 @@ export default function Home() {
                                                 </div>
                                             </div>
                                             <div className="section-goods__favourites-block">
-                                                <button className="section-goods__icon-box">
-                                                    {el.heartBtn === "Да" ? (
-                                                        <Image
-                                                            src={heart_red}
-                                                            alt="heart-icon"
-                                                        ></Image>
-                                                    ) : (
-                                                        <Image
-                                                            src={heart}
-                                                            alt="heart-icon"
-                                                        ></Image>
-                                                    )}
-                                                </button>
-                                                <button className="section-goods__icon-box">
-                                                    {el.graphBtn === "Да" ? (
-                                                        <Image
-                                                            src={graf}
-                                                            alt="graph-icon"
-                                                        ></Image>
-                                                    ) : (
-                                                        <Image
-                                                            src={graf_true}
-                                                            alt="graph-icon"
-                                                        ></Image>
-                                                    )}
-                                                </button>
+                                                <Favourites
+                                                    id={el.id}
+                                                ></Favourites>
+                                                <Statistics
+                                                    id={el.id}
+                                                ></Statistics>
                                             </div>
                                         </div>
                                         <div className="section-goods__buttom-block">

@@ -5,6 +5,7 @@ import commitBtn from "./svg/commit-btn.svg"
 
 export default [
     {
+        id: "1",
         pathPhotoProduct: photoProduct[0].mainPucture,
         hit: "Да",
         new: "Да",
@@ -12,6 +13,7 @@ export default [
         nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
         buttonCommit: commitBtn,
         commitNumber: "14",
+        starRating: "80",
         oldPrice: "5500",
         price: "4990",
         percent: "20",
@@ -21,6 +23,7 @@ export default [
         basketBtn: backetBtn,
     },
     {
+        id: "2",
         pathPhotoProduct: photoProduct[0].mainPucture,
         hit: "Нет",
         new: "Да",
@@ -28,6 +31,7 @@ export default [
         nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
         buttonCommit: commitBtn,
         commitNumber: "12",
+        starRating: "90",
         oldPrice: "5400",
         price: "4990",
         percent: "20",
@@ -37,6 +41,7 @@ export default [
         basketBtn: backetBtn,
     },
     {
+        id: "3",
         pathPhotoProduct: photoProduct[0].mainPucture,
         hit: "Нет",
         new: "Нет",
@@ -44,6 +49,7 @@ export default [
         nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
         buttonCommit: commitBtn,
         commitNumber: "17",
+        starRating: "40",
         oldPrice: "5400",
         price: "4990",
         percent: "20",
@@ -53,6 +59,7 @@ export default [
         basketBtn: backetBtn,
     },
     {
+        id: "4",
         pathPhotoProduct: photoProduct[0].mainPucture,
         hit: "Нет",
         new: "Да",
@@ -60,6 +67,7 @@ export default [
         nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
         buttonCommit: commitBtn,
         commitNumber: "17",
+        starRating: "60",
         oldPrice: "5400",
         price: "4990",
         percent: "20",
@@ -69,6 +77,7 @@ export default [
         basketBtn: backetBtn,
     },
     {
+        id: "5",
         pathPhotoProduct: photoProduct[0].mainPucture,
         hit: "Да",
         new: "Нет",
@@ -76,6 +85,7 @@ export default [
         nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
         buttonCommit: commitBtn,
         commitNumber: "17",
+        starRating: "20",
         oldPrice: "5400",
         price: "4990",
         percent: "20",
@@ -85,6 +95,7 @@ export default [
         basketBtn: backetBtn,
     },
     {
+        id: "6",
         pathPhotoProduct: photoProduct[0].mainPucture,
         hit: "Нет",
         new: "Нет",
@@ -92,6 +103,7 @@ export default [
         nameProduct: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
         buttonCommit: commitBtn,
         commitNumber: "17",
+        starRating: "80",
         oldPrice: "5400",
         price: "3900",
         percent: "20",

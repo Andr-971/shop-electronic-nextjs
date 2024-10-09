@@ -16,6 +16,8 @@
     font-weight: 700;
     line-height: 450%;
     padding: 0px 20px;
+    box-sizing: border-box;
+    cursor: pointer;
     &:first-child {
         margin-left: apx(20, 15);
     }
@@ -23,6 +25,8 @@
 .tab__active {
     color: rgb(42, 82, 117);
     border-bottom: 2px solid rgb(42, 82, 117);
+    box-sizing: border-box;
+    padding-top: 2px;
 }
 .tab__body {
     p {
@@ -39,7 +43,7 @@
 }
 .tab__title {
     color: $black7;
-    font-size: 28px;
+    font-size: apx(28, 18);
     font-weight: 700;
     line-height: 120%;
 }

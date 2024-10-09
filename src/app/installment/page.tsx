@@ -1,5 +1,6 @@
 import Breadcrumbs from "@/utils/Breadcrumbs";
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
     title: "Рассрочка",
     description: "Все виды рассрочки",

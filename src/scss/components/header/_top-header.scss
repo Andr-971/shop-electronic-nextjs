@@ -9,6 +9,9 @@
 .logo {
     padding: 10px 0;
 }
+.header__btn_block {
+    width: apx(99, 80);
+}
 .header__btn {
     position: relative;
     display: flex;
@@ -16,9 +19,9 @@
     width: 48px;
     cursor: pointer;
 }
-.header__btn:last-child {
-    width: apx(99, 80);
-}
+// .header__btn:last-child {
+    // width: apx(99, 80);
+// }
 .header__btn_first {
     width: 107px;
     border-bottom: 1px solid $grey200;
@@ -38,6 +41,9 @@
     font-weight: 500;
     line-height: 100%;
     cursor: pointer;
+    a {
+        color: #fff;
+    }
 }
 // .header__btn_search {}
 // .header__telephone {}

@@ -1,26 +1,34 @@
 "use client"
 import React from "react"
 import Image from "next/image";
+import { useState} from "react";
 import TitleH1 from "./TitleH1";
+import TitleH2 from "./TitleH2";
+import Favourites from "@/components/Favourites/Favourites"
+import Statistics from "@/components/Statistics/Statistics"
+import StarRating from "@/components/StarRating/StarRating"
 import { usePathname } from "next/navigation";
 import mainPicture from "../../public/png_webp/main-picture.webp"
 import commitBtn from "../../public/svg/commit-btn.svg"
-import heart_1 from "../../public/svg/heart-1.svg"
-import heart_2 from "../../public/svg/heart-2.svg"
 import delivery from "../../public/svg/delivery.svg"
 import payment from "../../public/svg/payment.svg"
-import graph_1 from "../../public/svg/icon-graph-1.svg"
-import graph_2 from "../../public/svg/icon-graph-2.svg"
 import product from "../../public/product"
 import backetBtn from "../../public/svg/backet-2.svg"
+import {useTabCard} from "@/store"
+import {useSession} from "next-auth/react"
 
-const ProductCardDetall = ({ catalogArray }:any) => {
+const ProductCardDetall = ({ catalogArray }: any) => {
     const pathname = usePathname();
+    const [currentItem, setCurrentItem] = useState();
+    const { tabCard, changeTabCard } = useTabCard();
+    function handlerTab(el: any) {
+        changeTabCard(el);
+    }
+
     return (
         <>
             {catalogArray.map((el: any) => {
                 if (pathname === el.path) {
-                    // console.log(el);
                     return (
                         <>
                             <div className="card__holder">
@@ -79,7 +87,6 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                                     height="10.212891"
                                                     viewBox="0 0 5.81543 10.2129"
                                                     xmlns="http://www.w3.org/2000/svg"
-                                                    // xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 >
                                                     <path
                                                         id="slider-left"
@@ -96,7 +103,6 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                                     height="10.212891"
                                                     viewBox="0 0 5.81543 10.2129"
                                                     xmlns="http://www.w3.org/2000/svg"
-                                                    // xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 >
                                                     <path
                                                         id="slider-right"
@@ -120,46 +126,18 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                         <div className="section-goods__card-footer card-border">
                                             <div className="card-product__header">
                                                 <div className="section-goods__comment-rating">
-                                                    <div
-                                                        id="rating-star-01"
-                                                        data-ajax="true"
-                                                        data-num-rating="3.6"
-                                                        className="section-goods__rating rating-star__holder rating_set"
-                                                    >
-                                                        <div className="rating-star__inner">
-                                                            <div className="rating-star__items">
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-star"
-                                                                    className="rating-star__input"
-                                                                    value="1"
-                                                                ></input>
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-star"
-                                                                    className="rating-star__input"
-                                                                    value="2"
-                                                                ></input>
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-star"
-                                                                    className="rating-star__input"
-                                                                    value="3"
-                                                                ></input>
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-star"
-                                                                    className="rating-star__input"
-                                                                    value="4"
-                                                                ></input>
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-star"
-                                                                    className="rating-star__input"
-                                                                    value="5"
-                                                                ></input>
-                                                            </div>
-                                                        </div>
+                                                    <div className="section-goods__rating">
+                                                        <StarRating
+                                                            currentItem={
+                                                                currentItem
+                                                            }
+                                                            setCurrentItem={
+                                                                setCurrentItem
+                                                            }
+                                                            starRating={
+                                                                el.starRating
+                                                            }
+                                                        ></StarRating>
                                                     </div>
                                                     <div className="section-goods__comment">
                                                         <button className="section-goods__comment_icon">
@@ -174,51 +152,32 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                                     </div>
                                                 </div>
                                                 <div className="section-goods__favourites-block">
-                                                    <button className="section-goods__icon-box">
-                                                        <Image
-                                                            src={heart_1}
-                                                            alt="heart-icon"
-                                                            className="hidden"
-                                                        ></Image>
-                                                        <Image
-                                                            src={heart_2}
-                                                            alt="heart-icon"
-                                                        ></Image>
-                                                    </button>
-                                                    <button className="section-goods__icon-box">
-                                                        {/* <img src="./img/svg/backet/icon-graph-1.svg" alt="heart-icon">
-                                                        <img src="./img/svg/backet/icon-graph-2.svg" alt="heart-icon" className="hidden"> */}
-                                                        <Image
-                                                            src={graph_1}
-                                                            alt="heart-icon"
-                                                        ></Image>
-                                                        <Image
-                                                            src={graph_2}
-                                                            alt="heart-icon"
-                                                            className="hidden"
-                                                        ></Image>
-                                                    </button>
+                                                    <Favourites id={el.id}></Favourites>
+                                                    <Statistics id={el.id}></Statistics>
                                                 </div>
                                             </div>
                                             <div className="card-product__footer">
                                                 <div className="section-goods__price-box">
                                                     <div className="card-product__discont">
                                                         <div className="section-goods__old-price">
-                                                            5400<span>₽</span>
+                                                            {el.oldPrice}
+                                                            <span>₽</span>
                                                         </div>
                                                         <div className="section-goods__discount">
                                                             <div className="section-goods__percent">
-                                                                20<span>%</span>
+                                                                {el.percent}
+                                                                <span>%</span>
                                                             </div>
                                                             <div className="section-goods__tire"></div>
                                                             <div className="section-goods__percent-price">
-                                                                1000
+                                                                {el.priceFor}
                                                                 <span>₽</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="section-goods__price">
-                                                        4990<span>₽</span>
+                                                        {el.price}
+                                                        <span>₽</span>
                                                     </div>
                                                 </div>
                                                 <div className="section-goods__buttom-block card__buttom-block">
@@ -235,7 +194,6 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                             <div className="card__info_item">
                                                 <div className="card__info_title-block">
                                                     <div className="card__info_title-icon">
-                                                        {/* <img src="./img/svg/delivery.svg" alt="icon"> */}
                                                         <Image
                                                             src={delivery}
                                                             alt="icon"
@@ -263,7 +221,6 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                                             src={payment}
                                                             alt="icon"
                                                         ></Image>
-                                                        {/* <img src="./img/svg/payment.svg" alt="icon"> */}
                                                     </div>
                                                     <div className="card__info_title-text">
                                                         Оплата
@@ -287,323 +244,386 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                 <div className="card-tab__inner">
                                     <div className="tab__header-box block-bgc">
                                         <ul className="tab__header">
-                                            <li className="tab__item">
-                                                Описание
-                                            </li>
-                                            <li className="tab__item">
-                                                Характеристики
-                                            </li>
-                                            <li className="tab__item tab__active">
-                                                Отзывы<span>(1)</span>
-                                            </li>
+                                            {tabCard.map((el: any) => {
+                                                return (
+                                                    <>
+                                                        {el.title !==
+                                                            "Отзывы" && (
+                                                            <li
+                                                                className={`tab__item ${
+                                                                    el.active
+                                                                        ? "tab__active"
+                                                                        : ""
+                                                                }`}
+                                                                onClick={(e) =>
+                                                                    handlerTab(
+                                                                        el,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {el.title}
+                                                            </li>
+                                                        )}
+                                                        {el.title ===
+                                                            "Отзывы" && (
+                                                            <li
+                                                                className={`tab__item ${
+                                                                    el.active
+                                                                        ? "tab__active"
+                                                                        : ""
+                                                                }`}
+                                                                onClick={(e) =>
+                                                                    handlerTab(
+                                                                        el,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {el.title}
+                                                                <span>(1)</span>
+                                                            </li>
+                                                        )}
+                                                    </>
+                                                );
+                                            })}
                                         </ul>
                                     </div>
-
-                                    <div className="tab__body hidden">
-                                        <div className="tab__title-box">
-                                            <h3 className="tab__title">
-                                                Описание гироскутера Smart
-                                                Balance Well 6.5
-                                            </h3>
-                                        </div>
-                                        <p className="tab__text">
-                                            Вопрос безопасности всегда стоит
-                                            очень остро, в этом году
-                                            производители решили его следующим
-                                            образом — снабдили модель
-                                            качественной задней и передней
-                                            подсветкой, поэтому пользователь
-                                            может не переживать о том, что его
-                                            будет незаметно на дороге в тёмное
-                                            время суток.
-                                        </p>
-                                        <p className="tab__text">
-                                            На руле имеется яркий качественный
-                                            дисплей, где отображается вся
-                                            актуальная и необходимая информация
-                                            — скорость, пробег и др. Кроме того,
-                                            на руле имеется кнопка включения и
-                                            выключения подсветки, звуковой
-                                            сигнал и кнопка настроек. Таким
-                                            образом, все необходимое для
-                                            управления самокатом находится у
-                                            пользователя под рукой.
-                                        </p>
-                                        <p className="tab__text">
-                                            Для комфорта прогулок электросамокат
-                                            снабжён передним и задним
-                                            амортизаторами. Вы можете
-                                            перемещаться не только по ровному
-                                            городскому асфальту, но и по
-                                            неровностям, которые не затруднят
-                                            ваше перемещение.
-                                        </p>
-                                        <p className="tab__text">
-                                            Складной механизм и небольшой вес
-                                            (11 кг) делают модель эргономичной.
-                                            В сложенном виде самокат занимает
-                                            совсем мало места — его легко
-                                            перевозить как в багажнике машины,
-                                            так и в общественном транспорте. При
-                                            складывании самокат фиксируется с
-                                            помощью крючка к заднему крылу. А
-                                            для того, чтобы разложить его,
-                                            необходимо, нажав на заднее крыло,
-                                            приподнять руль. Характерный щелчок
-                                            говорит о том, что самокат разложен
-                                            полностью и готов к эксплуатации.
-                                        </p>
-                                        <p className="tab__text">
-                                            Стоит отметить, что электросамокат
-                                            очень быстро стартует — вам не надо
-                                            отталкиваться или разгоняться.
-                                            Выдерживает до 120 кг, в процессе
-                                            изготовления использовались только
-                                            качественные материалы.
-                                        </p>
-                                        <p className="tab__text">
-                                            Быстрый, лёгкий, компактный —
-                                            прекрасный выбор для ценителей
-                                            удобства!
-                                        </p>
-                                    </div>
-
-                                    <div className="tab__body hidden">
-                                        <div className="tab__title-box">
-                                            <h3 className="tab__title">
-                                                Характеристики гироскутера Smart
-                                                Balance Well 6.5
-                                            </h3>
-                                        </div>
-                                        <div className="tab__block">
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Тип:
+                                    {tabCard.map((body: any) => {
+                                        if (
+                                            body.id === 1 &&
+                                            body.active === true
+                                        ) {
+                                            return (
+                                                <div className="tab__body">
+                                                    <div className="tab__title-box">
+                                                        <h3 className="tab__title">
+                                                            Описание{" "}
+                                                            {el.nameProduct}
+                                                        </h3>
+                                                    </div>
+                                                    <p className="tab__text">
+                                                        Вопрос безопасности
+                                                        всегда стоит очень
+                                                        остро, в этом году
+                                                        производители решили его
+                                                        следующим образом —
+                                                        снабдили модель
+                                                        качественной задней и
+                                                        передней подсветкой,
+                                                        поэтому пользователь
+                                                        может не переживать о
+                                                        том, что его будет
+                                                        незаметно на дороге в
+                                                        тёмное время суток.
+                                                    </p>
+                                                    <p className="tab__text">
+                                                        На руле имеется яркий
+                                                        качественный дисплей,
+                                                        где отображается вся
+                                                        актуальная и необходимая
+                                                        информация — скорость,
+                                                        пробег и др. Кроме того,
+                                                        на руле имеется кнопка
+                                                        включения и выключения
+                                                        подсветки, звуковой
+                                                        сигнал и кнопка
+                                                        настроек. Таким образом,
+                                                        все необходимое для
+                                                        управления самокатом
+                                                        находится у пользователя
+                                                        под рукой.
+                                                    </p>
+                                                    <p className="tab__text">
+                                                        Для комфорта прогулок
+                                                        электросамокат снабжён
+                                                        передним и задним
+                                                        амортизаторами. Вы
+                                                        можете перемещаться не
+                                                        только по ровному
+                                                        городскому асфальту, но
+                                                        и по неровностям,
+                                                        которые не затруднят
+                                                        ваше перемещение.
+                                                    </p>
+                                                    <p className="tab__text">
+                                                        Складной механизм и
+                                                        небольшой вес (11 кг)
+                                                        делают модель
+                                                        эргономичной. В
+                                                        сложенном виде самокат
+                                                        занимает совсем мало
+                                                        места — его легко
+                                                        перевозить как в
+                                                        багажнике машины, так и
+                                                        в общественном
+                                                        транспорте. При
+                                                        складывании самокат
+                                                        фиксируется с помощью
+                                                        крючка к заднему крылу.
+                                                        А для того, чтобы
+                                                        разложить его,
+                                                        необходимо, нажав на
+                                                        заднее крыло, приподнять
+                                                        руль. Характерный щелчок
+                                                        говорит о том, что
+                                                        самокат разложен
+                                                        полностью и готов к
+                                                        эксплуатации.
+                                                    </p>
+                                                    <p className="tab__text">
+                                                        Стоит отметить, что
+                                                        электросамокат очень
+                                                        быстро стартует — вам не
+                                                        надо отталкиваться или
+                                                        разгоняться. Выдерживает
+                                                        до 120 кг, в процессе
+                                                        изготовления
+                                                        использовались только
+                                                        качественные материалы.
+                                                    </p>
+                                                    <p className="tab__text">
+                                                        Быстрый, лёгкий,
+                                                        компактный — прекрасный
+                                                        выбор для ценителей
+                                                        удобства!
+                                                    </p>
                                                 </div>
-                                                <div className="tab__line">
-                                                    -
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Макс.скорость до(км/час):
-                                                </div>
-                                                <div className="tab__line">
-                                                    25
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Мощность двигателя:
-                                                </div>
-                                                <div className="tab__line">
-                                                    300
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Пробег на одном заряде:
-                                                </div>
-                                                <div className="tab__line">
-                                                    36
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Тип переднего тормоза:
-                                                </div>
-                                                <div className="tab__line">
-                                                    дисковый механический
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Круиз-контроль:
-                                                </div>
-                                                <div className="tab__line">
-                                                    Есть
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Тип:
-                                                </div>
-                                                <div className="tab__line">
-                                                    -
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Макс.скорость до(км/час):
-                                                </div>
-                                                <div className="tab__line">
-                                                    25
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Мощность двигателя:
-                                                </div>
-                                                <div className="tab__line">
-                                                    300
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Пробег на одном заряде:
-                                                </div>
-                                                <div className="tab__line">
-                                                    36
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Тип переднего тормоза:
-                                                </div>
-                                                <div className="tab__line">
-                                                    дисковый механический
-                                                </div>
-                                            </div>
-                                            <div className="tab__column tab__column_bottom">
-                                                <div className="tab__line">
-                                                    Круиз-контроль:
-                                                </div>
-                                                <div className="tab__line">
-                                                    Есть
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="tab__body">
-                                        <div className="tab__title-box">
-                                            <h3 className="tab__title">
-                                                Отзывы на гироскутер Smart
-                                                Balance Well 6.5
-                                            </h3>
-                                        </div>
-                                        <div className="tab__block tab__block_col">
-                                            <div className="tab__column__holder">
-                                                <div className="tab__column_box block-bgc">
-                                                    <div className="tab__block_card">
-                                                        <div className="avatar">
-                                                            <div className="avatar__photo">
-                                                                <div className="avatar__text">
-                                                                    A
-                                                                </div>
+                                            );
+                                        }
+                                        if (
+                                            body.id === 2 &&
+                                            body.active === true
+                                        ) {
+                                            return (
+                                                <div className="tab__body">
+                                                    <div className="tab__title-box">
+                                                        <h3 className="tab__title">
+                                                            Характеристики{" "}
+                                                            {el.nameProduct}
+                                                        </h3>
+                                                    </div>
+                                                    <div className="tab__block">
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Тип:
                                                             </div>
-                                                            <div className="avatar__name">
-                                                                Александр
-                                                            </div>
-                                                            <div className="avatar__data">
-                                                                <span className="data">
-                                                                    07
-                                                                </span>
-                                                                <span className="data">
-                                                                    июня
-                                                                </span>
-                                                                <span className="data">
-                                                                    2024
-                                                                </span>
+                                                            <div className="tab__line">
+                                                                -
                                                             </div>
                                                         </div>
-                                                        <div className="raiting raiting__tab">
-                                                            <div className="raiting__block">
-                                                                <div
-                                                                    id="rating-star-011"
-                                                                    data-ajax="true"
-                                                                    data-num-rating="3.6"
-                                                                    className="section-goods__rating rating-star__holder rating_set"
-                                                                >
-                                                                    <div className="rating-star__inner">
-                                                                        <div className="rating-star__items">
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-star"
-                                                                                className="rating-star__input"
-                                                                                value="1"
-                                                                            ></input>
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-star"
-                                                                                className="rating-star__input"
-                                                                                value="2"
-                                                                            ></input>
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-star"
-                                                                                className="rating-star__input"
-                                                                                value="3"
-                                                                            ></input>
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-star"
-                                                                                className="rating-star__input"
-                                                                                value="4"
-                                                                            ></input>
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-star"
-                                                                                className="rating-star__input"
-                                                                                value="5"
-                                                                            ></input>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Макс.скорость
+                                                                до(км/час):
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                25
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Мощность
+                                                                двигателя:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                300
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Пробег на одном
+                                                                заряде:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                36
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Тип переднего
+                                                                тормоза:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                дисковый
+                                                                механический
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Круиз-контроль:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                Есть
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Тип:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                -
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Макс.скорость
+                                                                до(км/час):
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                25
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Мощность
+                                                                двигателя:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                300
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Пробег на одном
+                                                                заряде:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                36
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Тип переднего
+                                                                тормоза:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                дисковый
+                                                                механический
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab__column tab__column_bottom">
+                                                            <div className="tab__line">
+                                                                Круиз-контроль:
+                                                            </div>
+                                                            <div className="tab__line">
+                                                                Есть
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        }
+                                        if (
+                                            body.id === 3 &&
+                                            body.active === true
+                                        ) {
+                                            return (
+                                                <div className="tab__body">
+                                                    <div className="tab__title-box">
+                                                        <h3 className="tab__title">
+                                                            Отзывы{" "}
+                                                            {el.nameProduct}
+                                                        </h3>
+                                                    </div>
+                                                    <div className="tab__block tab__block_col">
+                                                        <div className="tab__column__holder">
+                                                            <div className="tab__column_box block-bgc">
+                                                                <div className="tab__block_card">
+                                                                    <div className="avatar">
+                                                                        <div className="avatar__photo">
+                                                                            <div className="avatar__text">
+                                                                                A
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="avatar__name">
+                                                                            Александр
+                                                                        </div>
+                                                                        <div className="avatar__data">
+                                                                            <span className="data">
+                                                                                07
+                                                                            </span>
+                                                                            <span className="data">
+                                                                                июня
+                                                                            </span>
+                                                                            <span className="data">
+                                                                                2024
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="raiting raiting__tab">
+                                                                        <div className="raiting__block">
+                                                                            <StarRating
+                                                                                starRating={
+                                                                                    "100"
+                                                                                }
+                                                                            ></StarRating>
+                                                                        </div>
+                                                                        <div className="raiting__namber">
+                                                                            (5
+                                                                            <span>
+                                                                                из
+                                                                            </span>
+                                                                            5)
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div className="tab__block_card">
+                                                                    <p className="tab__text">
+                                                                        <b>
+                                                                            Отличный
+                                                                            самокат!
+                                                                        </b>
+                                                                    </p>
+                                                                    <p className="tab__text">
+                                                                        Катаюсь
+                                                                        каждый
+                                                                        день
+                                                                        после
+                                                                        работы,
+                                                                        заряд
+                                                                        держит
+                                                                        отлично!
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                            <div className="raiting__namber">
-                                                                (5
-                                                                <span>из</span>
-                                                                5)
+                                                        </div>
+                                                        <div className="tab__column__holder">
+                                                            <div className="tab__card">
+                                                                <div className="tab__text-block">
+                                                                    <p className="tab__text">
+                                                                        <b>
+                                                                            Напишите
+                                                                            своё
+                                                                            мнение
+                                                                            о
+                                                                            товаре
+                                                                        </b>
+                                                                    </p>
+                                                                    <p className="tab__text">
+                                                                        Сделайте
+                                                                        выбор
+                                                                        других
+                                                                        покупалетей
+                                                                        легче
+                                                                    </p>
+                                                                    <div className="tab__button-box">
+                                                                        <button className="tab__button">
+                                                                            Написать
+                                                                            отзыв
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="tab__block_card">
-                                                        <p className="tab__text">
-                                                            <b>
-                                                                Отличный
-                                                                самокат!
-                                                            </b>
-                                                        </p>
-                                                        <p className="tab__text">
-                                                            Катаюсь каждый день
-                                                            после работы, заряд
-                                                            держит отлично!
-                                                        </p>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="tab__column__holder">
-                                                <div className="tab__card">
-                                                    <div className="tab__text-block">
-                                                        <p className="tab__text">
-                                                            <b>
-                                                                Напишите своё
-                                                                мнение о товаре
-                                                            </b>
-                                                        </p>
-                                                        <p className="tab__text">
-                                                            Сделайте выбор
-                                                            других покупалетей
-                                                            легче
-                                                        </p>
-                                                        <div className="tab__button-box">
-                                                            <button className="tab__button">
-                                                                Написать отзыв
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            );
+                                        }
+                                    })}
                                 </div>
                             </div>
                             <div className="recommendation">
                                 <div className="recommendation__title-box">
-                                    <h3 className="recommendation__title">
-                                        Рекомендуем
-                                    </h3>
+                                    <TitleH2 title={"Рекомендуем"}></TitleH2>
                                 </div>
                                 <div className="recommendation__block">
                                     <div className="recommendation__wrapper">
@@ -646,47 +666,17 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                                     </div>
                                                     <div className="section-goods__card-footer">
                                                         <div className="section-goods__comment-rating">
-                                                            <div
-                                                                id="rating-star-01"
-                                                                data-ajax="true"
-                                                                data-num-rating="3.6"
-                                                                className="section-goods__rating rating-star__holder rating_set"
-                                                            >
-                                                                <div className="rating-star__inner">
-                                                                    <div className="rating-star__items">
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-star"
-                                                                            className="rating-star__input"
-                                                                            value="1"
-                                                                        ></input>
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-star"
-                                                                            className="rating-star__input"
-                                                                            value="2"
-                                                                        ></input>
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-star"
-                                                                            className="rating-star__input"
-                                                                            value="3"
-                                                                        ></input>
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-star"
-                                                                            className="rating-star__input"
-                                                                            value="4"
-                                                                        ></input>
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-star"
-                                                                            className="rating-star__input"
-                                                                            value="5"
-                                                                        ></input>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            <StarRating
+                                                                currentItem={
+                                                                    currentItem
+                                                                }
+                                                                setCurrentItem={
+                                                                    setCurrentItem
+                                                                }
+                                                                starRating={
+                                                                    el.starRating
+                                                                }
+                                                            ></StarRating>
                                                             <div className="section-goods__comment">
                                                                 <button className="section-goods__comment_icon">
                                                                     <Image
@@ -742,42 +732,12 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                                                                 </div>
                                                             </div>
                                                             <div className="section-goods__favourites-block">
-                                                                <button className="section-goods__icon-box">
-                                                                    {el.heartBtn ===
-                                                                    "Да" ? (
-                                                                        <Image
-                                                                            src={
-                                                                                heart_1
-                                                                            }
-                                                                            alt="heart-icon"
-                                                                        ></Image>
-                                                                    ) : (
-                                                                        <Image
-                                                                            src={
-                                                                                heart_2
-                                                                            }
-                                                                            alt="heart-icon"
-                                                                        ></Image>
-                                                                    )}
-                                                                </button>
-                                                                <button className="section-goods__icon-box">
-                                                                    {el.graphBtn ===
-                                                                    "Да" ? (
-                                                                        <Image
-                                                                            src={
-                                                                                graph_1
-                                                                            }
-                                                                            alt="graph-icon"
-                                                                        ></Image>
-                                                                    ) : (
-                                                                        <Image
-                                                                            src={
-                                                                                graph_2
-                                                                            }
-                                                                            alt="graph-icon"
-                                                                        ></Image>
-                                                                    )}
-                                                                </button>
+                                                                <Favourites
+                                                                    id={el.id}
+                                                                ></Favourites>
+                                                                <Statistics
+                                                                    id={el.id}
+                                                                ></Statistics>
                                                             </div>
                                                         </div>
                                                         <div className="section-goods__buttom-block">
@@ -804,7 +764,6 @@ const ProductCardDetall = ({ catalogArray }:any) => {
                             </div>
                         </>
                     );
-
                 }
             })}
         </>

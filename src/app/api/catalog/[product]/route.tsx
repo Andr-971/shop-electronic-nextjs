@@ -1,8 +1,10 @@
 
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import productAll from "../../../../../public/productAll";
 import {catalogAllApi} from "../../../../../public/path"
-import {splitArray} from "../../../../services/function" // Разбивка массива функция
+import { splitArray } from "../../../../services/function" // Разбивка массива функция
+import { revalidatePath } from "next/cache";
 
 // Отправка GET json на клиента
 export async function GET(req: Request) {
@@ -22,7 +24,11 @@ export async function GET(req: Request) {
 }
 
 export async function getData() {
-    let response = await fetch(`${catalogAllApi}`);
+    let response = await fetch(`${catalogAllApi}`, {
+        next: {
+            revalidate: 60
+        }
+    });
     if (response.ok) {
         return response.json();
     }
