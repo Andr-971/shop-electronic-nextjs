@@ -139,7 +139,7 @@ const CatalogPage = ({ arrayPage }: any) => {
                         return (
                             <>
                                 <SelectBlocks
-                                    key={el.id}
+                                    id={el.id}
                                     el={el}
                                     i={i}
                                 ></SelectBlocks>
@@ -166,7 +166,10 @@ const CatalogPage = ({ arrayPage }: any) => {
                                     return (
                                         <>
                                             {el.id === 1 ? (
-                                                <div className="select__btn">
+                                                <div
+                                                    className="select__btn"
+                                                    key={el.id}
+                                                >
                                                     <div className="select__btn-text">
                                                         {el.title}: от{" "}
                                                         <span>
@@ -194,7 +197,10 @@ const CatalogPage = ({ arrayPage }: any) => {
                                                     </div>
                                                 </div>
                                             ) : (
-                                                    <div className="select__btn">
+                                                <div
+                                                    className="select__btn"
+                                                    key={el.id}
+                                                >
                                                     <div className="select__btn-text">
                                                         {el.title}
                                                         {": "}
@@ -243,7 +249,13 @@ const CatalogPage = ({ arrayPage }: any) => {
                     </div>
                     <div className="catalog__block">
                         {arrPage.map((el: any, i: number) => {
-                            return <ProductСard key={i} el={el}></ProductСard>;
+                            return (
+                                <ProductСard
+                                    id={el.id}
+                                    el={el}
+                                    favouriteBoolean={el.favouriteBoolean}
+                                ></ProductСard>
+                            );
                         })}
                     </div>
                 </div>

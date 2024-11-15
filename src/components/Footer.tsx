@@ -5,6 +5,7 @@ import facebook from "../../public/svg/social/facebook.svg"
 import instagram from "../../public/svg/social/instagram.svg"
 import twitter from "../../public/svg/social/twitter.svg"
 import vk from "../../public/svg/social/vk.svg";
+import Link from "next/link";
 
 const Footer = () => {
     return (
@@ -47,7 +48,7 @@ const Footer = () => {
                                     <a href="#"></a>Доставка и оплата
                                 </li>
                                 <li className="footer__link">
-                                    <a href="#"></a>Кредит
+                                    <Link href="installment">Кредит</Link>
                                 </li>
                                 <li className="footer__link">
                                     <a href="#"></a>Политика конфедициональности
@@ -56,7 +57,9 @@ const Footer = () => {
                                     <a href="#"></a>Вопросы и ответы(F.A.Q)
                                 </li>
                                 <li className="footer__link">
-                                    <a href="#">Сервис и гарантия</a>
+                                    <Link href="/warranty">
+                                        Сервис и гарантия
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -67,16 +70,18 @@ const Footer = () => {
                                     <a href="#">Отзывы</a>
                                 </li>
                                 <li className="footer__link">
-                                    <a href="#"></a>Наши преимущества
+                                    <Link href="/about_us">
+                                        Наши преимущества
+                                    </Link>
                                 </li>
                                 <li className="footer__link">
-                                    <a href="#"></a>История компании
+                                    <a href="#">История компании</a>
                                 </li>
                                 <li className="footer__link">
-                                    <a href="#"></a>Сотруднечество
+                                    <a href="#">Сотруднечество</a>
                                 </li>
                                 <li className="footer__link">
-                                    <a href="#"></a>Партнёрские программы
+                                    <a href="#">Партнёрские программы</a>
                                 </li>
                                 <li className="footer__link">
                                     <a href="#">Вакансии</a>
@@ -87,10 +92,14 @@ const Footer = () => {
                             <h4 className="footer__title">Сотруднечество</h4>
                             <ul className="footer__list">
                                 <li className="footer__link">
-                                    <a href="#">Оптом</a>
+                                    <Link href="/dropshipping/wholesale">
+                                        Оптом
+                                    </Link>
                                 </li>
                                 <li className="footer__link">
-                                    <a href="#"></a>Дропшиппинг
+                                    <Link href="/dropshipping">
+                                        Дропшиппинг
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

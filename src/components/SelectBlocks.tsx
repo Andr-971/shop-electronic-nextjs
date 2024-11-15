@@ -6,15 +6,12 @@ import { useFilterCatalog } from "@/store"
 import { useFilterData } from "@/store";
 import { useState, useEffect } from "react";
 
-const SelectBlocks = ({ el, i }: any) => {
+const SelectBlocks = ({ el, id, i }: any) => {
     const [hidden, setHidden] = useState(true);
     const { changeFilterValue, filterValue } = useFilterCatalog();
     const { rangeEvent, inputSelect, checkboxInput } = useFilterData();
 
     useEffect(() => {
-        inputSelect.map((element: any) => {
-            // console.log(element);
-        });
     }, [inputSelect.map((el: any) => el.checked)]);
 
     function handlerSeleckBlock(e: any, el: any) {
@@ -30,7 +27,11 @@ const SelectBlocks = ({ el, i }: any) => {
     }
     return (
         <>
-            <div className="select__block" style={{ order: hidden ? 0 : -1 }}>
+            <div
+                className="select__block"
+                style={{ order: hidden ? 0 : -1 }}
+                key={id}
+            >
                 <div className="select__header">
                     <div className="select__header_title">{el.title}</div>
                     <button
@@ -67,7 +68,7 @@ const SelectBlocks = ({ el, i }: any) => {
                             return (
                                 <ImputCheckbox
                                     propsInput={el}
-                                    key={i}
+                                    id={el.id}
                                 ></ImputCheckbox>
                             );
                         })}

@@ -3,7 +3,7 @@ import React from "react"
 import {useRef, useState, useEffect} from "react"
 import {useFilterData} from "@/store"
 
-const ImputCheckbox = ({ propsInput }: any) => {
+const ImputCheckbox = ({ propsInput, id }: any) => {
     const { changeRadioInput, inputSelect } = useFilterData();
     const checkedInput: any = useRef();
 
@@ -33,7 +33,7 @@ const ImputCheckbox = ({ propsInput }: any) => {
 
     return (
         <>
-            <li className="select__item">
+            <li className="select__item"  key={id}>
                 <div className="catalog__select-checkbox">
                     <input
                         type={propsInput.type}

@@ -13,12 +13,17 @@
 }
 .loading__text {
     font-size: 3vw;
+    /* text-transform: uppercase; */
     color: #fff;
+    /* color: rgb(42, 82, 117); */
 }
 .letter {
+    /* text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+                1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff; */
     display: inline-block;
     font-weight: 600;
     animation: leter 1.5s infinite calc(.1s * var(--i));
+    /* animation: fonts 1.5s infinite calc(.1s * var(--i)); */
     &:not(:last-child) {
         margin-right: 18px;
     }
@@ -29,6 +34,14 @@
     }
     20% {
         transform: translateY(-20px);
+    }
+}
+@keyframes fonts {
+    0%, 40%, 100% {
+        /* transform: scale(1.2); */
+    }
+    20% {
+        transform: scale(1.2);
     }
 }
 .letter:nth-child(1) {

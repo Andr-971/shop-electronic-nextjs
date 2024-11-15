@@ -72,6 +72,10 @@ body {
     display: none;
 }
 
+.rotate {
+    transform: rotate(180deg);
+}
+
 .photo-box {
     padding-top: 75%;
     /* 1:1 Aspect Ratio padding-top: 100% */

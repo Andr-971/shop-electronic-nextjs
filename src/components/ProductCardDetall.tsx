@@ -12,19 +12,26 @@ import mainPicture from "../../public/png_webp/main-picture.webp"
 import commitBtn from "../../public/svg/commit-btn.svg"
 import delivery from "../../public/svg/delivery.svg"
 import payment from "../../public/svg/payment.svg"
-import product from "../../public/product"
-import backetBtn from "../../public/svg/backet-2.svg"
 import {useTabCard} from "@/store"
-import {useSession} from "next-auth/react"
+import productAll from "../../public/productAll";
+import { splitArray } from "@/services/function";
+import ProductСard from "@/components/ProductСard";
+import OnClickCart from "@/components/OnClickCart"
+import { useBasket, useFavourites } from "@/store";
 
 const ProductCardDetall = ({ catalogArray }: any) => {
+    const productShow = splitArray(productAll, 4);
     const pathname = usePathname();
     const [currentItem, setCurrentItem] = useState();
     const { tabCard, changeTabCard } = useTabCard();
+    const { changeBasket } = useBasket();
     function handlerTab(el: any) {
         changeTabCard(el);
     }
-
+    function handlerBacket(e: any, el: any) {
+        e.preventDefault();
+        changeBasket(el);
+    }
     return (
         <>
             {catalogArray.map((el: any) => {
@@ -152,8 +159,12 @@ const ProductCardDetall = ({ catalogArray }: any) => {
                                                     </div>
                                                 </div>
                                                 <div className="section-goods__favourites-block">
-                                                    <Favourites id={el.id}></Favourites>
-                                                    <Statistics id={el.id}></Statistics>
+                                                    <Favourites
+                                                        el={el}
+                                                    ></Favourites>
+                                                    <Statistics
+                                                        el={el}
+                                                    ></Statistics>
                                                 </div>
                                             </div>
                                             <div className="card-product__footer">
@@ -181,12 +192,20 @@ const ProductCardDetall = ({ catalogArray }: any) => {
                                                     </div>
                                                 </div>
                                                 <div className="section-goods__buttom-block card__buttom-block">
-                                                    <button className="card-product__cart">
+                                                    <button
+                                                        className="card-product__cart"
+                                                        onClick={(e) =>
+                                                            handlerBacket(e, el)
+                                                        }
+                                                    >
                                                         В корзину
                                                     </button>
-                                                    <button className="section-goods__buttom card-product__shopping">
+                                                    <OnClickCart
+                                                        el={el}
+                                                    ></OnClickCart>
+                                                    {/* <button className="section-goods__buttom card-product__shopping">
                                                         Купить в 1 клик
-                                                    </button>
+                                                    </button> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -627,136 +646,12 @@ const ProductCardDetall = ({ catalogArray }: any) => {
                                 </div>
                                 <div className="recommendation__block">
                                     <div className="recommendation__wrapper">
-                                        {product.map((el, i) => {
+                                        {productShow[0].map((el: any) => {
                                             return (
-                                                <div className="section-goods__card">
-                                                    <div className="section-goods__card-header photo-box">
-                                                        <Image
-                                                            src={
-                                                                el.pathPhotoProduct
-                                                            }
-                                                            alt="goots-photo"
-                                                            className="photo-img"
-                                                            key={i}
-                                                        ></Image>
-                                                        <div className="section-goods__button">
-                                                            {el.new ===
-                                                                "Да" && (
-                                                                <button className="section-goods__button_new">
-                                                                    Новинка
-                                                                </button>
-                                                            )}
-                                                            {el.hit ===
-                                                                "Да" && (
-                                                                <button className="section-goods__button_hit">
-                                                                    Хит продаж
-                                                                </button>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                    <div className="section-goods__card-content">
-                                                        <div className="section-goods__chapter">
-                                                            {el.category}
-                                                        </div>
-                                                        <div className="section-goods__name-goods">
-                                                            <p className="section-goods__name-txt">
-                                                                {el.nameProduct}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="section-goods__card-footer">
-                                                        <div className="section-goods__comment-rating">
-                                                            <StarRating
-                                                                currentItem={
-                                                                    currentItem
-                                                                }
-                                                                setCurrentItem={
-                                                                    setCurrentItem
-                                                                }
-                                                                starRating={
-                                                                    el.starRating
-                                                                }
-                                                            ></StarRating>
-                                                            <div className="section-goods__comment">
-                                                                <button className="section-goods__comment_icon">
-                                                                    <Image
-                                                                        src={
-                                                                            commitBtn
-                                                                        }
-                                                                        alt="comment_icon"
-                                                                    ></Image>
-                                                                </button>
-                                                                <span className="section-goods__comment_number">
-                                                                    (
-                                                                    {
-                                                                        el.commitNumber
-                                                                    }
-                                                                    )
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="section-goods__price-block">
-                                                            <div className="section-goods__price-box">
-                                                                <div className="section-goods__old-price">
-                                                                    {
-                                                                        el.oldPrice
-                                                                    }
-                                                                    <span>
-                                                                        ₽
-                                                                    </span>
-                                                                </div>
-                                                                <div className="section-goods__price">
-                                                                    {el.price}
-                                                                    <span>
-                                                                        ₽
-                                                                    </span>
-                                                                </div>
-                                                                <div className="section-goods__discount">
-                                                                    <div className="section-goods__percent">
-                                                                        {
-                                                                            el.percent
-                                                                        }
-                                                                        <span>
-                                                                            %
-                                                                        </span>
-                                                                    </div>
-                                                                    <div className="section-goods__tire"></div>
-                                                                    <div className="section-goods__percent-price">
-                                                                        {
-                                                                            el.priceFor
-                                                                        }
-                                                                        <span>
-                                                                            ₽
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="section-goods__favourites-block">
-                                                                <Favourites
-                                                                    id={el.id}
-                                                                ></Favourites>
-                                                                <Statistics
-                                                                    id={el.id}
-                                                                ></Statistics>
-                                                            </div>
-                                                        </div>
-                                                        <div className="section-goods__buttom-block">
-                                                            <button className="section-goods__buttom">
-                                                                Купить в 1 клик
-                                                            </button>
-                                                            <button className="section-goods__basket">
-                                                                {
-                                                                    <Image
-                                                                        src={
-                                                                            backetBtn
-                                                                        }
-                                                                        alt="icon-backet"
-                                                                    ></Image>
-                                                                }
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <ProductСard
+                                                    el={el}
+                                                    id={el.id}
+                                                ></ProductСard>
                                             );
                                         })}
                                     </div>

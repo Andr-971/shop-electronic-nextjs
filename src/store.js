@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import categoryProducts from "../public/categoryProducts.js";
 import tab_menu_card from "../public/tab_menu_card.js";
+import { useState, useEffect } from "react";
 
 export const useOption = create((set) => ({
     option: [categoryProducts[0]],
@@ -118,6 +119,18 @@ export const usePopapInterActive = create((set, get) => ({
         set({ popapInter: !get().popapInter });
     }
 }))
+export const usePopapRegisterActive = create((set, get) => ({
+    popapRegister: false,
+    changePopapRegister() {
+        set({ popapRegister: !get().popapRegister });
+    },
+}));
+export const usePopapSearchActive = create((set, get) => ({
+    popapSearch: false,
+    changePopapSearch() {
+        set({ popapSearch: !get().popapSearch });
+    }
+}))
 
 export const usePopapBacketActive = create((set, get) => ({
     popapBacket: false,
@@ -127,9 +140,118 @@ export const usePopapBacketActive = create((set, get) => ({
 }));
 
 export const useBasket = create((set, get) => ({
-    basket: [],
-    changeBasket(params) {
-        set({ basket: [...get().basket, params] });
+    basket: [], // Корзина
+    virtualBasket: [], // Копия корзины
+    totalPriceCount: { // Итоговая цена и колличество
+        totalPrice: undefined,
+        countProducts: undefined,
+    },
+    changeTotalPriceDefault() { // Первичный подсчёт товаров добавленных в корзину
+        let defaultTotalPrice = {};
+        if (get().basket.length > 0) {
+            defaultTotalPrice.totalPrice = get().basket.reduce((prev, curr) => {
+                return +prev + +curr.price
+            }, 0);
+            defaultTotalPrice.countProducts = get().basket.reduce(
+                (prev, curr) => {
+                    return +prev + +curr.counter;
+                },
+                0,
+            );
+        }
+        set({ totalPriceCount: defaultTotalPrice });
+    },
+
+    changeBasket(params) { // Добавление товаров в корзину
+        params.counter = 1;
+        if (get().basket.findIndex((item) => item.id === params.id) === -1) {
+            set({ basket: [...get().basket, params] });
+        }
+    },
+    removeBasket(id) {
+        // Удаление товаров из корзины
+        const newBasket = get().basket.filter((e) => e.id !== id);
+        set({ basket: newBasket });
+    },
+    creatVirtualBasket() { // Создание копии корзины
+        let newArr = structuredClone(get().basket);
+        set({ virtualBasket: newArr });
+    },
+    changeCounterProductPlus(id) { // Добавление колличество товара и изменение цены
+        let newBasket = [];
+        get().virtualBasket.map((product) => {
+            if (product.id === id) {
+                return (newBasket = get().basket.map((el) => {
+                    if (el.id === id) {
+                        if (el.counter < 9) {
+                            return {
+                                ...el,
+                                counter: ++el.counter,
+                                price: `${+product.price * el.counter}`,
+                            };
+                        }
+                    }
+                    return { ...el };
+                }));
+            }
+        });
+        set({ basket: newBasket });
+    },
+    changeCounterProductMinus(id) {
+        // Удаление колличество товара и изменение цены
+        let newBasket = [];
+        get().virtualBasket.map((product) => {
+            if (product.id === id) {
+                return (newBasket = get().basket.map((el) => {
+                    if (el.id === id) {
+                        if (el.counter > 1) {
+                            return {
+                                ...el,
+                                counter: --el.counter,
+                                price: `${+product.price * el.counter}`,
+                            };
+                        }
+                    }
+                    return { ...el };
+                }));
+            }
+        });
+        set({ basket: newBasket });
+    },
+}));
+
+export const useCompare = create((set, get) => ({
+    compare: [], // Сравнение
+    virtualCompare: [], // Копия сравнения
+    countCompare: 0,
+    changeCompare(params) {
+        // Добавление товаров в сравнение
+        ++get().countCompare
+        set({ countCompare: get().countCompare });
+        params.compare = true;
+        if (get().compare.findIndex((item) => item.id === params.id) === -1) {
+            if (get().countCompare < 4) set({ compare: [...get().compare, params] });
+        }
+    },
+    removeCompare(id) {
+        // Удаление товаров из сравнения
+        const newCompare = get().compare.filter((e) => e.id !== id);
+        set({ compare: newCompare });
+    },
+}));
+export const useFavourites = create((set, get) => ({
+    favourites: [],
+    changeFavourites(params) {
+        // Добавление товаров в избранное
+        params.favouriteBoolean = true;
+        if (get().favourites.findIndex((item) => item.id === params.id) === -1) {
+            set({ favourites: [...get().favourites, params] });
+        }
+    },
+    removeFavourites(id) {
+        // Удаление товаров из избранного
+        const newFavourites = get().favourites.filter((e) => e.id !== id);
+        set({ favourites: newFavourites });
     }
-}))
+}));
 

@@ -7,6 +7,7 @@ export const config = {
         "/personal/history_purchase",
         "/personal/favourite",
         "/personal/change_password",
-        "/backet",
+        "/basket",
+        "/compare",
     ],
 };

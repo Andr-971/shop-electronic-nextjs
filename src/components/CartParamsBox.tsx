@@ -1,663 +1,878 @@
-
-import React from "react"
+"use client";
+import React from "react";
 import ParamsTitle from "./ParamsTitle/ParamsTitle";
 import BtnParametrs from "./BtnParametrs/BtnParametrs";
+import { useBasket } from "@/store";
+import Image from "next/image";
+import deleteCart from "../../public/svg/delite-cart.svg";
+import { useState, useRef, useEffect } from "react";
+import ProductCounter from "@/components/ProductCounter/ProductCounter";
+import selectBtn from "../../public/svg/select-btn.svg"
+import city from "../../public/city"
+import mapImg from "../../public/png_webp/map-3.webp"
+import {
+    currentMonth,
+    futureDay,
+    futureData,
+} from "@/libs/myDataTime";
+import { useSession, signOut } from "next-auth/react";
 
-const CartParamsBox = ({el, i}:any) => {
+const whenDelivers = [
+    {
+        id: "1",
+        data: `Завтра, ${futureData(1)} ${currentMonth}, ${futureDay(1)}`,
+    },
+    {
+        id: "2",
+        data: `${futureData(2)} ${currentMonth}, ${futureDay(2)}`,
+    },
+    {
+        id: "3",
+        data: `${futureData(3)} ${currentMonth}, ${futureDay(3)}`,
+    },
+];
+const deliveryTime = [
+    {
+        id: "1",
+        time: "09.00-12.00",
+    },
+    {
+        id: "2",
+        time: "12.00-15.00",
+    },
+    {
+        id: "3",
+        time: "15.00-18.00",
+    },
+    {
+        id: "4",
+        time: "18.00-21.00",
+    },
+];
+const paymentList = [
+    {
+        id: "1",
+        payment: "Наличными",
+    },
+    {
+        id: "2",
+        payment: "Банковской картой",
+    },
+    {
+        id: "3",
+        payment: "Онлайн-оплата",
+    },
+    {
+        id: "4",
+        payment: "Перевод по СБП",
+    },
+];
+
+const CartParamsBox = ({ el, i }: any) => {
+    const {
+        basket,
+        removeBasket,
+        creatVirtualBasket,
+        changeTotalPriceDefault,
+    } = useBasket();
+    const [changeTab1, setChangeTab1] = useState(false);
+    const [changeTab2, setChangeTab2] = useState(false);
+    const [changeTab3, setChangeTab3] = useState(false);
+    const [changeTab4, setChangeTab4] = useState(false);
+    const [receiving, setReceiving] = useState<any>(["pickup", "delivery"]);
+    const [cityBtn, setCityBtn] = useState(false);
+    const [chooseСity, setChooseСity] = useState("Выберите город");
+    const [whenDeliverBtn, setWhenDeliverBtn] = useState(false);
+    const [timeDeliverBtn, setTimeDeliverBtn] = useState(false);
+    const [whenDeliver, setWhenDeliver] = useState(
+        `Завтра, ${futureData(1)} ${currentMonth} ${futureDay(1)}`,
+    );
+    const [timeDeliver, setTimeDeliver] = useState("Выберите время");
+    const [chooseAddressСity, setChooseAddressСity] = useState("Укажите город");
+    const [street, setStreet] = useState("Укажите улицу и дом");
+    const [flat, setFlat] = useState("Номер квартиры");
+    const priceNum: any = useRef();
+    const [paymentBtn, setPaymentBtn] = useState(false);
+    const [payment, setPayment] = useState("Способ оплаты");
+    const session = useSession();
+    const userNameSession = session.data?.user?.name;
+    const userEmailSession = session.data?.user?.email;
+    const [userName, setUserName] = useState(userNameSession);
+    const [userEmail, setUserEmail] = useState(userEmailSession);
+
+    useEffect(() => { }, [userName, userEmail]);
+    useEffect(() => {
+        creatVirtualBasket();
+        changeTotalPriceDefault();
+    }, []);
+    useEffect(() => { }, [
+        basket.map((e: any) => e.counter),
+        basket.map((e: any) => e.price),
+    ]);
+    function handlerDelete(id: any) {
+        removeBasket(id);
+    }
+    function handlerReceiving(e: any) {
+        setReceiving(e.target.value);
+    }
+    function handlerCity(el: any) {
+        setChooseСity(el.city);
+        setCityBtn(false);
+    }
+    function handlerAddressCity(e: any) {
+        setChooseAddressСity(e.target.value);
+    }
+    function handlerData(el: any) {
+        setWhenDeliver(el.data);
+        setWhenDeliverBtn(false);
+    }
+    function handlerTime(el: any) {
+        setTimeDeliver(el.time);
+        setTimeDeliverBtn(false);
+    }
+    function handlerPayment(el: any) {
+        setPayment(el.payment);
+        setPaymentBtn(false);
+    }
+    function handlerStreet(e: any) {
+        setStreet(e.target.value);
+    }
+    function handlerFlat(e: any) {
+        setFlat(e.target.value);
+    }
     return (
         <>
             {el.id === "1" && (
-                <div className="parameters__container block-border order-1">
+                <div
+                    className="parameters__container block-border order-1"
+                    key={el.id}
+                >
                     <div className="parameters__header">
-                        <ParamsTitle title={el.title}></ParamsTitle>
+                        <ParamsTitle
+                            title={el.title}
+                            active={changeTab1}
+                        ></ParamsTitle>
                         <div className="parameters__result-box">
                             <ul className="parameters__result_list">
-                                <li className="parameters__result_item">
-                                    <div className="order__photo">
-                                        <div className="order__wrap-photo">
-                                            <div className="order__block-photo">
-                                                {/* <picture>
-                                                    <source srcset="./img/main-picture.webp"  class="order__img-photo">
-                                                    <img src="./img/main-picture.png" alt="фото"  className="order__img-photo">
-                                                </picture> */}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="parameters__result_item">
-                                    <div className="order__photo">
-                                        <div className="order__wrap-photo">
-                                            <div className="order__block-photo">
-                                                {/* <picture>
-                                                    <source srcset="./img/main-picture.webp"  class="order__img-photo">
-                                                    <img src="./img/main-picture.png" alt="фото"  className="order__img-photo">
-                                                </picture> */}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                {basket.length > 0 && !changeTab1
+                                    ? basket.map((el: any) => (
+                                          <li
+                                              className="parameters__result_item"
+                                              key={el.id}
+                                          >
+                                              <div className="order__photo">
+                                                  <div className="order__wrap-photo">
+                                                      <div className="order__block-photo">
+                                                          <Image
+                                                              src={
+                                                                  el.pathPhotoProduct
+                                                              }
+                                                              alt="фото"
+                                                              className="order__img-photo"
+                                                          ></Image>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </li>
+                                      ))
+                                    : undefined}
                             </ul>
-                            <BtnParametrs></BtnParametrs>
+                            <BtnParametrs
+                                setChangeTab1={setChangeTab1}
+                            ></BtnParametrs>
                         </div>
                     </div>
                     <div className="parameters__body">
                         <ul className="parameters__list order">
-                            <li className="parameters__item order__item">
-                                <div className="order__photo">
-                                    <div className="order__wrap-photo">
-                                        <div className="order__block-photo">
-                                            {/* <picture>
-                                            <source srcset="./img/main-picture.webp"  class="order__img-photo">
-                                            <img src="./img/main-picture.png" alt="фото"  className="order__img-photo">
-                                        </picture> */}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="order__name-product">
-                                    <h4>
-                                        Гироскутер Smart Balance Well 6.5
-                                        Хип-Хоп (АКВАЗАЩИТА)
-                                    </h4>
-                                </div>
-                                <div className="order__counter">
-                                    <button className="first-btn">-</button>
-                                    <div className="counter__input-box">
-                                        <input
-                                            size={2}
-                                            type="text"
-                                            value="1"
-                                        ></input>
-                                    </div>
-                                    <button className="list-btn">+</button>
-                                </div>
-                                <div className="order__price-box">
-                                    <div className="order__old-price">
-                                        <span>5400</span>₽
-                                    </div>
-                                    <div className="order__new-price">
-                                        <span>4990</span>₽
-                                    </div>
-                                </div>
-                                <button className="order__delete-box">
-                                    {/* <img src="./img/svg/delite-cart.svg" alt="icon" className="order__delete-icon"> */}
-                                </button>
-                                <hr className="order__line"></hr>
-                            </li>
-                            <li className="parameters__item order__item">
-                                <div className="order__photo">
-                                    <div className="order__wrap-photo">
-                                        <div className="order__block-photo">
-                                            {/* <picture>
-                                                <source srcset="./img/main-picture.webp"  class="order__img-photo">
-                                                <img src="./img/main-picture.png" alt="фото"  className="order__img-photo">
-                                            </picture> */}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="order__name-product">
-                                    <h4>
-                                        Гироскутер Smart Balance Well 6.5
-                                        Хип-Хоп (АКВАЗАЩИТА)
-                                    </h4>
-                                </div>
-                                <div className="order__counter">
-                                    <button className="first-btn">-</button>
-                                    <div className="counter__input-box">
-                                        <input
-                                            size={2}
-                                            type="text"
-                                            value="1"
-                                        ></input>
-                                    </div>
-                                    <button className="list-btn">+</button>
-                                </div>
-                                <div className="order__price-box">
-                                    <div className="order__old-price">
-                                        <span>5400</span>₽
-                                    </div>
-                                    <div className="order__new-price">
-                                        <span>4990</span>₽
-                                    </div>
-                                </div>
-                                <button className="order__delete-box">
-                                    {/* <img src="./img/svg/delite-cart.svg" alt="icon" className="order__delete-icon"> */}
-                                </button>
-                                <hr className="order__line"></hr>
-                            </li>
+                            {changeTab1 &&
+                                basket.map((el: any, i: number) => {
+                                    return (
+                                        <li
+                                            className="parameters__item order__item"
+                                            key={el.id}
+                                        >
+                                            <div className="order__photo">
+                                                <div className="order__wrap-photo">
+                                                    <div className="order__block-photo">
+                                                        <Image
+                                                            src={
+                                                                el.pathPhotoProduct
+                                                            }
+                                                            alt="фото"
+                                                            className="order__img-photo"
+                                                            key={i}
+                                                        ></Image>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="order__name-product">
+                                                <h4>{el.nameProduct}</h4>
+                                            </div>
+                                            <ProductCounter
+                                                id={el.id}
+                                                counter={el.counter}
+                                            ></ProductCounter>
+                                            <div className="order__price-box">
+                                                <div className="order__old-price">
+                                                    <span>{el.oldPrice}</span>₽
+                                                </div>
+                                                <div className="order__new-price">
+                                                    <span ref={priceNum}>
+                                                        {el.price}
+                                                    </span>
+                                                    ₽
+                                                </div>
+                                            </div>
+                                            <button
+                                                className="order__delete-box"
+                                                onClick={() =>
+                                                    handlerDelete(el.id)
+                                                }
+                                            >
+                                                <Image
+                                                    src={deleteCart}
+                                                    alt="icon"
+                                                    className="order__delete-icon"
+                                                ></Image>
+                                            </button>
+                                            <hr className="order__line"></hr>
+                                        </li>
+                                    );
+                                })}
                         </ul>
                     </div>
                 </div>
             )}
             {el.id === "2" && (
-                <div className="parameters__container block-border order-2">
+                <div
+                    className="parameters__container block-border order-2"
+                    key={el.id}
+                >
                     <div className="parameters__header">
-                        <ParamsTitle title={el.title}></ParamsTitle>
+                        <ParamsTitle
+                            title={el.title}
+                            active={changeTab2}
+                        ></ParamsTitle>
                         <div className="parameters__result-box">
                             <ul className="parameters__result_list parameters__result_list-delivery">
-                                <li className="parameters__result_item parameters__result_way">
-                                    Самовывоз из:
-                                </li>
-                                <li className="parameters__result_item parameters__result_address">
-                                    г. Санкт-Петербург, Бульвар Новаторов, 75
-                                    <div className="parameters__address-time">
-                                        ПН-ВС 09:00 — 22:00
-                                    </div>
-                                </li>
+                                {!changeTab2 && (
+                                    <>
+                                        <li className="parameters__result_item parameters__result_way">
+                                            {receiving === "pickup" &&
+                                                "Самовывоз из:"}
+                                            {receiving === "delivery" &&
+                                                "Доставка до:"}
+                                        </li>
+                                        <li className="parameters__result_item parameters__result_address">
+                                            {receiving === "pickup" && (
+                                                <>
+                                                    {chooseAddressСity}
+                                                    <div className="parameters__address-time">
+                                                        ПН-ВС 09:00 — 22:00
+                                                    </div>
+                                                </>
+                                            )}
+                                            {receiving === "delivery" && (
+                                                <>
+                                                    {chooseСity}, {street},{" "}
+                                                    <span> кв. {flat}</span>
+                                                    <div className="parameters__address-time">
+                                                        {timeDeliver}
+                                                    </div>
+                                                </>
+                                            )}
+                                        </li>
+                                    </>
+                                )}
                             </ul>
-                            <BtnParametrs></BtnParametrs>
+                            <BtnParametrs
+                                setChangeTab1={setChangeTab2}
+                            ></BtnParametrs>
                         </div>
                     </div>
-                    <div className="parameters__body hidden">
-                        <div className="parameters__item-header">
-                            <div className="item__column">
-                                <div className="item__input-box">
-                                    <div className="item__input_label">
-                                        Ваш город
-                                    </div>
-                                    <div className="item__select">
-                                        <div className="item__select-box select-label">
-                                            <div className="select-text">
-                                                Санкт-Петербург
+                    {changeTab2 && (
+                        <div className="parameters__body">
+                            <div className="parameters__item-header">
+                                <div className="item__column">
+                                    <div className="item__input-box">
+                                        <div className="item__input_label">
+                                            Ваш город
+                                        </div>
+                                        <div className="item__select">
+                                            <div className="item__select-box select-label">
+                                                <div className="select-text">
+                                                    {chooseСity}
+                                                </div>
+                                                <button
+                                                    className={`select-btn ${
+                                                        cityBtn ? "rotate" : ""
+                                                    }`}
+                                                    onClick={() =>
+                                                        setCityBtn(
+                                                            (e: any) =>
+                                                                (e = !e),
+                                                        )
+                                                    }
+                                                >
+                                                    <Image
+                                                        src={selectBtn}
+                                                        alt="icon"
+                                                    ></Image>
+                                                </button>
                                             </div>
-                                            <button className="select-btn">
-                                                {/* <img src="./img/svg/select-btn.svg" alt="icon"> */}
-                                            </button>
-                                        </div>
-                                        <ul className="item__select-dropdownlist hidden">
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                Москва
-                                            </li>
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                Пермь
-                                            </li>
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                Краснодар
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item__column">
-                                <div className="item__input-box">
-                                    <div className="input__radio-box">
-                                        <div className="form_radio">
-                                            <input
-                                                id="delivery"
-                                                type="radio"
-                                                name="obtaining"
-                                                value="delivery"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="delivery"
-                                                className="radio-label"
-                                            >
-                                                Доставка
-                                            </label>
+                                            {cityBtn && (
+                                                <ul className="item__select-dropdownlist">
+                                                    {city.map((el) => {
+                                                        return (
+                                                            <li
+                                                                className={`item__select-dropdownitem dropdownitem ${
+                                                                    el.city ===
+                                                                    chooseСity
+                                                                        ? "active__city"
+                                                                        : ""
+                                                                }`}
+                                                                key={el.id}
+                                                                onClick={() =>
+                                                                    handlerCity(
+                                                                        el,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {el.city}
+                                                            </li>
+                                                        );
+                                                    })}
+                                                </ul>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="item__input-box">
-                                    <div className="input__radio-box">
-                                        <div className="form_radio">
-                                            <input
-                                                id="pickup"
-                                                type="radio"
-                                                name="obtaining"
-                                                value="pickup"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="pickup"
-                                                className="radio-label"
-                                            >
-                                                Самовывоз
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="parameters__item-body-delivery hidden">
-                            <div className="parameters__item_row">
-                                <div className="item__input-box item__input-box_data">
-                                    <div className="item__input_label">
-                                        Дата
-                                    </div>
-                                    <div className="item__select">
-                                        <div className="item__select-box select-label">
-                                            <div className="select-text">
-                                                Завтра, 11 июля, вс
+                                <div className="item__column">
+                                    <div className="item__input-box">
+                                        <div className="input__radio-box">
+                                            <div className="form_radio">
+                                                <input
+                                                    id="delivery"
+                                                    type="radio"
+                                                    name="obtaining"
+                                                    value="delivery"
+                                                    checked={
+                                                        receiving === "delivery"
+                                                            ? true
+                                                            : false
+                                                    }
+                                                    onChange={(e: any) =>
+                                                        handlerReceiving(e)
+                                                    }
+                                                ></input>
+                                                <div></div>
+                                                <label
+                                                    htmlFor="delivery"
+                                                    className="radio-label"
+                                                >
+                                                    Доставка
+                                                </label>
                                             </div>
-                                            <button className="select-btn">
-                                                {/* <img src="./img/svg/select-btn.svg" alt="icon"> */}
-                                            </button>
                                         </div>
-                                        <ul className="item__select-dropdownlist hidden">
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                Завтра, 11 июля, вс
-                                            </li>
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                Завтра, 11 июля, вс
-                                            </li>
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                Завтра, 11 июля, вс
-                                            </li>
-                                        </ul>
                                     </div>
-                                </div>
-                                <div className="item__input-box item__input-box_data">
-                                    <div className="item__input_label">
-                                        Улица, дом/корпус
-                                    </div>
-                                    <input
-                                        type="text"
-                                        className="item__input input-text"
-                                    ></input>
-                                </div>
-                            </div>
-                            <div className="parameters__item_row">
-                                <div className="item__input-box item__input-box_data">
-                                    <div className="item__input_label">
-                                        Время
-                                    </div>
-                                    <div className="item__select">
-                                        <div className="item__select-box select-label">
-                                            <div className="select-text">
-                                                <span>15:00–18:00</span>{" "}
-                                                <span className="color-gray">
-                                                    (бесплатно)
-                                                </span>
+                                    <div className="item__input-box">
+                                        <div className="input__radio-box">
+                                            <div className="form_radio">
+                                                <input
+                                                    id="pickup"
+                                                    type="radio"
+                                                    name="obtaining"
+                                                    value="pickup"
+                                                    checked={
+                                                        receiving === "pickup"
+                                                            ? true
+                                                            : false
+                                                    }
+                                                    onChange={(e: any) =>
+                                                        handlerReceiving(e)
+                                                    }
+                                                ></input>
+                                                <div></div>
+                                                <label
+                                                    htmlFor="pickup"
+                                                    className="radio-label"
+                                                >
+                                                    Самовывоз
+                                                </label>
                                             </div>
-                                            <button className="select-btn">
-                                                {/* <img src="./img/svg/select-btn.svg" alt="icon"> */}
-                                            </button>
                                         </div>
-                                        <ul className="item__select-dropdownlist hidden">
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                <span>15:00–18:00</span>{" "}
-                                                (бесплатно)
-                                            </li>
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                <span>15:00–18:00</span>{" "}
-                                                (бесплатно)
-                                            </li>
-                                            <li className="item__select-dropdownitem dropdownitem">
-                                                <span>15:00–18:00</span>{" "}
-                                                (бесплатно)
-                                            </li>
-                                        </ul>
                                     </div>
-                                </div>
-                                <div className="item__input-box item__input-box_data">
-                                    <div className="item__input_label">
-                                        Квартира
-                                    </div>
-                                    <input
-                                        type="text"
-                                        className="item__input input-text"
-                                    ></input>
                                 </div>
                             </div>
-                            <div className="parameters__item_row">
-                                <div className="item__input-box item__input-box_comment">
-                                    <div className="item__input_label">
-                                        Комментарий курьеру
+                            {receiving === "delivery" && (
+                                <>
+                                    <div className="parameters__item-body-delivery">
+                                        <div className="parameters__item_row">
+                                            <div className="item__input-box item__input-box_data">
+                                                <div className="item__input_label">
+                                                    Дата
+                                                </div>
+                                                <div className="item__select">
+                                                    <div className="item__select-box select-label">
+                                                        <div className="select-text">
+                                                            {whenDeliver}
+                                                        </div>
+                                                        <button
+                                                            className={`select-btn ${
+                                                                whenDeliverBtn
+                                                                    ? "rotate"
+                                                                    : ""
+                                                            }`}
+                                                            onClick={() =>
+                                                                setWhenDeliverBtn(
+                                                                    (e: any) =>
+                                                                        (e =
+                                                                            !e),
+                                                                )
+                                                            }
+                                                        >
+                                                            <Image
+                                                                src={selectBtn}
+                                                                alt="icon"
+                                                            ></Image>
+                                                        </button>
+                                                    </div>
+                                                    {whenDeliverBtn && (
+                                                        <ul className="item__select-dropdownlist">
+                                                            {whenDelivers.map(
+                                                                (el: any) => (
+                                                                    <li
+                                                                        className={`item__select-dropdownitem dropdownitem ${
+                                                                            el.data ===
+                                                                            whenDeliver
+                                                                                ? "active__data"
+                                                                                : ""
+                                                                        }`}
+                                                                        key={
+                                                                            el.id
+                                                                        }
+                                                                        onClick={(
+                                                                            e: any,
+                                                                        ) =>
+                                                                            handlerData(
+                                                                                el,
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            el.data
+                                                                        }
+                                                                    </li>
+                                                                ),
+                                                            )}
+                                                        </ul>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="item__input-box item__input-box_data">
+                                                <div className="item__input_label">
+                                                    Улица, дом/корпус
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    className="item__input input-text"
+                                                    onChange={handlerStreet}
+                                                ></input>
+                                            </div>
+                                        </div>
+                                        <div className="parameters__item_row">
+                                            <div className="item__input-box item__input-box_data">
+                                                <div className="item__input_label">
+                                                    Время
+                                                </div>
+                                                <div className="item__select">
+                                                    <div className="item__select-box select-label">
+                                                        <div className="select-text">
+                                                            {timeDeliver ===
+                                                            "Выберите время" ? (
+                                                                <span>
+                                                                    {
+                                                                        timeDeliver
+                                                                    }
+                                                                </span>
+                                                            ) : (
+                                                                <>
+                                                                    {
+                                                                        timeDeliver
+                                                                    }
+                                                                    <span className="color-gray">
+                                                                        (бесплатно)
+                                                                    </span>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                        <button
+                                                            className={`select-btn ${
+                                                                timeDeliverBtn
+                                                                    ? "rotate"
+                                                                    : ""
+                                                            }`}
+                                                        >
+                                                            <Image
+                                                                src={selectBtn}
+                                                                alt="icon"
+                                                                onClick={() =>
+                                                                    setTimeDeliverBtn(
+                                                                        (
+                                                                            e: any,
+                                                                        ) =>
+                                                                            (e =
+                                                                                !e),
+                                                                    )
+                                                                }
+                                                            ></Image>
+                                                        </button>
+                                                    </div>
+                                                    {timeDeliverBtn && (
+                                                        <ul className="item__select-dropdownlist">
+                                                            {deliveryTime.map(
+                                                                (el: any) => (
+                                                                    <li
+                                                                        className={`item__select-dropdownitem dropdownitem ${
+                                                                            el.time ===
+                                                                            timeDeliver
+                                                                                ? "active__time"
+                                                                                : ""
+                                                                        }`}
+                                                                        key={
+                                                                            el.id
+                                                                        }
+                                                                        onClick={() =>
+                                                                            handlerTime(
+                                                                                el,
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        <span>
+                                                                            {
+                                                                                el.time
+                                                                            }
+                                                                        </span>{" "}
+                                                                        (бесплатно)
+                                                                    </li>
+                                                                ),
+                                                            )}
+                                                        </ul>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="item__input-box item__input-box_data">
+                                                <div className="item__input_label">
+                                                    Квартира
+                                                </div>
+                                                <input
+                                                    type="number"
+                                                    className="item__input input-text"
+                                                    onChange={handlerFlat}
+                                                ></input>
+                                            </div>
+                                        </div>
+                                        <div className="parameters__item_row">
+                                            <div className="item__input-box item__input-box_comment">
+                                                <div className="item__input_label">
+                                                    Комментарий курьеру
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    className="item__input input-text"
+                                                ></input>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <input
-                                        type="text"
-                                        className="item__input input-text"
-                                    ></input>
-                                </div>
-                            </div>
+                                </>
+                            )}
+                            {receiving === "pickup" && (
+                                <>
+                                    <div className="parameters__item-body-pickup">
+                                        <div className="parameters__item-col parameters__item-col_address">
+                                            <div className="parameters__address-title_box">
+                                                <h5 className="parameters__address-title">
+                                                    Товар доступен в
+                                                    <span
+                                                        style={{
+                                                            padding: "0px 5px",
+                                                        }}
+                                                    >
+                                                        {city.map((el: any) => {
+                                                            return (
+                                                                el.city ===
+                                                                    chooseСity &&
+                                                                el.issueAddress
+                                                                    .length
+                                                            );
+                                                        })}
+                                                    </span>
+                                                    магазинах
+                                                </h5>
+                                            </div>
+                                            <ul className="parameters__address-list">
+                                                {city.map((el: any) => {
+                                                    if (
+                                                        el.city === chooseСity
+                                                    ) {
+                                                        return el.issueAddress.map(
+                                                            (e: any) => {
+                                                                return (
+                                                                    <li
+                                                                        className="parameters__address-item"
+                                                                        key={
+                                                                            e.id
+                                                                        }
+                                                                    >
+                                                                        <div className="form_radio">
+                                                                            <input
+                                                                                id={`address-${e.id}`}
+                                                                                type="radio"
+                                                                                name="address"
+                                                                                value={
+                                                                                    e.street
+                                                                                }
+                                                                                onChange={
+                                                                                    handlerAddressCity
+                                                                                }
+                                                                            ></input>
+                                                                            <div></div>
+                                                                            <label
+                                                                                htmlFor={`address-${e.id}`}
+                                                                                className="radio-label"
+                                                                            >
+                                                                                {
+                                                                                    e.street
+                                                                                }
+                                                                            </label>
+                                                                        </div>
+                                                                        <div className="parameters__address-time">
+                                                                            <span
+                                                                                style={{
+                                                                                    padding:
+                                                                                        "0px 5px",
+                                                                                }}
+                                                                            >
+                                                                                ПН-ВС
+                                                                            </span>
+                                                                            <span
+                                                                                style={{
+                                                                                    padding:
+                                                                                        "0px 5px",
+                                                                                }}
+                                                                            >
+                                                                                09:00
+                                                                                —
+                                                                                22:00
+                                                                            </span>
+                                                                        </div>
+                                                                    </li>
+                                                                );
+                                                            },
+                                                        );
+                                                    }
+                                                })}
+                                            </ul>
+                                        </div>
+                                        <div className="parameters__item-col parameters__item-col_maps">
+                                            <div className="parameters__map-box">
+                                                <div className="map__wrap-photo">
+                                                    <div className="map__block-photo">
+                                                        <Image
+                                                            src={mapImg}
+                                                            alt="карта"
+                                                            className="map__img-photo"
+                                                        ></Image>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
                         </div>
-                        <div className="parameters__item-body-pickup hidden">
-                            <div className="parameters__item-col parameters__item-col_address">
-                                <div className="parameters__address-title_box">
-                                    <h5 className="parameters__address-title">
-                                        Товар доступен в 15 магазинах
-                                    </h5>
-                                </div>
-                                <ul className="parameters__address-list">
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-1"
-                                                type="radio"
-                                                name="address"
-                                                value="address-1"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-1"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-2"
-                                                type="radio"
-                                                name="address"
-                                                value="address-2"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-2"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-3"
-                                                type="radio"
-                                                name="address"
-                                                value="address-3"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-3"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-4"
-                                                type="radio"
-                                                name="address"
-                                                value="address-4"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-4"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-5"
-                                                type="radio"
-                                                name="address"
-                                                value="address-5"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-5"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-6"
-                                                type="radio"
-                                                name="address"
-                                                value="address-6"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-6"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-7"
-                                                type="radio"
-                                                name="address"
-                                                value="address-7"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-7"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-8"
-                                                type="radio"
-                                                name="address"
-                                                value="address-8"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-8"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-9"
-                                                type="radio"
-                                                name="address"
-                                                value="address-9"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-9"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                    <li className="parameters__address-item">
-                                        <div className="form_radio">
-                                            <input
-                                                id="address-10"
-                                                type="radio"
-                                                name="address"
-                                                value="address-10"
-                                            ></input>
-                                            <div></div>
-                                            <label
-                                                htmlFor="address-10"
-                                                className="radio-label"
-                                            >
-                                                г. Санкт-Петербург, Бульвар
-                                                Новаторов, 75
-                                            </label>
-                                        </div>
-                                        <div className="parameters__address-time">
-                                            ПН-ВС 09:00 — 22:00
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="parameters__item-col parameters__item-col_maps">
-                                <div className="parameters__map-box">
-                                    <div className="map__wrap-photo">
-                                        <div className="map__block-photo">
-                                            {/* <picture>
-                                                                                <source srcset="./img/map-3.webp"  class="map__img-photo">
-                                                                                <img src="./img/map-3.png" alt="фото"  className="map__img-photo">
-                                                                            </picture> */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    )}
                 </div>
             )}
             {el.id === "3" && (
-                <div className="parameters__container block-border order-3">
+                <div
+                    className="parameters__container block-border order-3"
+                    key={el.id}
+                >
                     <div className="parameters__header">
-                        <ParamsTitle title={el.title}></ParamsTitle>
+                        <ParamsTitle
+                            title={el.title}
+                            active={changeTab3}
+                        ></ParamsTitle>
                         <div className="parameters__result-box">
                             <ul className="parameters__result_list">
-                                <li className="parameters__result_item parameters__result_payment">
-                                    Наличными
-                                </li>
+                                {!changeTab3 && (
+                                    <>
+                                        <li className="parameters__result_item parameters__result_payment">
+                                            {payment === "Способ оплаты" ? (
+                                                "Выберите способ оплаты"
+                                            ) : (
+                                                <>{payment}</>
+                                            )}
+                                        </li>
+                                    </>
+                                )}
                             </ul>
-                            <BtnParametrs></BtnParametrs>
+                            <BtnParametrs
+                                setChangeTab1={setChangeTab3}
+                            ></BtnParametrs>
                         </div>
                     </div>
-                    <div className="parameters__body hidden">
-                        <div className="item__input-box">
-                            <div className="item__select">
-                                <div className="item__select-box select-label">
-                                    <div className="select-text">Наличными</div>
-                                    <button className="select-btn">
-                                        {/* <img src="./img/svg/select-btn.svg" alt="icon"> */}
-                                    </button>
+                    {changeTab3 && (
+                        <div className="parameters__body">
+                            <div className="item__input-box">
+                                <div className="item__select">
+                                    <div className="item__select-box select-label">
+                                        <div className="select-text">
+                                            {payment}
+                                        </div>
+                                        <button
+                                            className={`select-btn ${
+                                                paymentBtn ? "rotate" : ""
+                                            }`}
+                                            onClick={() =>
+                                                setPaymentBtn(
+                                                    (e: any) => (e = !e),
+                                                )
+                                            }
+                                        >
+                                            <Image
+                                                src={selectBtn}
+                                                alt="icon"
+                                            ></Image>
+                                        </button>
+                                    </div>
+                                    {paymentBtn && (
+                                        <ul className="item__select-dropdownlist">
+                                            {paymentList.map((el: any) => {
+                                                return (
+                                                    <li
+                                                        className={`item__select-dropdownitem dropdownitem ${
+                                                            el.payment ===
+                                                            payment
+                                                                ? "active__payment"
+                                                                : ""
+                                                        }`}
+                                                        key={el.id}
+                                                        onClick={(e: any) =>
+                                                            handlerPayment(el)
+                                                        }
+                                                    >
+                                                        {el.payment}
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    )}
                                 </div>
-                                <ul className="item__select-dropdownlist hidden">
-                                    <li className="item__select-dropdownitem dropdownitem">
-                                        Картой
-                                    </li>
-                                    <li className="item__select-dropdownitem dropdownitem">
-                                        Электронный кошелёк
-                                    </li>
-                                </ul>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             )}
             {el.id === "4" && (
-                <div className="parameters__container block-border order-4">
+                <div
+                    className="parameters__container block-border order-4"
+                    key={el.id}
+                >
                     <div className="parameters__header">
-                        <ParamsTitle title={el.title}></ParamsTitle>
-                        <div className="parameters__result-box hidden">
+                        <ParamsTitle
+                            title={el.title}
+                            active={changeTab4}
+                        ></ParamsTitle>
+                        <div className="parameters__result-box">
                             <ul className="parameters__result_list">
-                                <li className="parameters__result_item"></li>
+                                {!changeTab4 && (
+                                    <>
+                                        <li className="parameters__result_item parameters__result_payment">
+                                            {userNameSession}
+                                            {", "}
+                                            <span>{userEmailSession}</span>
+                                        </li>
+                                    </>
+                                )}
                             </ul>
-                            <BtnParametrs></BtnParametrs>
+                            <BtnParametrs
+                                setChangeTab1={setChangeTab4}
+                            ></BtnParametrs>
                         </div>
                     </div>
-                    <div className="parameters__body">
-                        <div className="parameters__row">
-                            <div className="item__input-box item__input-box_recipient">
-                                <div className="item__input_label">Имя</div>
-                                <input
-                                    type="text"
-                                    placeholder="Например, Иван"
-                                    className="item__input input-text"
-                                ></input>
-                            </div>
-                            <div className="item__input-box item__input-box_recipient">
-                                <div className="item__input_label">Фамилия</div>
-                                <input
-                                    type="text"
-                                    placeholder="Например, Иванов"
-                                    className="item__input input-text"
-                                ></input>
-                            </div>
-                        </div>
-                        <div className="parameters__row">
-                            <div className="item__input-box item__input-box_recipient">
-                                <div className="item__input_label">
-                                    Номер телефона
+                    {changeTab4 && (
+                        <div className="parameters__body">
+                            <div className="parameters__row">
+                                <div className="item__input-box item__input-box_recipient">
+                                    <div className="item__input_label">Имя</div>
+                                    <input
+                                        type="text"
+                                        placeholder="Например, Иван"
+                                        className="item__input input-text"
+                                        defaultValue={`${userNameSession}`}
+                                    ></input>
                                 </div>
-                                <input
-                                    type="text"
-                                    placeholder="+7 (9__) ___-__-__"
-                                    className="item__input input-text"
-                                ></input>
-                            </div>
-                            <div className="item__input-box item__input-box_recipient">
-                                <div className="item__input_label">
-                                    Эл. почта
+                                <div className="item__input-box item__input-box_recipient">
+                                    <div className="item__input_label">
+                                        Фамилия
+                                    </div>
+                                    <input
+                                        type="text"
+                                        placeholder="Например, Иванов"
+                                        className="item__input input-text"
+                                    ></input>
                                 </div>
-                                <input
-                                    type="text"
-                                    placeholder="Например,  smart@gmail.com"
-                                    className="item__input input-text"
-                                ></input>
+                            </div>
+                            <div className="parameters__row">
+                                <div className="item__input-box item__input-box_recipient">
+                                    <div className="item__input_label">
+                                        Номер телефона
+                                    </div>
+                                    <input
+                                        type="tel"
+                                        placeholder="+7 (9__) ___-__-__"
+                                        className="item__input input-text"
+                                    ></input>
+                                </div>
+                                <div className="item__input-box item__input-box_recipient">
+                                    <div className="item__input_label">
+                                        Эл. почта
+                                    </div>
+                                    <input
+                                        type="email"
+                                        placeholder="Например,  smart@gmail.com"
+                                        className="item__input input-text"
+                                        defaultValue={`${userEmailSession}`}
+                                    ></input>
+                                </div>
+                            </div>
+                            <div className="parameters__row">
+                                <div className="popup-form__input-checkbox-box">
+                                    <input
+                                        type="checkbox"
+                                        name="remember"
+                                        // onChange={() => {}}
+                                        id="check-notcallback"
+                                        defaultChecked
+                                        className="popup-entrance__input-checkbox popup-form__input-checkbox"
+                                    ></input>
+                                    <label
+                                        htmlFor="check-notcallback"
+                                        className="popup-entrance__input-checklabel popup-form__input-checklabel"
+                                    >
+                                        Не перезванивать мне для подтверждения
+                                        заказа
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div className="parameters__row">
-                            <div className="popup-form__input-checkbox-box">
-                                <input
-                                    type="checkbox"
-                                    name="remember"
-                                    // onChange={() => {}}
-                                    id="check-notcallback"
-                                    defaultChecked
-                                    className="popup-entrance__input-checkbox popup-form__input-checkbox"
-                                ></input>
-                                <label
-                                    htmlFor="check-notcallback"
-                                    className="popup-entrance__input-checklabel popup-form__input-checklabel"
-                                >
-                                    Не перезванивать мне для подтверждения
-                                    заказа
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                    )}
                 </div>
             )}
         </>
     );
-}
+};
 
 export default CartParamsBox;

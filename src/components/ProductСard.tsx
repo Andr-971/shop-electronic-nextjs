@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 import React from "react"
 import { useState } from "react";
 import Image from "next/image";
@@ -8,47 +8,89 @@ import Favourites from "@/components/Favourites/Favourites"
 import Statistics from "@/components/Statistics/Statistics"
 import backetBtn from "../../public/svg/backet-2.svg";
 import StarRating from "@/components/StarRating/StarRating"
-import {useBasket} from "@/store"
+import {useBasket, useFavourites} from "@/store"
+import OnClickCart from "./OnClickCart";
+import { useCompare } from "@/store";
 
-const ProductСard = ({ el }: any) => {
+const ProductСard = ({
+    el,
+    id,
+    compare = false,
+    favouriteBoolean = false,
+}: any) => {
     const [currentItem, setCurrentItem] = useState();
     const { changeBasket } = useBasket();
+    const { removeCompare } = useCompare();
+    const { removeFavourites } = useFavourites();
 
-    function handlerBacket(e:any, el:any) {
+    function handlerBacket(e: any, el: any) {
         e.preventDefault();
         changeBasket(el);
     }
+    function handlerCompareRemove(e: any, el: any) {
+        e.preventDefault();
+        removeCompare(el.id);
+    }
+    function handlerFavouritesRemove(e: any, el: any) {
+        e.preventDefault();
+        removeFavourites(el.id);
+    }
 
+    // href={el.path}
     return (
         <>
-            <Link href={el.path} className="section-goods__card">
-                <div className="section-goods__card-header photo-box">
-                    <Image
-                        src={el.pathPhotoProduct}
-                        alt="goots-photo"
-                        className="photo-img"
-                    ></Image>
-                    <div className="section-goods__button">
-                        {el.new === "Да" && (
-                            <button className="section-goods__button_new">
-                                Новинка
+            <div className="section-goods__card" key={id}>
+                <Link href={el.path} className="section-goods__card-href">
+                    <div className="section-goods__card-header photo-box">
+                        {compare && (
+                            <button
+                                className="section-goods__button_delete"
+                                onClick={(e: any) =>
+                                    handlerCompareRemove(e, el)
+                                }
+                            >
+                                Убрать
                             </button>
                         )}
-                        {el.hit === "Да" && (
-                            <button className="section-goods__button_hit">
-                                Хит продаж
+                        {favouriteBoolean && (
+                            <button
+                                className="section-goods__button_delete"
+                                onClick={(e: any) =>
+                                    handlerFavouritesRemove(e, el)
+                                }
+                            >
+                                Убрать
                             </button>
                         )}
+                        <Image
+                            src={el.pathPhotoProduct}
+                            alt="goots-photo"
+                            className="photo-img"
+                        ></Image>
+                        <div className="section-goods__button">
+                            {el.new === "Да" && (
+                                <button className="section-goods__button_new">
+                                    Новинка
+                                </button>
+                            )}
+                            {el.hit === "Да" && (
+                                <button className="section-goods__button_hit">
+                                    Хит продаж
+                                </button>
+                            )}
+                        </div>
                     </div>
-                </div>
-                <div className="section-goods__card-content">
-                    <div className="section-goods__chapter">{el.category}</div>
-                    <div className="section-goods__name-goods">
-                        <p className="section-goods__name-txt">
-                            {el.nameProduct}
-                        </p>
+                    <div className="section-goods__card-content">
+                        <div className="section-goods__chapter">
+                            {el.category}
+                        </div>
+                        <div className="section-goods__name-goods">
+                            <p className="section-goods__name-txt">
+                                {el.nameProduct}
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <div className="section-goods__card-footer">
                     <div className="section-goods__comment-rating">
                         <StarRating
@@ -91,22 +133,21 @@ const ProductСard = ({ el }: any) => {
                             </div>
                         </div>
                         <div className="section-goods__favourites-block">
-                            <Favourites id={el.id}></Favourites>
-                            <Statistics id={el.id}></Statistics>
+                            <Favourites el={el}></Favourites>
+                            <Statistics el={el}></Statistics>
                         </div>
                     </div>
                     <div className="section-goods__buttom-block">
-                        <button className="section-goods__buttom">
-                            Купить в 1 клик
-                        </button>
-                        <button className="section-goods__basket"
+                        <OnClickCart el={el}></OnClickCart>
+                        <button
+                            className="section-goods__basket"
                             onClick={(e) => handlerBacket(e, el)}
                         >
                             {<Image src={backetBtn} alt="icon-backet"></Image>}
                         </button>
                     </div>
                 </div>
-            </Link>
+            </div>
         </>
     );
 };

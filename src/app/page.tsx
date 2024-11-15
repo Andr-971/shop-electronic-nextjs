@@ -10,23 +10,43 @@ import iconMenu_8 from "../../public/svg/icon-menu/icon-menu-8.svg"
 import iconMenu_9 from "../../public/svg/icon-menu/icon-menu-9.svg"
 import iconMenu_10 from "../../public/svg/icon-menu/icon-menu-10.svg"
 import iconMenu_11 from "../../public/svg/icon-menu/icon-menu-11.svg"
-import Favourites from "@/components/Favourites/Favourites"
-import Statistics from "@/components/Statistics/Statistics"
 import closeBtn from "../../public/svg/close-btn.svg"
 import SectionTitle from "../components/SectionTitle";
 import mainSliderImg from "../../public/png_webp/main-slider.webp"
-import commitBtn from "../../public/svg/commit-btn.svg";
-import backetBtn from "../../public/svg/backet-2.svg";
 import stock_one_block from "../../public/stock_one_block"
 import stock_two_block from "../../public/stock_two_block"
 import Stock from "@/components/Stock";
-import StarRatingBack from "@/components/StarRatingBack"
 import {PrevNew} from "@/components/PrevNew";
 import { prevNewsTwo } from "../../public/prevNewsTwo"
-import product from "../../public/product"
+import productAll from "../../public/productAll";
+import { splitArray } from "@/services/function"
+import ProductСard from "@/components/ProductСard"
+import GallerySwiper from "@/utils/GallerySwiper/GallerySwiper"
+import {arrayMainGallery} from "../../public/mainGallery"
 
+const optionMainSallery = {
+    controll: false, // true/false Стрелки управления
+    Infinit: true, // true/false Бескоречный слайдер
+    winowsCount: "1", // Ширина окна относительно слайда 1:1 и т.д.
+    animationTime: "0.5", // Время анимации в секундах
+    distanceSlide: {
+        xlg1366: 3,
+        lg1280: 3,
+        md1024: 3,
+        sm768: 3,
+        xs560: 3,
+    }, // Отступ между слайдерами
+    percentShift: 10, // Минимальный сдвиг по экрану %
+    bullets: true, // true/false Кнопки переключения
+    bulletsNumber: false, // true/false Цифры на кнопках
+    bulletsImg: false, // true/false Буллеты с картинками
+    progressBar: false, // true/false Прогресс Бар
+    trekColor: "#f1f1f1",
+    activeTrekColor: "#284af6",
+};
 
 export default function Home() {
+    const productShow = splitArray(productAll, 4);
     return (
         <div className="g-container">
             <div className="select-catalog">
@@ -165,130 +185,23 @@ export default function Home() {
                         </div>
                     </div>
                 </ul>
-                <div className="select-catalog__slider">
-                    <div className="slider__wrap">
-                        <div className="slider">
-                            <div className="slider__box photo-box">
-                                {/* <picture>
-                                    <source srcset="./img/main-slider.webp">
-                                    <img src="./img/main-slider.png" alt="картинка" className="photo-img">
-                                </picture> */}
-                                <Image
-                                    src={mainSliderImg}
-                                    alt="картинка"
-                                    className="photo-img"
-                                ></Image>
-                                <div className="slider__text-box">
-                                    <p>Apple Watch</p>
-                                    <p>Series 6</p>
-                                    <p>уже в наличии</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <GallerySwiper
+                    arrayImg={arrayMainGallery}
+                    option={optionMainSallery}
+                    nameGallery={"main"}
+                ></GallerySwiper>
             </div>
             <section className="section-goods section-hit">
                 <div className="section-goods__inner">
                     <SectionTitle title="Хиты продаж"></SectionTitle>
                     <div className="section-goods-postcard__wrapper">
                         <div className="section-goods-postcard__block recommendation__wrapper">
-                            {product.map((el, i) => {
+                            {productShow[0].map((el: any) => {
                                 return (
-                                    <div className="section-goods__card">
-                                        <div className="section-goods__card-header photo-box">
-                                            <Image
-                                                src={el.pathPhotoProduct}
-                                                alt="goots-photo"
-                                                className="photo-img"
-                                                key={i}
-                                            ></Image>
-                                            <div className="section-goods__button">
-                                                {el.new === "Да" && (
-                                                    <button className="section-goods__button_new">
-                                                        Новинка
-                                                    </button>
-                                                )}
-                                                {el.hit === "Да" && (
-                                                    <button className="section-goods__button_hit">
-                                                        Хит продаж
-                                                    </button>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className="section-goods__card-content">
-                                            <div className="section-goods__chapter">
-                                                {el.category}
-                                            </div>
-                                            <div className="section-goods__name-goods">
-                                                <p className="section-goods__name-txt">
-                                                    {el.nameProduct}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="section-goods__card-footer">
-                                            <div className="section-goods__comment-rating">
-                                                <StarRatingBack
-                                                    starRating={el.starRating}
-                                                ></StarRatingBack>
-                                                <div className="section-goods__comment">
-                                                    <button className="section-goods__comment_icon">
-                                                        <Image
-                                                            src={commitBtn}
-                                                            alt="comment_icon"
-                                                        ></Image>
-                                                    </button>
-                                                    <span className="section-goods__comment_number">
-                                                        ({el.commitNumber})
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="section-goods__price-block">
-                                                <div className="section-goods__price-box">
-                                                    <div className="section-goods__old-price">
-                                                        {el.oldPrice}
-                                                        <span>₽</span>
-                                                    </div>
-                                                    <div className="section-goods__price">
-                                                        {el.price}
-                                                        <span>₽</span>
-                                                    </div>
-                                                    <div className="section-goods__discount">
-                                                        <div className="section-goods__percent">
-                                                            {el.percent}
-                                                            <span>%</span>
-                                                        </div>
-                                                        <div className="section-goods__tire"></div>
-                                                        <div className="section-goods__percent-price">
-                                                            {el.priceFor}
-                                                            <span>₽</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="section-goods__favourites-block">
-                                                    <Favourites
-                                                        id={el.id}
-                                                    ></Favourites>
-                                                    <Statistics
-                                                        id={el.id}
-                                                    ></Statistics>
-                                                </div>
-                                            </div>
-                                            <div className="section-goods__buttom-block">
-                                                <button className="section-goods__buttom">
-                                                    Купить в 1 клик
-                                                </button>
-                                                <button className="section-goods__basket">
-                                                    {
-                                                        <Image
-                                                            src={backetBtn}
-                                                            alt="icon-backet"
-                                                        ></Image>
-                                                    }
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ProductСard
+                                        el={el}
+                                        id={el.id}
+                                    ></ProductСard>
                                 );
                             })}
                         </div>
@@ -300,102 +213,12 @@ export default function Home() {
                     <SectionTitle title="Новинки"></SectionTitle>
                     <div className="section-goods-postcard__wrapper">
                         <div className="section-goods-postcard__block recommendation__wrapper">
-                            {product.map((el, i) => {
+                            {productShow[1].map((el: any) => {
                                 return (
-                                    <div className="section-goods__card">
-                                        <div className="section-goods__card-header photo-box">
-                                            <Image
-                                                src={el.pathPhotoProduct}
-                                                alt="goots-photo"
-                                                className="photo-img"
-                                                key={i}
-                                            ></Image>
-                                            <div className="section-goods__button">
-                                                {el.new === "Да" && (
-                                                    <button className="section-goods__button_new">
-                                                        Новинка
-                                                    </button>
-                                                )}
-                                                {el.hit === "Да" && (
-                                                    <button className="section-goods__button_hit">
-                                                        Хит продаж
-                                                    </button>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className="section-goods__card-content">
-                                            <div className="section-goods__chapter">
-                                                {el.category}
-                                            </div>
-                                            <div className="section-goods__name-goods">
-                                                <p className="section-goods__name-txt">
-                                                    {el.nameProduct}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="section-goods__card-footer">
-                                            <div className="section-goods__comment-rating">
-                                                <StarRatingBack
-                                                    starRating={el.starRating}
-                                                ></StarRatingBack>
-                                                <div className="section-goods__comment">
-                                                    <button className="section-goods__comment_icon">
-                                                        <Image
-                                                            src={commitBtn}
-                                                            alt="comment_icon"
-                                                        ></Image>
-                                                    </button>
-                                                    <span className="section-goods__comment_number">
-                                                        ({el.commitNumber})
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="section-goods__price-block">
-                                                <div className="section-goods__price-box">
-                                                    <div className="section-goods__old-price">
-                                                        {el.oldPrice}
-                                                        <span>₽</span>
-                                                    </div>
-                                                    <div className="section-goods__price">
-                                                        {el.price}
-                                                        <span>₽</span>
-                                                    </div>
-                                                    <div className="section-goods__discount">
-                                                        <div className="section-goods__percent">
-                                                            {el.percent}
-                                                            <span>%</span>
-                                                        </div>
-                                                        <div className="section-goods__tire"></div>
-                                                        <div className="section-goods__percent-price">
-                                                            {el.priceFor}
-                                                            <span>₽</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="section-goods__favourites-block">
-                                                    <Favourites
-                                                        id={el.id}
-                                                    ></Favourites>
-                                                    <Statistics
-                                                        id={el.id}
-                                                    ></Statistics>
-                                                </div>
-                                            </div>
-                                            <div className="section-goods__buttom-block">
-                                                <button className="section-goods__buttom">
-                                                    Купить в 1 клик
-                                                </button>
-                                                <button className="section-goods__basket">
-                                                    {
-                                                        <Image
-                                                            src={backetBtn}
-                                                            alt="icon-backet"
-                                                        ></Image>
-                                                    }
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ProductСard
+                                        el={el}
+                                        id={el.id}
+                                    ></ProductСard>
                                 );
                             })}
                         </div>
@@ -423,102 +246,9 @@ export default function Home() {
                 </div>
                 <div className="section-goods-postcard__wrapper">
                     <div className="section-goods-postcard__block recommendation__wrapper">
-                        {product.map((el, i) => {
+                        {productShow[2].map((el: any) => {
                             return (
-                                <div className="section-goods__card">
-                                    <div className="section-goods__card-header photo-box">
-                                        <Image
-                                            src={el.pathPhotoProduct}
-                                            alt="goots-photo"
-                                            className="photo-img"
-                                            key={i}
-                                        ></Image>
-                                        <div className="section-goods__button">
-                                            {el.new === "Да" && (
-                                                <button className="section-goods__button_new">
-                                                    Новинка
-                                                </button>
-                                            )}
-                                            {el.hit === "Да" && (
-                                                <button className="section-goods__button_hit">
-                                                    Хит продаж
-                                                </button>
-                                            )}
-                                        </div>
-                                    </div>
-                                    <div className="section-goods__card-content">
-                                        <div className="section-goods__chapter">
-                                            {el.category}
-                                        </div>
-                                        <div className="section-goods__name-goods">
-                                            <p className="section-goods__name-txt">
-                                                {el.nameProduct}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="section-goods__card-footer">
-                                        <div className="section-goods__comment-rating">
-                                            <StarRatingBack
-                                                starRating={el.starRating}
-                                            ></StarRatingBack>
-                                            <div className="section-goods__comment">
-                                                <button className="section-goods__comment_icon">
-                                                    <Image
-                                                        src={commitBtn}
-                                                        alt="comment_icon"
-                                                    ></Image>
-                                                </button>
-                                                <span className="section-goods__comment_number">
-                                                    ({el.commitNumber})
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div className="section-goods__price-block">
-                                            <div className="section-goods__price-box">
-                                                <div className="section-goods__old-price">
-                                                    {el.oldPrice}
-                                                    <span>₽</span>
-                                                </div>
-                                                <div className="section-goods__price">
-                                                    {el.price}
-                                                    <span>₽</span>
-                                                </div>
-                                                <div className="section-goods__discount">
-                                                    <div className="section-goods__percent">
-                                                        {el.percent}
-                                                        <span>%</span>
-                                                    </div>
-                                                    <div className="section-goods__tire"></div>
-                                                    <div className="section-goods__percent-price">
-                                                        {el.priceFor}
-                                                        <span>₽</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="section-goods__favourites-block">
-                                                <Favourites
-                                                    id={el.id}
-                                                ></Favourites>
-                                                <Statistics
-                                                    id={el.id}
-                                                ></Statistics>
-                                            </div>
-                                        </div>
-                                        <div className="section-goods__buttom-block">
-                                            <button className="section-goods__buttom">
-                                                Купить в 1 клик
-                                            </button>
-                                            <button className="section-goods__basket">
-                                                {
-                                                    <Image
-                                                        src={backetBtn}
-                                                        alt="icon-backet"
-                                                    ></Image>
-                                                }
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <ProductСard el={el} id={el.id}></ProductСard>
                             );
                         })}
                     </div>
@@ -544,102 +274,9 @@ export default function Home() {
                 </div>
                 <div className="section-goods-postcard__wrapper">
                     <div className="section-goods-postcard__block recommendation__wrapper">
-                        {product.map((el, i) => {
+                        {productShow[3].map((el: any) => {
                             return (
-                                <div className="section-goods__card">
-                                    <div className="section-goods__card-header photo-box">
-                                        <Image
-                                            src={el.pathPhotoProduct}
-                                            alt="goots-photo"
-                                            className="photo-img"
-                                            key={i}
-                                        ></Image>
-                                        <div className="section-goods__button">
-                                            {el.new === "Да" && (
-                                                <button className="section-goods__button_new">
-                                                    Новинка
-                                                </button>
-                                            )}
-                                            {el.hit === "Да" && (
-                                                <button className="section-goods__button_hit">
-                                                    Хит продаж
-                                                </button>
-                                            )}
-                                        </div>
-                                    </div>
-                                    <div className="section-goods__card-content">
-                                        <div className="section-goods__chapter">
-                                            {el.category}
-                                        </div>
-                                        <div className="section-goods__name-goods">
-                                            <p className="section-goods__name-txt">
-                                                {el.nameProduct}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="section-goods__card-footer">
-                                        <div className="section-goods__comment-rating">
-                                            <StarRatingBack
-                                                starRating={el.starRating}
-                                            ></StarRatingBack>
-                                            <div className="section-goods__comment">
-                                                <button className="section-goods__comment_icon">
-                                                    <Image
-                                                        src={commitBtn}
-                                                        alt="comment_icon"
-                                                    ></Image>
-                                                </button>
-                                                <span className="section-goods__comment_number">
-                                                    ({el.commitNumber})
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div className="section-goods__price-block">
-                                            <div className="section-goods__price-box">
-                                                <div className="section-goods__old-price">
-                                                    {el.oldPrice}
-                                                    <span>₽</span>
-                                                </div>
-                                                <div className="section-goods__price">
-                                                    {el.price}
-                                                    <span>₽</span>
-                                                </div>
-                                                <div className="section-goods__discount">
-                                                    <div className="section-goods__percent">
-                                                        {el.percent}
-                                                        <span>%</span>
-                                                    </div>
-                                                    <div className="section-goods__tire"></div>
-                                                    <div className="section-goods__percent-price">
-                                                        {el.priceFor}
-                                                        <span>₽</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="section-goods__favourites-block">
-                                                <Favourites
-                                                    id={el.id}
-                                                ></Favourites>
-                                                <Statistics
-                                                    id={el.id}
-                                                ></Statistics>
-                                            </div>
-                                        </div>
-                                        <div className="section-goods__buttom-block">
-                                            <button className="section-goods__buttom">
-                                                Купить в 1 клик
-                                            </button>
-                                            <button className="section-goods__basket">
-                                                {
-                                                    <Image
-                                                        src={backetBtn}
-                                                        alt="icon-backet"
-                                                    ></Image>
-                                                }
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <ProductСard el={el} id={el.id}></ProductСard>
                             );
                         })}
                     </div>

@@ -61,14 +61,6 @@ const Personal = async () => {
                                                         className="personal__img-photo"
                                                     ></Image>
                                                 )}
-                                                {/* <Image
-                                                    src={session?.user?.image}
-                                                    alt="фото"
-                                                    unoptimized
-                                                    width={200}
-                                                    height={200}
-                                                    className="personal__img-photo"
-                                                ></Image> */}
                                             </div>
                                         </div>
                                     </div>

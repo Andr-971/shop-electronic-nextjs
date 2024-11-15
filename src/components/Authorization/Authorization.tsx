@@ -42,14 +42,16 @@ const Authorization = () => {
                         </button>
                     )}
                 </div>
-                    {user && (
-                        <div className="header__user-menu">
-                            <ul className="header__user-holder">
-                                <UserItemMenu></UserItemMenu>
-                                <ExitButton></ExitButton>
-                            </ul>
-                        </div>
-                    )}
+                {user && (
+                    <div className="header__user-menu">
+                        <ul className="header__user-holder">
+                            <UserItemMenu
+                                handlerShowUserMenu={handlerShowUserMenu}
+                            ></UserItemMenu>
+                            <ExitButton></ExitButton>
+                        </ul>
+                    </div>
+                )}
             </div>
         </>
     );

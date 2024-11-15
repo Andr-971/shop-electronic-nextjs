@@ -2,10 +2,8 @@ import React from "react"
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/../public/svg/logo.svg";
-import search from "@/../public/svg/search-btn.svg";
 import eye from "@/../public/svg/eye-1.svg";
-import heart from "@/../public/svg/heart-1.svg"
-import heartRed from "@/../public/svg/heart-2.svg"
+
 import graph from "@/../public/svg/icon-graph-1.svg"
 import mobHome from "@/../public/svg/mob-menu/mob-home-btn.svg"
 import mobCatalog from "@/../public/svg/mob-menu/mob-catalog-btn.svg"
@@ -17,6 +15,10 @@ import mainMenu from "../../public/mainMenu"
 import CatalogMenu from "./CatalogMenu"
 import Authorization from "@/components/Authorization/Authorization"
 import BtnCart from "@/components/BtnCart/BtnCart"
+import BtnCartNum from "./BtnCartNum/BtnCartNum";
+import ComparisonBtn from "@/components/ComparisonBtn/ComparisonBtn";
+import FavouritesBtn from "./FavouritesBtn/FavouritesBtn";
+import SearchBtn from "./SearchBtn/SearchBtn";
 
 const Header = () => {
 
@@ -44,30 +46,13 @@ const Header = () => {
                             <div className="header__job jobs">
                                 Пн-вс: с 10:00 до 21:00
                             </div>
-                            <button
-                                type="button"
-                                className="header__btn header__btn_first"
-                            >
-                                <Image
-                                    src={search}
-                                    alt="search-icon"
-                                    className="header__btn_search"
-                                ></Image>
-                            </button>
-                            <button type="button" className="header__btn">
+                            <SearchBtn></SearchBtn>
+                            
+                            {/* <button type="button" className="header__btn">
                                 <Image src={eye} alt="eye-icon"></Image>
-                            </button>
-                            <button type="button" className="header__btn">
-                                <Image src={heart} alt="heart-icon"></Image>
-                                <Image
-                                    src={heartRed}
-                                    alt="heart-icon"
-                                    className="hidden"
-                                ></Image>
-                            </button>
-                            <button type="button" className="header__btn">
-                                <Image src={graph} alt="graph-icon"></Image>
-                            </button>
+                            </button> */}
+                            <FavouritesBtn></FavouritesBtn>
+                            <ComparisonBtn/>
                             <BtnCart></BtnCart>
                             <Authorization></Authorization>
                         </div>
@@ -106,6 +91,7 @@ const Header = () => {
                         </li>
                         <li className="mobile-menu__item">
                             <Link href="#" className="mobile-menu__backet">
+                                <BtnCartNum></BtnCartNum>
                                 <Image
                                     src={mobBacket}
                                     alt="backet-icon"

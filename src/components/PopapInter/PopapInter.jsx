@@ -1,5 +1,5 @@
 "use client"
-import { usePopapInterActive } from "@/store";
+import { usePopapInterActive, usePopapRegisterActive } from "@/store";
 import closeBtn from "../../../public/svg/close-btn.svg"
 import Image from "next/image";
 import BtnYandex from "@/components/BtnYandex/BtnYandex"
@@ -10,6 +10,7 @@ import { signIn } from "next-auth/react";
 
 const PopapInter = () => {
     const { changePopapInter, popapInter } = usePopapInterActive();
+    const { changePopapRegister, popapRegister } = usePopapRegisterActive();
     const router = useRouter()
     
     const handlerSubmit = async (e) => {
@@ -25,6 +26,10 @@ const PopapInter = () => {
         } else {
             console.log(res);
         }
+    }
+    function handlerRegister() {
+        changePopapRegister();
+        changePopapInter();
     }
     return (
         <>
@@ -85,12 +90,16 @@ const PopapInter = () => {
                                     Запомнить меня
                                 </label>
                             </div>
-                            <button type="submit" className="popup-entrance__btn popup-form__btn">
+                            <button
+                                type="submit"
+                                className="popup-entrance__btn popup-form__btn"
+                            >
                                 Войти
                             </button>
                             <a
                                 href="#"
                                 className="popup-entrance__link popup__link"
+                                onClick={handlerRegister}
                             >
                                 Зарегистрироваться
                             </a>

@@ -9,4 +9,23 @@ function splitArray(arr, len) {
     return chunks;
 }
 
-export { splitArray };
+// const cases = ["товар", "товара", "товаров"];
+function pluralize(amount, cases) {
+    const indexes = [2, 0, 1, 1, 1, 2];
+    const mod100 = amount % 100;
+    const mod10 = amount % 10;
+    const index =
+        mod100 > 4 && mod100 < 20 ? 2 : indexes[mod10 < 5 ? mod10 : 5];
+    return cases[index];
+}
+// Существует ли нода?
+function inDocument(node) {
+    var context = node.parentNode;
+    while (context !== null) {
+        if (context === document) return true;
+        else context = context.parentNode;
+    }
+    return false;
+}
+
+export { splitArray, pluralize, inDocument };

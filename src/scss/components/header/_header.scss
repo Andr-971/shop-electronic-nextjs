@@ -15,7 +15,7 @@
     justify-content: center;
     width: 20px;
     height: 20px;
-    background-color: red;
+    background-color: rgb(251, 177, 60);
     border-radius: 50%;
 }
 
@@ -190,6 +190,9 @@
         align-items: center;
         // @include margin-LR($fields_sm);
         @include margin-flex(50);
+    }
+    .mobile-menu__item:nth-child( 3 ) {
+        position: relative;
     }
     // .mobile-menu__item {}
     // .mobile-menu__main {}

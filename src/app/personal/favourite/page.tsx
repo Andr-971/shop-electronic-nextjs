@@ -7,12 +7,7 @@ import UserItemMenu from "@/components/UserItemMenu/UserItemMenu"
 import ExitButton from "@/components/ExitButton/ExitButton"
 import selectBtn from "../../../../public/svg/select-btn.svg"
 import Image from "next/image";
-import product from "../../../../public/product"
-import StarRatingBack from "@/components/StarRatingBack";
-import commitBtn from "../../../../public/svg/commit-btn.svg"
-import Statistics from "@/components/Statistics/Statistics";
-import Favourites from "../../../components/Favourites/Favourites";
-import backetBtn from "../../../../public/svg/backet-2.svg"
+import FavouritesArray from "../../../components/FavouritesArray/FavouritesArray";
 
 export const metadata: Metadata = {
     title: "Избранное",
@@ -84,7 +79,8 @@ const Favourite = () => {
                             </div>
                             <div className="section-goods-postcard__wrapper">
                                 <div className="section-goods-postcard__block">
-                                    {product.map((el, i) => {
+                                    <FavouritesArray></FavouritesArray>
+                                    {/* {product.map((el, i) => {
                                         return (
                                             <div className="section-goods__card">
                                                 <div className="section-goods__card-header photo-box">
@@ -174,10 +170,10 @@ const Favourite = () => {
                                                         </div>
                                                         <div className="section-goods__favourites-block">
                                                             <Favourites
-                                                                id={el.id}
+                                                                el={el}
                                                             ></Favourites>
                                                             <Statistics
-                                                                id={el.id}
+                                                                el={el}
                                                             ></Statistics>
                                                         </div>
                                                     </div>
@@ -199,7 +195,7 @@ const Favourite = () => {
                                                 </div>
                                             </div>
                                         );
-                                    })}
+                                    })} */}
                                 </div>
                             </div>
                         </div>

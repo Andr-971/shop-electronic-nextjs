@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./user-item-menu.css"
 
-const UserItemMenu = () => {
+const UserItemMenu = ({ handlerShowUserMenu }:any) => {
     const pathname = usePathname();
     return (
         <>
@@ -15,7 +15,8 @@ const UserItemMenu = () => {
                         <li
                             className={`${
                                 pathname === el.pathUrl ? "active__it-user" : ""
-                            } header__user-item `}
+                                } header__user-item `}
+                            onClick={handlerShowUserMenu}
                         >
                             {el.nameMenu}
                         </li>
@@ -24,6 +25,6 @@ const UserItemMenu = () => {
             })}
         </>
     );
-}
+};
 
 export default UserItemMenu;

@@ -1,4 +1,4 @@
-
+"use client"
 import React from "react"
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -70,7 +70,8 @@ const Select = ({ options }) => {
                             {option.img !== undefined &&
                                 <Image
                                     src={option.img}
-                                    className="dropdownitem__img"
+                                className="dropdownitem__img"
+                                alt="icon"
                                 />
                             }
                             {option.label}

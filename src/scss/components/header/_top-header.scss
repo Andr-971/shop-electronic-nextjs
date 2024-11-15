@@ -19,6 +19,43 @@
     width: 48px;
     cursor: pointer;
 }
+.header__btn_compare {
+    justify-content: center;
+}
+.compare__block, .favourites__block {
+    position: absolute;
+    top: -13px;
+    right: -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(42, 82, 117);
+    border-radius: 50%;
+}
+.compare__num, .favourites__num {
+    font-size: 10px;
+    font-weight: 500;
+    color: #fff;
+    transform: translate(0px, -1px);
+}
+.compare__block {
+    top: -13px;
+    right: -4px;
+}
+.favourites__block {
+    background-color: red;
+}
+.favourites__num {
+    transform: translate(0px, 0px);
+}
+// .basket__block {
+//     background-color: rgb(251, 177, 60);
+// }
+// .basket__num {
+//     // transform: translate(0px, 0px);
+// }
 // .header__btn:last-child {
     // width: apx(99, 80);
 // }
@@ -30,6 +67,10 @@
 }
 .header__btn_user {
     cursor: pointer;
+    margin-left: 10px;
+}
+.header__btn_favourites {
+    justify-content: center;
 }
 .header__btn_comon {
     width: 100%;

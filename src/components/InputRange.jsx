@@ -44,7 +44,7 @@ const InputRange = ({ inputProps }) => {
                         name={inputProps[0].name}
                         size={5}
                         ref={minValue}
-                        value={valPrice[0]}
+                        defaultValue={valPrice[0]}
                         id="from-price"
                     ></input>
                     <label htmlFor="before-price" className="label-last">
@@ -55,7 +55,7 @@ const InputRange = ({ inputProps }) => {
                         name={inputProps[1].name}
                         size={5}
                         ref={maxValue}
-                        value={valPrice[1]}
+                        defaultValue={valPrice[1]}
                         id="before-price"
                     ></input>
                 </div>

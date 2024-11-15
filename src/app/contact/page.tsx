@@ -1,15 +1,23 @@
 // contact
 
 import Breadcrumbs from "@/utils/Breadcrumbs";
+import { Metadata } from "next";
+import TitleH1 from "@/components/TitleH1";
+
+export const metadata: Metadata = {
+    title: "Контакты",
+    description: "Контакты магазина",
+};
 
 export default function Contact() {
     return (
         <>
-            <section className="section-about">
-                <div className="g-container">
-                    <Breadcrumbs></Breadcrumbs>
-                </div>
-            </section>
+            <div className="g-container">
+                <Breadcrumbs></Breadcrumbs>
+                <TitleH1 title="Контакты"></TitleH1>
+                <section className="contact">
+                </section>
+            </div>
         </>
     );
 }
