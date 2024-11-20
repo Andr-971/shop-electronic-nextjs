@@ -6,6 +6,8 @@
 @import "./config/var";
 @import "./config/global";
 @import "./components/components";
+@import "../components/MobMoreMenu/MobMoreMenu";
+@import "../components/MobCatalogMenu/MobCatalogMenu.scss";
 @import "./components/header/_top-header";
 @import "./components/header/_header";
 @import "./components/page/about_us/about-us";

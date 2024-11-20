@@ -27,11 +27,7 @@ const SelectBlocks = ({ el, id, i }: any) => {
     }
     return (
         <>
-            <div
-                className="select__block"
-                style={{ order: hidden ? 0 : -1 }}
-                key={id}
-            >
+            <div className="select__block" style={{ order: hidden ? 0 : -1 }}>
                 <div className="select__header">
                     <div className="select__header_title">{el.title}</div>
                     <button
@@ -53,8 +49,6 @@ const SelectBlocks = ({ el, id, i }: any) => {
                                 id="Polygon 1"
                                 d="M5.39 5.68L10.1 0.67C10.34 0.41 10.16 0 9.81 0L0.4 0C0.05 0 -0.14 0.41 0.1 0.67L4.81 5.68C4.97 5.85 5.23 5.85 5.39 5.68Z"
                                 fill="#070C11"
-                                fill-opacity="1.000000"
-                                fill-rule="evenodd"
                             />
                         </svg>
                     </button>
@@ -66,10 +60,13 @@ const SelectBlocks = ({ el, id, i }: any) => {
                     {el.id > 1 &&
                         el.input.map((el: any, i: number) => {
                             return (
-                                <ImputCheckbox
-                                    propsInput={el}
-                                    id={el.id}
-                                ></ImputCheckbox>
+                                <div key={el.id}>
+                                    <ImputCheckbox
+                                        propsInput={el}
+                                        id={el.id}
+                                        key={el.id}
+                                    ></ImputCheckbox>
+                                </div>
                             );
                         })}
                 </ul>

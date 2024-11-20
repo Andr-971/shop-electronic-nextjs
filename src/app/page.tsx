@@ -24,25 +24,28 @@ import ProductСard from "@/components/ProductСard"
 import GallerySwiper from "@/utils/GallerySwiper/GallerySwiper"
 import {arrayMainGallery} from "../../public/mainGallery"
 
-const optionMainSallery = {
-    controll: false, // true/false Стрелки управления
-    Infinit: true, // true/false Бескоречный слайдер
-    winowsCount: "1", // Ширина окна относительно слайда 1:1 и т.д.
-    animationTime: "0.5", // Время анимации в секундах
+const optionMainGallery = {
+    controll: false, // 👈  true/false Стрелки управления
+    Infinit: true, // 👈  true/false Бескоречный слайдер
+    winowsCount: "1", // 👈  Ширина окна относительно слайда 1:1 и т.д.
+    animationTime: "0.5", // 👈  Время анимации в секундах
     distanceSlide: {
-        xlg1366: 3,
-        lg1280: 3,
-        md1024: 3,
-        sm768: 3,
-        xs560: 3,
-    }, // Отступ между слайдерами
-    percentShift: 10, // Минимальный сдвиг по экрану %
-    bullets: true, // true/false Кнопки переключения
-    bulletsNumber: false, // true/false Цифры на кнопках
-    bulletsImg: false, // true/false Буллеты с картинками
-    progressBar: false, // true/false Прогресс Бар
-    trekColor: "#f1f1f1",
-    activeTrekColor: "#284af6",
+        xlg1366: 2,
+        lg1280: 2,
+        md1024: 2,
+        sm768: 2,
+        xs560: 2,
+    }, // 👈  Отступ между слайдерами
+    percentShift: 10, // 👈  Минимальный сдвиг по экрану %
+    bullets: true, // 👈  true/false Кнопки переключения
+    bulletsNumber: false, // 👈  true/false Цифры на кнопках
+    bulletsImg: false, // 👈  true/false Буллеты с картинками
+    progressBar: false, // 👈  true/false Прогресс Бар
+    trekColor: "#f1f1f1", // 👈 Цвет трека прогресбара
+    activeTrekColor: "#284af6", // 👈 Цвет активного трека прогресбара
+    autoScrollingleft: false, // 👈 Автоперелистывание в лево
+    autoScrollingRigth: false, // 👈 Автоперелистывание в право
+    autoScrollingInterval: 4, // 👈 Интервал перелистывания в секундах
 };
 
 export default function Home() {
@@ -187,7 +190,7 @@ export default function Home() {
                 </ul>
                 <GallerySwiper
                     arrayImg={arrayMainGallery}
-                    option={optionMainSallery}
+                    option={optionMainGallery}
                     nameGallery={"main"}
                 ></GallerySwiper>
             </div>
@@ -201,6 +204,7 @@ export default function Home() {
                                     <ProductСard
                                         el={el}
                                         id={el.id}
+                                        key={el.id}
                                     ></ProductСard>
                                 );
                             })}

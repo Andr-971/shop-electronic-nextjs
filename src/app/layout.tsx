@@ -26,7 +26,7 @@ export default function RootLayout({
     return (
         <html lang="ru">
             <Head>
-                <link rel="icon" href="/favicon.ico" type="image/favicon.ico" />
+                <link rel="icon" href="/static/favicon.ico" type="image/favicon.ico" />
             </Head>
             <body>
                 <Providers>

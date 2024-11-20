@@ -11,11 +11,11 @@ const UserItemMenu = ({ handlerShowUserMenu }:any) => {
         <>
             {userMenu.map((el: any) => {
                 return (
-                    <Link href={el.pathUrl}>
+                    <Link href={el.pathUrl} key={el.id}>
                         <li
                             className={`${
                                 pathname === el.pathUrl ? "active__it-user" : ""
-                                } header__user-item `}
+                            } header__user-item `}
                             onClick={handlerShowUserMenu}
                         >
                             {el.nameMenu}

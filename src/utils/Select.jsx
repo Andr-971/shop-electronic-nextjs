@@ -47,8 +47,6 @@ const Select = ({ options }) => {
                         <path
                             d="M5.39 5.68L10.1 0.67C10.34 0.41 10.16 0 9.81 0L0.4 0C0.05 0 -0.14 0.41 0.1 0.67L4.81 5.68C4.97 5.85 5.23 5.85 5.39 5.68Z"
                             fill="#070C11"
-                            fill-opacity="1.000000"
-                            fill-rule="evenodd"
                         />
                     </svg>
                 </button>

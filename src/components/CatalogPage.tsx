@@ -137,13 +137,12 @@ const CatalogPage = ({ arrayPage }: any) => {
                     <SelectSubmit></SelectSubmit>
                     {selectBlock.map((el: any, i: number) => {
                         return (
-                            <>
-                                <SelectBlocks
-                                    id={el.id}
-                                    el={el}
-                                    i={i}
-                                ></SelectBlocks>
-                            </>
+                            <SelectBlocks
+                                id={el.id}
+                                el={el}
+                                i={i}
+                                key={el.id}
+                            ></SelectBlocks>
                         );
                     })}
                 </div>
@@ -164,7 +163,7 @@ const CatalogPage = ({ arrayPage }: any) => {
                             <ul className="select__list_btn">
                                 {filterValue.map((el: any, index: number) => {
                                     return (
-                                        <>
+                                        <div key={el.id}>
                                             {el.id === 1 ? (
                                                 <div
                                                     className="select__btn"
@@ -228,7 +227,7 @@ const CatalogPage = ({ arrayPage }: any) => {
                                                     </div>
                                                 </div>
                                             )}
-                                        </>
+                                        </div>
                                     );
                                 })}
                                 {filterValue.length > 0 && (
@@ -254,6 +253,7 @@ const CatalogPage = ({ arrayPage }: any) => {
                                     id={el.id}
                                     el={el}
                                     favouriteBoolean={el.favouriteBoolean}
+                                    key={el.id}
                                 ></ProductСard>
                             );
                         })}

@@ -131,6 +131,18 @@ export const usePopapSearchActive = create((set, get) => ({
         set({ popapSearch: !get().popapSearch });
     }
 }))
+export const useMobMenuMore = create((set, get) => ({
+    mobMenuMore: false,
+    changeMobMenuMore() {
+        set({ mobMenuMore: !get().mobMenuMore });
+    },
+}));
+export const useMobMenuCatalog = create((set, get) => ({
+    mobMenuCatalog: false,
+    changeMobMenuCatalog() {
+        set({ mobMenuCatalog: !get().mobMenuCatalog });
+    },
+}));
 
 export const usePopapBacketActive = create((set, get) => ({
     popapBacket: false,

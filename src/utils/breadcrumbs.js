@@ -41,11 +41,11 @@ const Breadcrumbs = () => {
                     <Link href="/" className="bread-crumbs__link">
                         Главная
                     </Link>
-                    {breadcrumbs.map((breadcrumb) => {
+                    {breadcrumbs.map((breadcrumb, i) => {
                         return (
                             <Link
                                 href={breadcrumb.href}
-                                key={breadcrumb.href}
+                                key={i}
                                 className="bread-crumbs__link"
                             >
                                 {breadcrumb.breadcrumb}

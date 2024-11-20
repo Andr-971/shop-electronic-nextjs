@@ -30,7 +30,6 @@ const ImputCheckbox = ({ propsInput, id }: any) => {
         };
         changeRadioInput(newParam)
     }
-
     return (
         <>
             <li className="select__item"  key={id}>

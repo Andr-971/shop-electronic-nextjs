@@ -64,7 +64,7 @@ export default function Wholesale() {
                             </div>
                             <div className="form__checked-box">
                                 <div className="popup-form__input-checkbox-box">
-                                    <input type="checkbox" name="remember" id="check-confendiality" checked className="popup-entrance__input-checkbox popup-form__input-checkbox"></input>
+                                    <input type="checkbox" name="remember" id="check-confendiality" defaultChecked className="popup-entrance__input-checkbox popup-form__input-checkbox"></input>
                                     <label htmlFor="check-confendiality" className="popup-entrance__input-checklabel popup-form__input-checklabel">Отправляя данную форму вы соглашаетесь с политикой конфиденциальности</label>
                                 </div>
                             </div>

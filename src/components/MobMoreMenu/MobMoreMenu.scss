@@ -1,0 +1,57 @@
+
+
+@include lg-block() {
+    
+    .mobPopupMenu{
+        background-color: $blue237;
+        // width: 100%;
+        position: fixed;
+        bottom: 67px;
+        left: 0px;
+        right: 0px;
+        top: 20px;
+        padding-top: apx(40, 20);
+        padding-left: apx(40, 20);
+        padding-right: apx(40, 20);
+        padding-bottom: 0px;
+        border-radius: 8px 8px 0px 0px;
+        .stocks__title-box {
+            margin: 0px 0px 0px 0px;
+        }
+    }
+    .mobPopupMenu__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .mobPopupMenu__header_close {
+        color: red;
+        font-size: 35px;
+        font-weight: 200;
+    }
+    .mobPopupMenu__icon-block{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 10px 0px;
+        .header__btn:not(:last-child) {
+            display: block;
+        }
+    }
+    // .mobPopupMenu__list{}
+    .mobPopupMenu__item{
+        padding: 15px 0px;
+        border-bottom: 1px solid rgb(200, 202, 203);
+    }
+    .mobPopupMenu__menu-text{
+        color: rgb(7, 12, 17);
+        font-family: Exo 2;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+}

@@ -7,6 +7,7 @@
 // .catalog__inner {}
 .catalog__block-page {
     display: flex;
+    transition: all 0.7s ease 1s;
 }
 .catalog__select {
     background-color: #fff;

@@ -2,33 +2,27 @@ import React from "react"
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/../public/svg/logo.svg";
-import eye from "@/../public/svg/eye-1.svg";
-
-import graph from "@/../public/svg/icon-graph-1.svg"
-import mobHome from "@/../public/svg/mob-menu/mob-home-btn.svg"
-import mobCatalog from "@/../public/svg/mob-menu/mob-catalog-btn.svg"
-import mobBacket from "@/../public/svg/mob-menu/mob-backet-btn.svg";
-import mobSearch from "@/../public/svg/mob-menu/mob-search-btn.svg";
-import mobMore from "@/../public/svg/mob-menu/mob-more-btn.svg"
+import MobMoreMenu from "@/components/MobMoreMenu/MobMoreMenu"
 import { HeaderMenu } from "./HeaderMenu";
 import mainMenu from "../../public/mainMenu"
 import CatalogMenu from "./CatalogMenu"
 import Authorization from "@/components/Authorization/Authorization"
 import BtnCart from "@/components/BtnCart/BtnCart"
-import BtnCartNum from "./BtnCartNum/BtnCartNum";
 import ComparisonBtn from "@/components/ComparisonBtn/ComparisonBtn";
 import FavouritesBtn from "./FavouritesBtn/FavouritesBtn";
 import SearchBtn from "./SearchBtn/SearchBtn";
+import MobileMenuBottom from "@/components/MobileMenuBottom/MobileMenuBottom"
+import MobCatalogMenu from "@/components/MobCatalogMenu/MobCatalogMenu"
 
 const Header = () => {
-
+    
     return (
         <>
             <header className="header">
                 <div className="g-container">
                     <nav className="header__inner">
                         <Link href="/" className="logo">
-                            <Image src={logo} alt="logo" />
+                            <Image src={logo} alt="logo" priority={true} />
                         </Link>
                         <div className="header__holder">
                             <Link
@@ -47,12 +41,8 @@ const Header = () => {
                                 Пн-вс: с 10:00 до 21:00
                             </div>
                             <SearchBtn></SearchBtn>
-                            
-                            {/* <button type="button" className="header__btn">
-                                <Image src={eye} alt="eye-icon"></Image>
-                            </button> */}
                             <FavouritesBtn></FavouritesBtn>
-                            <ComparisonBtn/>
+                            <ComparisonBtn />
                             <BtnCart></BtnCart>
                             <Authorization></Authorization>
                         </div>
@@ -74,45 +64,9 @@ const Header = () => {
                         </ul>
                     </div>
                 </nav>
-                <nav className="mobile-menu__bottom">
-                    <ul className="mobile-menu__list">
-                        <li className="mobile-menu__item">
-                            <Link href="#" className="mobile-menu__main">
-                                <Image src={mobHome} alt="home-icon"></Image>
-                            </Link>
-                        </li>
-                        <li className="mobile-menu__item">
-                            <Link href="#" className="mobile-menu__catalog">
-                                <Image
-                                    src={mobCatalog}
-                                    alt="burger-btn"
-                                ></Image>
-                            </Link>
-                        </li>
-                        <li className="mobile-menu__item">
-                            <Link href="#" className="mobile-menu__backet">
-                                <BtnCartNum></BtnCartNum>
-                                <Image
-                                    src={mobBacket}
-                                    alt="backet-icon"
-                                ></Image>
-                            </Link>
-                        </li>
-                        <li className="mobile-menu__item">
-                            <Link href="#" className="mobile-menu__search">
-                                <Image
-                                    src={mobSearch}
-                                    alt="search-icon"
-                                ></Image>
-                            </Link>
-                        </li>
-                        <li className="mobile-menu__item">
-                            <Link href="#" className="mobile-menu__more">
-                                <Image src={mobMore} alt="more-icon"></Image>
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
+                <MobCatalogMenu></MobCatalogMenu>
+                <MobMoreMenu></MobMoreMenu>
+                <MobileMenuBottom></MobileMenuBottom>
             </header>
         </>
     );

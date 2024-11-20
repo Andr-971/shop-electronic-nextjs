@@ -8,13 +8,13 @@ import Image from "next/image";
 const PromotionDetails = () => {
     const pathname = usePathname();
     return (
-        <>
+        <div>
             {stock_all_block.map((el, i) => {
                 return (
                     el.path === pathname && (
-                        <>
-                            <TitleH1 title={el.title} key={el.id}></TitleH1>
-                            <div className="stock__inner" key={el.id}>
+                        <div key={el.id}>
+                            <TitleH1 title={el.title}></TitleH1>
+                            <div className="stock__inner">
                                 <div className="stock__block">
                                     <div className="stock__col">
                                         <p>{el.subtitle}</p>
@@ -88,11 +88,11 @@ const PromotionDetails = () => {
                                     </div>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     )
                 );
             })}
-        </>
+        </div>
     );
 };
 

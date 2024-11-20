@@ -43,47 +43,7 @@ export default function Compare() {
                                         </label>
                                     </div>
                                 </div>
-                                <div className="compare__product">
-                                    <div className="compare__product-nav">
-                                        <button className="compare__product-btn compare__product-btn_left">
-                                            <svg
-                                                width="5.815430"
-                                                height="10.212891"
-                                                viewBox="0 0 5.81543 10.2129"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                // xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            >
-                                                <path
-                                                    id="slider-left"
-                                                    d="M0.12 4.81L5.14 0.1C5.39 -0.13 5.81 0.05 5.81 0.4L5.81 9.81C5.81 10.16 5.39 10.34 5.14 10.1L0.12 5.39C-0.05 5.24 -0.05 4.97 0.12 4.81Z"
-                                                    fill="#EAEAF0"
-                                                    fill-opacity="1.000000"
-                                                    fill-rule="evenodd"
-                                                />
-                                            </svg>
-                                        </button>
-                                        <button className="compare__product-btn compare__product-btn_right">
-                                            <svg
-                                                width="5.815430"
-                                                height="10.212891"
-                                                viewBox="0 0 5.81543 10.2129"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                // xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            >
-                                                <path
-                                                    id="slider-right"
-                                                    d="M5.68 4.81L0.67 0.1C0.41 -0.13 0 0.05 0 0.4L0 9.81C0 10.16 0.41 10.34 0.67 10.1L5.68 5.39C5.85 5.24 5.85 4.97 5.68 4.81Z"
-                                                    fill="#070C11"
-                                                    fill-opacity="1.000000"
-                                                    fill-rule="evenodd"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div className="compare__product__wrapper">
-                                        <CompareArray></CompareArray>
-                                    </div>
-                                </div>
+                                <CompareArray></CompareArray>
                             </div>
                             <CompareTable></CompareTable>
                         </div>
