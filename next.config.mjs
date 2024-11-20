@@ -7,23 +7,19 @@ const target = devMode ? "web" : "browserslist";
 const devtool = devMode ? "source-map" : undefined;
 
 const nextConfig = {
+    output: "export",
+    basePath: "/shop-electronic-nextjs",
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-        
-        config.module.rules.push(
-            {
-                test: /\.(?:js|mjs|cjs)$/i,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: [
-                            ["@babel/preset-env", { targets: "defaults" }],
-                        ],
-                    },
+        config.module.rules.push({
+            test: /\.(?:js|mjs|cjs)$/i,
+            exclude: /node_modules/,
+            use: {
+                loader: "babel-loader",
+                options: {
+                    presets: [["@babel/preset-env", { targets: "defaults" }]],
                 },
             },
-            
-        );
+        });
         return config;
     },
 };

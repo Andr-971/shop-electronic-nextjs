@@ -1,12 +1,18 @@
 import Breadcrumbs from "@/utils/Breadcrumbs";
 import PromotionDetails from "@/components/PromotionDetails";
 import routeName from "../../../../public/routeName";
+import stock_all_block from "../../../../public/stock_all_block";
 
 type StockProps = {
     params: {
         stock: string;
     };
 };
+export async function generateStaticParams() {
+    return stock_all_block.map((el: any) => {
+        return el.path
+    });
+}
 export async function generateMetadata({ params: { stock } }: StockProps) {
     let description;
     routeName.map((el) => {

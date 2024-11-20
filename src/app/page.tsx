@@ -43,7 +43,7 @@ const optionMainGallery = {
     progressBar: false, // 👈  true/false Прогресс Бар
     trekColor: "#f1f1f1", // 👈 Цвет трека прогресбара
     activeTrekColor: "#284af6", // 👈 Цвет активного трека прогресбара
-    autoScrollingleft: false, // 👈 Автоперелистывание в лево
+    autoScrollingleft: true, // 👈 Автоперелистывание в лево
     autoScrollingRigth: false, // 👈 Автоперелистывание в право
     autoScrollingInterval: 4, // 👈 Интервал перелистывания в секундах
 };

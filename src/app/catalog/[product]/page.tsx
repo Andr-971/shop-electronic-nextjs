@@ -11,6 +11,13 @@ type ProductProps = {
         product: string;
     };
 };
+// Return a list of `params` to populate the [slug] dynamic segment
+export async function generateStaticParams() {
+    const catalogArray = await getData();
+    return catalogArray.map((el: any) => {
+        return el.path
+    });
+}
 export async function generateMetadata({ params: { product } }: ProductProps) {
     let description;
     routeName.map((el) => {
@@ -31,6 +38,7 @@ export async function generateMetadata({ params: { product } }: ProductProps) {
 
 export default async function Products({ params: { product } }: ProductProps) {
     const catalogArray = await getData();
+
     return (
         <>
             <div className="g-container">
