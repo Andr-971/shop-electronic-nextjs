@@ -107,23 +107,19 @@ const Footer = () => {
                     <hr className="footer__line"></hr>
                     <div className="footer__bottom-inner">
                         <div className="footer__bottom-item footer__bottom-item_first">
-                            SmartТехника © 2021 Все права защищены
+                            SmartТехника © 2024 Все права защищены
                         </div>
                         <div className="footer__bottom-item">
                             <a href="#" className="icon-box">
-                                {/* <img src="./img/svg/social/facebook.svg" className="svg-facebook-dims" alt="facebook"> */}
                                 <Image src={facebook} alt="facebook"></Image>
                             </a>
                             <a href="#" className="icon-box">
-                                {/* <img src="./img/svg/social/instagram.svg" className="svg-instagram-dims" alt="instagram"> */}
                                 <Image src={instagram} alt="instagram"></Image>
                             </a>
                             <a href="#" className="icon-box">
-                                {/* <img src="./img/svg/social/twitter.svg" className="svg-twitter-dims" alt="twitter"> */}
                                 <Image src={twitter} alt="twitter"></Image>
                             </a>
                             <a href="#" className="icon-box">
-                                {/* <img src="./img/svg/social/vk.svg" className="svg-vk-dims" alt="vk"> */}
                                 <Image src={vk} alt="vk"></Image>
                             </a>
                         </div>

@@ -13,7 +13,7 @@ const CompareTable = () => {
                         <div className="compare-table__body">
                             {compare.map((el: any) => {
                                 return (
-                                    <div className="compare-table__body_item">
+                                    <div className="compare-table__body_item" key={el.id}>
                                         {el.category}
                                     </div>
                                 );
@@ -28,7 +28,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.maxSpeed}
                                 </div>
                             );
@@ -42,7 +42,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.enginePower}
                                 </div>
                             );
@@ -56,7 +56,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.mileage}
                                 </div>
                             );
@@ -70,7 +70,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.frontBrake}
                                 </div>
                             );
@@ -82,7 +82,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.cruiseControl}
                                 </div>
                             );
@@ -96,7 +96,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.airbag}
                                 </div>
                             );
@@ -110,7 +110,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.parkingAssistance}
                                 </div>
                             );
@@ -124,7 +124,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.navigationSystem}
                                 </div>
                             );
@@ -138,7 +138,7 @@ const CompareTable = () => {
                     <div className="compare-table__body">
                         {compare.map((el: any) => {
                             return (
-                                <div className="compare-table__body_item">
+                                <div className="compare-table__body_item" key={el.id}>
                                     {el.fogLight}
                                 </div>
                             );

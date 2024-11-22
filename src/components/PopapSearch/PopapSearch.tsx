@@ -57,6 +57,7 @@ const PopapSearch = () => {
                                                 onClick={(e) =>
                                                     handlerItenSearch(e, el)
                                                 }
+                                                key={el.id}
                                             >
                                                 <span className="result_item__text">
                                                     {el.title}

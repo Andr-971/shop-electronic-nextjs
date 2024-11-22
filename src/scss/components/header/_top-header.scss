@@ -46,19 +46,13 @@
 }
 .favourites__block {
     background-color: red;
+    @include lg-block() {
+        transform: translate(-18px, 0px);
+    }
 }
 .favourites__num {
     transform: translate(0px, 0px);
 }
-// .basket__block {
-//     background-color: rgb(251, 177, 60);
-// }
-// .basket__num {
-//     // transform: translate(0px, 0px);
-// }
-// .header__btn:last-child {
-    // width: apx(99, 80);
-// }
 .header__btn_first {
     width: 107px;
     border-bottom: 1px solid $grey200;
@@ -69,9 +63,7 @@
     cursor: pointer;
     margin-left: 10px;
 }
-.header__btn_favourites {
-    justify-content: center;
-}
+// .header__btn_favourites {}
 .header__btn_comon {
     width: 100%;
     height: apx(48, 40);

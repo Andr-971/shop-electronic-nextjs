@@ -2,22 +2,25 @@
 import Breadcrumbs from "@/utils/Breadcrumbs";
 import routeName from "../../../../public/routeName";
 import ProductCardDetall from "@/components/ProductCardDetall"
-import {getData} from "../../api/catalog/[product]/route"
-import { revalidatePath } from "next/cache";
+// import {getData} from "../../api/catalog/[product]/route"
+// import { revalidatePath } from "next/cache";
 // revalidatePath("../../api/catalog/[product]/route");
+import productAll from "../../../../public/productAll"
+import {getData} from "@/services/query"
 
 type ProductProps = {
     params: {
         product: string;
     };
 };
-// Return a list of `params` to populate the [slug] dynamic segment
+// Вернуть список `params`, чтобы заполнить динамический сегмент [slug]
 export async function generateStaticParams() {
-    const catalogArray = await getData();
-    return catalogArray.map((el: any) => {
-        return el.path
+    // const catalogArray = await getData();
+    return productAll.map((el: any) => {
+        return el.path;
     });
 }
+
 export async function generateMetadata({ params: { product } }: ProductProps) {
     let description;
     routeName.map((el) => {
@@ -36,9 +39,9 @@ export async function generateMetadata({ params: { product } }: ProductProps) {
     };
 }
 
-export default async function Products({ params: { product } }: ProductProps) {
+export default async function Products() {
+    // { params: { product } }: ProductProps
     const catalogArray = await getData();
-
     return (
         <>
             <div className="g-container">

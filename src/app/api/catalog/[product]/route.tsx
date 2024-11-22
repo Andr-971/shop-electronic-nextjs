@@ -1,13 +1,12 @@
 
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 import productAll from "../../../../../public/productAll";
-import {catalogAllApi} from "../../../../../public/path"
+// import {catalogAllApi} from "../../../../../public/path"
 import { splitArray } from "../../../../services/function" // Разбивка массива функция
-import { revalidatePath } from "next/cache";
+import {getData} from "@/services/query"
 
-// Отправка GET json на клиента
-export async function GET(req: Request) {
+//* Отправка GET json на клиента
+export async function GET(req:Request) {
     const { searchParams } = new URL(req.url); // Получение url из запроса
 
     const query = searchParams.get("s"); // Определить get параметр ?s=
@@ -23,21 +22,11 @@ export async function GET(req: Request) {
     return NextResponse.json(currentProduct);
 }
 
-export async function getData() {
-    let response = await fetch(`${catalogAllApi}`, {
-        next: {
-            revalidate: 60
-        }
-    });
-    if (response.ok) {
-        return response.json();
-    }
-}
-
-// Получение POST на сервере
-export async function POST(req: Request) {
-    const page: any = await req.json(); // Пришло с клиента
-    const catalogArray = await getData(); // Запрос с сервера на массив
+//* Получение POST на сервере
+export async function POST(req:Request) {
+    const page = await req.json(); // Пришло с клиента
+    const catalogArray = productAll; // Запрос с сервера на массив
+    // const catalogArray = await getData(); // Запрос с сервера на массив
     const arrayPage = splitArray(catalogArray, 6); // Разбивка массива на страницы по 6
 
     return NextResponse.json(arrayPage[+page.page - 1]);
