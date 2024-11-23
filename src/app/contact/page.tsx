@@ -1,8 +1,8 @@
 // contact
 
-import Breadcrumbs from "@/utils/Breadcrumbs";
+import Breadcrumbs from "../../utils/Breadcrumbs";
 import { Metadata } from "next";
-import TitleH1 from "@/components/TitleH1";
+import TitleH1 from "../../components/TitleH1";
 
 export const metadata: Metadata = {
     title: "Контакты",

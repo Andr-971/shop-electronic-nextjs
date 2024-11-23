@@ -1,13 +1,11 @@
 
-import Breadcrumbs from "@/utils/Breadcrumbs";
+import Breadcrumbs from "../../utils/Breadcrumbs";
 import { Metadata } from "next";
-import TitleH1 from "@/components/TitleH1";
-import Image from "next/image";
-import selectBtn from "../../../public/svg/select-btn.svg"
-import Select from "@/utils/Select";
+import TitleH1 from "../../components/TitleH1";
+import Select from "../../utils/Select";
 import nameCategory from "../../../public/categoryProducts";
-import CompareArray from "@/components/CompareArray/CompareArray"
-import CompareTable from "@/components/CompareTable/CompareTable"
+import CompareArray from "../../components/CompareArray/CompareArray"
+import CompareTable from "../../components/CompareTable/CompareTable"
 
 
 export const metadata: Metadata = {

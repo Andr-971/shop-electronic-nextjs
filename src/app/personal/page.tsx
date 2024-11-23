@@ -1,12 +1,12 @@
 import React from "react";
 import { Metadata } from "next";
-import Breadcrumbs from "@/utils/Breadcrumbs";
-import TitleH1 from "@/components/TitleH1";
+import Breadcrumbs from "../../utils/Breadcrumbs";
+import TitleH1 from "../../components/TitleH1";
 import { getServerSession } from "next-auth";
 import { authConfig } from "../../configs/auth";
-import UserItemMenu from "@/components/UserItemMenu/UserItemMenu"
-import ExitButton from "@/components/ExitButton/ExitButton"
-import TitleH2 from "@/components/TitleH2";
+import UserItemMenu from "../../components/UserItemMenu/UserItemMenu"
+import ExitButton from "../../components/ExitButton/ExitButton"
+import TitleH2 from "../../components/TitleH2";
 import Image from "next/image";
 import userDefault from "../../../public/png_webp/user-default.webp"
 

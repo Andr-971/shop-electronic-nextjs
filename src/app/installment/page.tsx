@@ -1,6 +1,6 @@
-import Breadcrumbs from "@/utils/Breadcrumbs";
+import Breadcrumbs from "../../utils/Breadcrumbs";
 import { Metadata } from "next";
-import TitleH1 from "@/components/TitleH1";
+import TitleH1 from "../../components/TitleH1";
 import Image from "next/image";
 import pucturePayment1 from "../../../public/png_webp/pucture-payment.webp"
 import pucturePayment2 from "../../../public/png_webp/pucture-payment-2.webp"

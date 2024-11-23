@@ -1,12 +1,12 @@
 import { Metadata } from "next";
-import TitleH1 from "@/components/TitleH1";
+import Breadcrumbs from "../../../utils/Breadcrumbs";
+import TitleH1 from "../../../components/TitleH1";
 
 export const metadata: Metadata = {
     title: "Оптом",
     description: "Выгодные условия для оптовой покупки",
 };
 
-import Breadcrumbs from "@/utils/Breadcrumbs";
 
 export default function Wholesale() {
     return (

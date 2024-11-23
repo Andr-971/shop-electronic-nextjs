@@ -1,7 +1,7 @@
-import Breadcrumbs from "@/utils/Breadcrumbs.js";
+import Breadcrumbs from "../../utils/Breadcrumbs";
 import { Metadata } from "next";
-import TitleH1 from "@/components/TitleH1";
-import StockPage from "@/components/StockPage";
+import TitleH1 from "../../components/TitleH1";
+import StockPage from "../../components/StockPage";
 import {stocksApi} from "../../../public/path"
 import { splitArray } from "../../services/function";
 

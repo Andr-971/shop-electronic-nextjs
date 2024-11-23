@@ -14,13 +14,13 @@ import closeBtn from "../../public/svg/close-btn.svg"
 import SectionTitle from "../components/SectionTitle";
 import stock_one_block from "../../public/stock_one_block"
 import stock_two_block from "../../public/stock_two_block"
-import Stock from "@/components/Stock";
-import {PrevNew} from "@/components/PrevNew";
+import Stock from "../components/Stock";
+import {PrevNew} from "../components/PrevNew";
 import { prevNewsTwo } from "../../public/prevNewsTwo"
 import productAll from "../../public/productAll";
-import { splitArray } from "@/services/function"
-import ProductСard from "@/components/ProductСard"
-import GallerySwiper from "@/utils/GallerySwiper/GallerySwiper"
+import { splitArray } from "../services/function"
+import ProductСard from "../components/ProductСard"
+import GallerySwiper from "../utils/GallerySwiper/GallerySwiper"
 import {arrayMainGallery} from "../../public/mainGallery"
 
 const optionMainGallery = {

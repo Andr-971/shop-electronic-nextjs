@@ -1,5 +1,5 @@
-import Breadcrumbs from "@/utils/Breadcrumbs";
-import PromotionDetails from "@/components/PromotionDetails";
+import Breadcrumbs from "../../../utils/Breadcrumbs";
+import PromotionDetails from "../../../components/ProductCardDetall";
 import routeName from "../../../../public/routeName";
 import stock_all_block from "../../../../public/stock_all_block";
 

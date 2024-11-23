@@ -1,10 +1,10 @@
 
 import React from "react"
 import { Metadata } from "next";
-import Breadcrumbs from "@/utils/Breadcrumbs"
-import TitleH1 from "@/components/TitleH1";
-import UserItemMenu from "@/components/UserItemMenu/UserItemMenu";
-import ExitButton from "@/components/ExitButton/ExitButton";
+import Breadcrumbs from "../../../utils/Breadcrumbs"
+import TitleH1 from "../../../components/TitleH1";
+import UserItemMenu from "../../../components/UserItemMenu/UserItemMenu";
+import ExitButton from "../../../components/ExitButton/ExitButton";
 import Image from "next/image";
 import selectBtn from "../../../../public/svg/select-btn.svg"
 

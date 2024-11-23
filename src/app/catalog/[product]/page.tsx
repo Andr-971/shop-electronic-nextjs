@@ -1,12 +1,9 @@
 
-import Breadcrumbs from "@/utils/Breadcrumbs";
+import Breadcrumbs from "../../../utils/Breadcrumbs";
 import routeName from "../../../../public/routeName";
-import ProductCardDetall from "@/components/ProductCardDetall"
-// import {getData} from "../../api/catalog/[product]/route"
-// import { revalidatePath } from "next/cache";
-// revalidatePath("../../api/catalog/[product]/route");
+import ProductCardDetall from "../../../components/ProductCardDetall"
 import productAll from "../../../../public/productAll"
-import {getData} from "@/services/query"
+import {getData} from "../../../services/query"
 
 type ProductProps = {
     params: {
