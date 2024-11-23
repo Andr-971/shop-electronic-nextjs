@@ -1,6 +1,6 @@
 // contact
 
-import Breadcrumbs from "../../utils/Breadcrumbs";
+import Breadcrumbs from "../../utils/Breadcrumbs.jsx";
 import { Metadata } from "next";
 import TitleH1 from "../../components/TitleH1";
 

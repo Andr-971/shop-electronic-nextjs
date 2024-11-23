@@ -1,4 +1,4 @@
-import Breadcrumbs from "../../utils/Breadcrumbs";
+import Breadcrumbs from "../../utils/Breadcrumbs.jsx";
 import { Metadata } from "next";
 import Image from "next/image";
 import iconMenu_1 from "../../../public/svg/icon-menu/icon-menu-1.svg";

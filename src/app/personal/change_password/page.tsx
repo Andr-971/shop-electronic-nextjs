@@ -1,7 +1,7 @@
 
 import React from "react"
 import { Metadata } from "next";
-import Breadcrumbs from "../../../utils/Breadcrumbs"
+import Breadcrumbs from "../../../utils/Breadcrumbs.jsx"
 import TitleH1 from "../../../components/TitleH1"
 import UserItemMenu from "../../../components/UserItemMenu/UserItemMenu"
 import ExitButton from "../../../components/ExitButton/ExitButton"

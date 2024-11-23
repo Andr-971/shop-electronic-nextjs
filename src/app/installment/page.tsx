@@ -1,9 +1,9 @@
-import Breadcrumbs from "../../utils/Breadcrumbs";
+import Breadcrumbs from "../../utils/Breadcrumbs.jsx";
 import { Metadata } from "next";
 import TitleH1 from "../../components/TitleH1";
 import Image from "next/image";
-import pucturePayment1 from "../../../public/png_webp/pucture-payment.webp"
-import pucturePayment2 from "../../../public/png_webp/pucture-payment-2.webp"
+import pucturePayment1 from "../../../public/png_webp/pucture-payment.webp";
+import pucturePayment2 from "../../../public/png_webp/pucture-payment-2.webp";
 
 export const metadata: Metadata = {
     title: "Рассрочка 0|0|18",

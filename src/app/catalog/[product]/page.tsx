@@ -1,5 +1,5 @@
 
-import Breadcrumbs from "../../../utils/Breadcrumbs";
+import Breadcrumbs from "../../../utils/Breadcrumbs.jsx";
 import routeName from "../../../../public/routeName";
 import ProductCardDetall from "../../../components/ProductCardDetall"
 import productAll from "../../../../public/productAll"

@@ -1,15 +1,14 @@
-import Breadcrumbs from "../../utils/Breadcrumbs";
+import Breadcrumbs from "../../utils/Breadcrumbs.jsx";
 import { Metadata } from "next";
 import TitleH1 from "../../components/TitleH1";
 import StockPage from "../../components/StockPage";
-import {stocksApi} from "../../../public/path"
+import { stocksApi } from "../../../public/path";
 import { splitArray } from "../../services/function";
 
 export const metadata: Metadata = {
     title: "Акции",
     description: "Акции на все случаи жизни",
 };
-
 
 export default async function stocks() {
     async function getData(): Promise<any> {

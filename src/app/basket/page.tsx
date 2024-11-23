@@ -1,7 +1,7 @@
 
 import React from "react"
 import { Metadata } from "next";
-import Breadcrumbs from "../../utils/Breadcrumbs"
+import Breadcrumbs from "../../utils/Breadcrumbs.jsx";
 import cartParams from "../../../public/cartParams"
 import CartParamsBox from "../../components/CartParamsBox";
 import TitleH1 from "../../components/TitleH1";
