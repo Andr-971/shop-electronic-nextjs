@@ -1,9 +1,8 @@
 
 import { NextResponse } from "next/server";
 import productAll from "../../../../../public/productAll";
-// import {catalogAllApi} from "../../../../../public/path"
 import { splitArray } from "../../../../services/function" // Разбивка массива функция
-import {getData} from "@/services/query"
+
 
 //* Отправка GET json на клиента
 export async function GET(req:Request) {
@@ -25,8 +24,7 @@ export async function GET(req:Request) {
 //* Получение POST на сервере
 export async function POST(req:Request) {
     const page = await req.json(); // Пришло с клиента
-    const catalogArray = productAll; // Запрос с сервера на массив
-    // const catalogArray = await getData(); // Запрос с сервера на массив
+    const catalogArray = productAll; // Массив продуктов
     const arrayPage = splitArray(catalogArray, 6); // Разбивка массива на страницы по 6
 
     return NextResponse.json(arrayPage[+page.page - 1]);

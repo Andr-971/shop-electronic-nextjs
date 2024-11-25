@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import InputRange from "./InputRange";
-import ImputCheckbox from "@/components/ImputCheckbox";
-import { useFilterCatalog } from "@/store"
-import { useFilterData } from "@/store";
+import ImputCheckbox from "../components/ImputCheckbox";
+import { useFilterCatalog, useFilterData } from "../store";
 import { useState, useEffect } from "react";
 
 const SelectBlocks = ({ el, id, i }: any) => {

@@ -1,9 +1,8 @@
 "use client"
 import React from "react"
-import { useCompare } from "@/store"
-import ProductСard from "../ProductСard"
-import GallerySwiper from "@/utils/GallerySwiper/GallerySwiper"
-import TitleH2 from "@/components/TitleH2"
+import { useCompare } from "../../store"
+import GallerySwiper from "../../utils/GallerySwiper/GallerySwiper"
+import TitleH2 from "../../components/TitleH2"
 
 const optionCompare = {
     controll: true, // 👈 true/false Стрелки управления

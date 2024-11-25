@@ -1,10 +1,10 @@
 "use client"
 import React from "react"
-import TitleH1 from "@/components/TitleH1";
+import TitleH1 from "../../components/TitleH1";
 import categoryProducts from "../../../public/categoryProducts"
 import Image from "next/image";
 import Link from "next/link";
-import {useMobMenuCatalog} from "@/store"
+import {useMobMenuCatalog} from "../../store"
 
 const MobCatalogMenu = () => {
     const { mobMenuCatalog, changeMobMenuCatalog } = useMobMenuCatalog();

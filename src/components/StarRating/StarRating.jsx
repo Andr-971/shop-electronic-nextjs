@@ -2,7 +2,6 @@
 import React from "react"
 import { useState} from "react";
 import StarOne from "../../libs/star/StarOne"
-// import s from "./rating.module.css"
 import "./rating.css"
 
 const StarRating = ({ count = 5, currentItem = undefined, setCurrentItem = (i)=>(i), starRating }) => {

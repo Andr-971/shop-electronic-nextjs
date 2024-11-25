@@ -1,18 +1,18 @@
 import React from "react"
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/../public/svg/logo.svg";
-import MobMoreMenu from "@/components/MobMoreMenu/MobMoreMenu"
+import logo from "../../public/svg/logo.svg";
+import MobMoreMenu from "../components/MobMoreMenu/MobMoreMenu"
 import { HeaderMenu } from "./HeaderMenu";
 import mainMenu from "../../public/mainMenu"
 import CatalogMenu from "./CatalogMenu"
-import Authorization from "@/components/Authorization/Authorization"
-import BtnCart from "@/components/BtnCart/BtnCart"
-import ComparisonBtn from "@/components/ComparisonBtn/ComparisonBtn";
+import Authorization from "../components/Authorization/Authorization"
+import BtnCart from "../components/BtnCart/BtnCart"
+import ComparisonBtn from "../components/ComparisonBtn/ComparisonBtn";
 import FavouritesBtn from "./FavouritesBtn/FavouritesBtn";
 import SearchBtn from "./SearchBtn/SearchBtn";
-import MobileMenuBottom from "@/components/MobileMenuBottom/MobileMenuBottom"
-import MobCatalogMenu from "@/components/MobCatalogMenu/MobCatalogMenu"
+import MobileMenuBottom from "../components/MobileMenuBottom/MobileMenuBottom"
+import MobCatalogMenu from "../components/MobCatalogMenu/MobCatalogMenu"
 
 const Header = () => {
     

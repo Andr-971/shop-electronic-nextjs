@@ -1,8 +1,8 @@
 "use client"
 import React from "react"
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { useOption } from "@/store"
+import { useOption } from "../store"
 
 
 

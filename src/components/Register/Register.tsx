@@ -1,7 +1,6 @@
 "use client"
 import React from "react"
-import { usePopapRegisterActive } from "@/store"
-import { usePopapInterActive } from "@/store";
+import { usePopapRegisterActive, usePopapInterActive } from "../../store";
 import closeBtn from "../../../public/svg/close-btn.svg"
 import Image from "next/image"
 

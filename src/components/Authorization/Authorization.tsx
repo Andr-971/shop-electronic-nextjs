@@ -1,13 +1,13 @@
 "use client"
 import React from "react"
-import userIcon from "@/../public/svg/user.svg";
+import userIcon from "../../../public/svg/user.svg";
 import Image from "next/image";
 import Link from "next/link";
-import ExitButton from "@/components/ExitButton/ExitButton"
+import ExitButton from "../../components/ExitButton/ExitButton"
 import UserItemMenu from "../UserItemMenu/UserItemMenu";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
-import {usePopapInterActive} from "@/store"
+import {usePopapInterActive} from "../../store"
 
 const Authorization = () => {
     const { changePopapInter } = usePopapInterActive();

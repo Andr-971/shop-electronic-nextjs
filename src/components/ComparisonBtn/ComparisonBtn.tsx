@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import graph1 from "../../../public/svg/icon-graph-1.svg"
 import graph2 from "../../../public/svg/icon-graph-2.svg"
-import { useCompare } from "@/store";
+import { useCompare } from "../../store";
 
 const ComparisonBtn = () => {
     const session = useSession();

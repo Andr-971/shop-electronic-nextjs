@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { useBasket } from "@/store";
+import { useBasket } from "../../store";
 
 const BtnCartNum = () => {
     const { basket } = useBasket();

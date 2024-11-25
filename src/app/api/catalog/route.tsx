@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import {splitArray} from "../../../services/function" // Разбивка массива функция
-// import { catalogApi } from "../../../../public/path"
 import productAll from "../../../../public/productAll.js"
-import {getData} from "@/services/query"
+// import {getData} from "../../../services/query"
 
 //* Отправка GET json на клиента
 export async function GET(req: Request) {

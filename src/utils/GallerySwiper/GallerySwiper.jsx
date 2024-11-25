@@ -1,9 +1,9 @@
 "use client"
-import { useState, useEffect, useRef, useCallback } from "react";
-import ProductСard from "@/components/ProductСard";
+import { useState, useEffect, useRef } from "react";
+import ProductСard from "../../components/ProductСard";
 import Image from "next/image";
-
 import "./GallerySwiper.css";
+
 const GallerySwiper = ({ arrayImg, option, nameGallery }) => {
     const controll = option.controll; // 👈 Кнопки в право в лево
     const Infinit = option.Infinit; // 👈 Бесконечный сдайдер

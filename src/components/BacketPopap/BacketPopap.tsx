@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { usePopapBacketActive } from "@/store";
+import { usePopapBacketActive } from "../../store";
 
 const BacketPopap = () => {
     const { popapBacket } = usePopapBacketActive();

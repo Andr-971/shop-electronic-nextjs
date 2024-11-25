@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import "@/scss/style.scss";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import Providers from "@/components/Providers";
-import PopapInter from "@/components/PopapInter/PopapInter";
-import BacketPopap from "@/components/BacketPopap/BacketPopap"
-import PopapSearch from "@/components/PopapSearch/PopapSearch";
-import Register from "@/components/Register/Register";
+import "../scss/style.scss";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+import Providers from "../components/Providers";
+import PopapInter from "../components/PopapInter/PopapInter";
+import BacketPopap from "../components/BacketPopap/BacketPopap"
+import PopapSearch from "../components/PopapSearch/PopapSearch";
+import Register from "../components/Register/Register";
 
 const inter = Inter({ subsets: ["latin"] });
 

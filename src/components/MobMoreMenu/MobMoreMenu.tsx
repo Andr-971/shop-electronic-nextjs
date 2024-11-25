@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { useMobMenuMore } from "@/store";
+import { useMobMenuMore } from "../../store";
 import TitleH1 from "../TitleH1";
 import FavouritesBtn from "../FavouritesBtn/FavouritesBtn";
 import ComparisonBtn from "../ComparisonBtn/ComparisonBtn";

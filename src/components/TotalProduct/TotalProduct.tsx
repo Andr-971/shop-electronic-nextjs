@@ -1,8 +1,8 @@
 "use client"
 import React from "react"
 import { useState, useEffect } from "react";
-import { useBasket } from "@/store"
-import { pluralize } from "@/services/function";
+import { useBasket } from "../../store"
+import { pluralize } from "../../services/function";
 
 const TotalProduct = () => {
     const { totalPriceCount, basket } = useBasket();

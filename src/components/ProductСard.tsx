@@ -4,13 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import commitBtn from "../../public/svg/commit-btn.svg";
-import Favourites from "@/components/Favourites/Favourites"
-import Statistics from "@/components/Statistics/Statistics"
+import Favourites from "../components/Favourites/Favourites"
+import Statistics from "../components/Statistics/Statistics"
 import backetBtn from "../../public/svg/backet-2.svg";
-import StarRating from "@/components/StarRating/StarRating"
-import {useBasket, useFavourites} from "@/store"
+import StarRating from "../components/StarRating/StarRating"
+import { useBasket, useFavourites, useCompare } from "../store";
 import OnClickCart from "./OnClickCart";
-import { useCompare } from "@/store";
 
 const ProductСard = ({
     el,

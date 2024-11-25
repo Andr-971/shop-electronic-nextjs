@@ -2,7 +2,6 @@
 import { create } from "zustand";
 import categoryProducts from "../public/categoryProducts.js";
 import tab_menu_card from "../public/tab_menu_card.js";
-import { useState, useEffect } from "react";
 
 export const useOption = create((set) => ({
     option: [categoryProducts[0]],

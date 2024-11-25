@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
 import {useRef, useState, useEffect} from "react"
-import {useFilterData} from "@/store"
+import {useFilterData} from "../store"
 
 const ImputCheckbox = ({ propsInput, id }: any) => {
     const { changeRadioInput, inputSelect } = useFilterData();

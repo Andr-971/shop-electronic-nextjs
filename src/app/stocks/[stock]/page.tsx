@@ -1,5 +1,5 @@
 import Breadcrumbs from "../../../utils/Breadcrumbs.jsx";
-import PromotionDetails from "../../../components/ProductCardDetall";
+import PromotionDetails from "../../../components/PromotionDetails";
 import routeName from "../../../../public/routeName";
 import stock_all_block from "../../../../public/stock_all_block";
 

@@ -4,7 +4,7 @@ import heart_1 from "../../../public/svg/heart-1.svg";
 import heart_2 from "../../../public/svg/heart-2.svg";
 import Image from "next/image";
 import { useState } from "react";
-import { useFavourites } from "@/store";
+import { useFavourites } from "../../store";
 
 const Favourites = ({el}) => {
     const [favouriteBtn, setFavouriteBtn] = useState(false);

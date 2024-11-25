@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import {splitArray} from "../../../services/function" // Разбивка массива функция
 import stocksBlock from "./stocksBlock.js";
+import stockAllBlock from "../../../../public/stock_all_block"
 import { stocksApi } from "../../../../public/path";
 
 // Отправка GET json на клиента
@@ -20,17 +21,19 @@ export async function GET(req: Request) {
     return NextResponse.json(currentStocksBlock);
 }
 
-async function getData() {
-    let response = await fetch(`${stocksApi}`);
-    if (response.ok) {
-        return response.json();
-    }
-}
+// async function getData() {
+//     let response = await fetch(`${stocksApi}`);
+//     if (response.ok) {
+//         return response.json();
+//     }
+// }
 
 // Получение POST на сервере
 export async function POST(req: Request) {
     const page: any = await req.json(); // Пришло с клиента
-    const stockArray = await getData(); // Запрос с сервера на массив
+    // const stockArray = await getData(); // Запрос с сервера на массив
+    const stockArray = stockAllBlock; // Запрос с сервера на массив
+
     const arrayPage = splitArray(stockArray, 4); // Разбивка массива на страницы по 4
 
     return NextResponse.json(

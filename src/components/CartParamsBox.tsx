@@ -2,11 +2,11 @@
 import React from "react";
 import ParamsTitle from "./ParamsTitle/ParamsTitle";
 import BtnParametrs from "./BtnParametrs/BtnParametrs";
-import { useBasket } from "@/store";
+import { useBasket } from "../store";
 import Image from "next/image";
 import deleteCart from "../../public/svg/delite-cart.svg";
 import { useState, useRef, useEffect } from "react";
-import ProductCounter from "@/components/ProductCounter/ProductCounter";
+import ProductCounter from "../components/ProductCounter/ProductCounter";
 import selectBtn from "../../public/svg/select-btn.svg"
 import city from "../../public/city"
 import mapImg from "../../public/png_webp/map-3.webp"
@@ -14,7 +14,7 @@ import {
     currentMonth,
     futureDay,
     futureData,
-} from "@/libs/myDataTime";
+} from "../libs/myDataTime";
 import { useSession, signOut } from "next-auth/react";
 
 const whenDelivers = [

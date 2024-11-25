@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { useCompare } from "@/store"
+import { useCompare } from "../../store"
 
 const CompareTable = () => {
     const { compare } = useCompare();

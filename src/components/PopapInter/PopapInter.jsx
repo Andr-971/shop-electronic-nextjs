@@ -1,9 +1,9 @@
 "use client"
-import { usePopapInterActive, usePopapRegisterActive } from "@/store";
+import { usePopapInterActive, usePopapRegisterActive } from "../../store";
 import closeBtn from "../../../public/svg/close-btn.svg"
 import Image from "next/image";
-import BtnYandex from "@/components/BtnYandex/BtnYandex"
-import BtnGitHub from "@/components/BtnGitHub/BtnGitHub";
+import BtnYandex from "../../components/BtnYandex/BtnYandex"
+import BtnGitHub from "../../components/BtnGitHub/BtnGitHub";
 import React from "react"
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";

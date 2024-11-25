@@ -1,9 +1,6 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import { FC, ReactElement } from "react";
 import Image from 'next/image';
 import triangleRight from "../../public/svg/triangle-right.svg"
-import { inflate } from 'zlib';
 
 interface PrevNewProps {
     title: string;

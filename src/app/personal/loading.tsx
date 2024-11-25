@@ -1,6 +1,6 @@
 
 import React from "react"
-import LoadingText from "@/utils/Loading/loadingText";
+import LoadingText from "../../utils/Loading/loadingText";
 
 const LoadingCatalog = () => {
     return (

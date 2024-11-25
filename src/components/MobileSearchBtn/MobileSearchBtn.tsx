@@ -2,7 +2,7 @@
 
 import React from "react"
 import mobSearch from "../../../public/svg/mob-menu/mob-search-btn.svg";
-import { usePopapSearchActive } from "@/store";
+import { usePopapSearchActive } from "../../store";
 import Image from "next/image";
 import Link from "next/link";
 

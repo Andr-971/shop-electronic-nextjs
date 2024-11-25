@@ -1,7 +1,7 @@
 
 
 import React from "react"
-import { useBasket } from "@/store";
+import { useBasket } from "../store";
 import Link from "next/link";
 
 const OnClickCart = ({el}:any) => {

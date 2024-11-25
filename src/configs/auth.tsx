@@ -1,7 +1,6 @@
 import type { AuthOptions, User } from "next-auth";
 import YandexProvider from "next-auth/providers/yandex"
 import GitHubProvider from "next-auth/providers/github"
-// import GoogleProvider from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials";
 import users from "../../public/users"
 

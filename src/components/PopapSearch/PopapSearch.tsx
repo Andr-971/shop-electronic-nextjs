@@ -2,14 +2,13 @@
 import React from "react"
 import closeBtn from "../../../public/svg/close-btn.svg"
 import Image from "next/image"
-import { usePopapSearchActive } from "@/store"
+import { usePopapSearchActive } from "../../store"
 import routeName from "../../../public/routeName"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link"
 
 const PopapSearch = () => {
     const [searchInput, setSearchInput] = useState("");
-    const [searchPath, setSearchPath] = useState("/");
     const [page, setPage] = useState([...routeName]);
     const [filterPage, setfilterPage] = useState<any>("");
     const { changePopapSearch, popapSearch } = usePopapSearchActive();

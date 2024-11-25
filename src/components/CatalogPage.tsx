@@ -1,19 +1,18 @@
 "use client";
 import React from "react";
 import { useState, useEffect, useRef} from "react";
-import SelectBlocks from "@/components/SelectBlocks";
+import SelectBlocks from "../components/SelectBlocks";
 import selectBlock from "../../public/selectBlock";
-import SelectSubmit from "@/components/SelectSubmit";
+import SelectSubmit from "../components/SelectSubmit";
 import Image from "next/image";
 import filter_black from "../../public/svg/filter-black.svg";
 import filter from "../../public/svg/filter.svg";
 import Select from "../utils/Select.jsx";
 import nameCategory from "../../public/categoryProducts";
-import { useFilterCatalog } from "@/store"
-import { useFilterData } from "@/store"
+import { useFilterCatalog, useFilterData } from "../store";
 import { catalogApi } from "../../public/path";
-import Pagination from "@/utils/Pagination";
-import ProductСard from "@/components/ProductСard"
+import Pagination from "../utils/Pagination";
+import ProductСard from "../components/ProductСard"
 
 const CatalogPage = ({ arrayPage }: any) => {
     const {

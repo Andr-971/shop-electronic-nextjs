@@ -3,13 +3,13 @@ import React from "react"
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import mobHome from "@/../public/svg/mob-menu/mob-home-btn.svg";
-import mobCatalog from "@/../public/svg/mob-menu/mob-catalog-btn.svg";
-import mobBacket from "@/../public/svg/mob-menu/mob-backet-btn.svg";
-import BtnCartNum from "@/components/BtnCartNum/BtnCartNum"
-import MobileSearchBtn from "@/components/MobileSearchBtn/MobileSearchBtn"
-import MobMoreBtn from "@/components/MobMoreBtn/MobMoreBtn"
-import { useMobMenuCatalog } from "@/store";
+import mobHome from "../../../public/svg/mob-menu/mob-home-btn.svg";
+import mobCatalog from "../../../public/svg/mob-menu/mob-catalog-btn.svg";
+import mobBacket from "../../../public/svg/mob-menu/mob-backet-btn.svg";
+import BtnCartNum from "../../components/BtnCartNum/BtnCartNum"
+import MobileSearchBtn from "../../components/MobileSearchBtn/MobileSearchBtn"
+import MobMoreBtn from "../../components/MobMoreBtn/MobMoreBtn"
+import { useMobMenuCatalog } from "../../store";
 import "./MobileMenuBottom.css"
 
 const MobileMenuBottom = () => {

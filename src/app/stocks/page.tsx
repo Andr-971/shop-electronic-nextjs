@@ -4,6 +4,7 @@ import TitleH1 from "../../components/TitleH1";
 import StockPage from "../../components/StockPage";
 import { stocksApi } from "../../../public/path";
 import { splitArray } from "../../services/function";
+import stockAllBlock from "../../../public/stock_all_block.js"
 
 export const metadata: Metadata = {
     title: "Акции",
@@ -17,7 +18,8 @@ export default async function stocks() {
             return response.json();
         }
     }
-    let stockArray = await getData(); // true
+    // let stockArray = await getData(); // true
+    let stockArray = stockAllBlock;
     let arrayPage = splitArray(stockArray, 4);
     return (
         <>

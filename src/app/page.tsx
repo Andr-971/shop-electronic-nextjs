@@ -21,7 +21,9 @@ import productAll from "../../public/productAll";
 import { splitArray } from "../services/function"
 import ProductСard from "../components/ProductСard"
 import GallerySwiper from "../utils/GallerySwiper/GallerySwiper"
-import {arrayMainGallery} from "../../public/mainGallery"
+import { arrayMainGallery } from "../../public/mainGallery"
+
+
 
 const optionMainGallery = {
     controll: false, // 👈  true/false Стрелки управления

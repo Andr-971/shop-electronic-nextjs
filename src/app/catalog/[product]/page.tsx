@@ -38,7 +38,9 @@ export async function generateMetadata({ params: { product } }: ProductProps) {
 
 export default async function Products({ params: { product } }: ProductProps) {
     // { params: { product } }: ProductProps
-    const catalogArray = await getData();
+
+    // const catalogArray = await getData();
+    const catalogArray = productAll;
     return (
         <>
             <div className="g-container">

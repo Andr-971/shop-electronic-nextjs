@@ -5,7 +5,6 @@ import backetIcon from "../../../public/svg/backet-1.svg"
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import "./BtnCart.css"
-
 import BtnCartNum from "../BtnCartNum/BtnCartNum";
 
 const BtnCart = () => {

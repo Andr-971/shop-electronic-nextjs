@@ -1,9 +1,9 @@
 "use client"
 import React from "react"
 import Image from "next/image";
-import heart from "@/../public/svg/heart-1.svg";
-import heartRed from "@/../public/svg/heart-2.svg";
-import { useFavourites } from "@/store";
+import heart from "../../../public/svg/heart-1.svg";
+import heartRed from "../../../public/svg/heart-2.svg";
+import { useFavourites } from "../../store";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 

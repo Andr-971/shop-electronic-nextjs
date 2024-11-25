@@ -1,8 +1,8 @@
 "use client"
 import React from "react"
-import search from "@/../public/svg/search-btn.svg";
+import search from "../../../public/svg/search-btn.svg";
 import Image from "next/image";
-import { usePopapSearchActive } from "@/store"
+import { usePopapSearchActive } from "../../store"
 import { useState, useEffect } from "react";
 
 

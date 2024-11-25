@@ -2,7 +2,7 @@
 import React from "react"
 import Slider from "react-slider";
 import { useState, useEffect, useRef } from "react";
-import { useFilterData } from "@/store";
+import { useFilterData } from "../store";
 
 const InputRange = ({ inputProps }) => {
     const {

@@ -4,20 +4,18 @@ import Image from "next/image";
 import { useState} from "react";
 import TitleH1 from "./TitleH1";
 import TitleH2 from "./TitleH2";
-import Favourites from "@/components/Favourites/Favourites"
-import Statistics from "@/components/Statistics/Statistics"
-import StarRating from "@/components/StarRating/StarRating"
+import Favourites from "../components/Favourites/Favourites"
+import Statistics from "../components/Statistics/Statistics"
+import StarRating from "../components/StarRating/StarRating"
 import { usePathname } from "next/navigation";
-import mainPicture from "../../public/png_webp/main-picture.webp"
 import commitBtn from "../../public/svg/commit-btn.svg"
 import delivery from "../../public/svg/delivery.svg"
 import payment from "../../public/svg/payment.svg"
-import {useTabCard} from "@/store"
 import productAll from "../../public/productAll";
-import { splitArray } from "@/services/function";
-import ProductСard from "@/components/ProductСard";
-import OnClickCart from "@/components/OnClickCart"
-import { useBasket, useFavourites } from "@/store";
+import { splitArray } from "../services/function";
+import ProductСard from "../components/ProductСard";
+import OnClickCart from "../components/OnClickCart"
+import { useBasket, useTabCard } from "../store";
 import arrayPhotoProduct from "../../public/arrayPhotoProduct"
 import GallerySwiper from "../utils/GallerySwiper/GallerySwiper";
 
@@ -59,7 +57,7 @@ const ProductCardDetall = ({ catalogArray }: any) => {
     };
     return (
         <>
-            {catalogArray.map((el: any) => {
+            {productAll.map((el: any) => {
                 if (pathname === el.path) {
                     return (
                         <div key={el.id}>
@@ -68,8 +66,7 @@ const ProductCardDetall = ({ catalogArray }: any) => {
                                     arrayImg={arrayPhotoProduct}
                                     option={optionProductGallery}
                                     nameGallery={"product"}
-                                >
-                                </GallerySwiper>
+                                ></GallerySwiper>
                                 <div className="card__description">
                                     <div className="card__title-product title-page">
                                         <TitleH1
