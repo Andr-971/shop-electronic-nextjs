@@ -8,11 +8,11 @@ type StockProps = {
         stock: string;
     };
 };
-export async function generateStaticParams() {
-    return stock_all_block.map((el: any) => {
-        return { stock: el.path };
-    });
-}
+// export async function generateStaticParams() {
+//     return stock_all_block.map((el: any) => {
+//         return { stock: el.path };
+//     });
+// }
 export async function generateMetadata({ params: { stock } }: StockProps) {
     let description;
     routeName.map((el) => {

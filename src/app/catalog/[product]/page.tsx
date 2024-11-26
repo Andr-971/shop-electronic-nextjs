@@ -11,11 +11,11 @@ type ProductProps = {
     };
 };
 // Вернуть список `params`, чтобы заполнить динамический сегмент [slug]
-export async function generateStaticParams() {
-    return productAll.map((el: any) => {
-        return { product: el.path };
-    });
-}
+// export async function generateStaticParams() {
+//     return productAll.map((el: any) => {
+//         return { product: el.path };
+//     });
+// }
 
 export async function generateMetadata({ params: { product } }: ProductProps) {
     let description;
