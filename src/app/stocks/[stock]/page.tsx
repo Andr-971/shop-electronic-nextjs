@@ -9,8 +9,9 @@ type StockProps = {
     };
 };
 export async function generateStaticParams() {
+    let array = []
     return stock_all_block.map((el: any) => {
-        return el.path
+        return array.push({ path: `${el.path}` });
     });
 }
 export async function generateMetadata({ params: { stock } }: StockProps) {

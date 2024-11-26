@@ -3,8 +3,8 @@ import { authConfig } from "../../../../configs/auth";
 
 export async function generateStaticParams() {
     return [
-        "https://github.com/settings/apps",
-        "https://oauth.yandex.com/client/new",
+        {path: "https://github.com/settings/apps"},
+        {path: "https://oauth.yandex.com/client/new"},
     ];
 }
 

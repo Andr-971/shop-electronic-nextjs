@@ -12,9 +12,9 @@ type ProductProps = {
 };
 // Вернуть список `params`, чтобы заполнить динамический сегмент [slug]
 export async function generateStaticParams() {
-    // const catalogArray = await getData();
+    let array = []
     return productAll.map((el: any) => {
-        return el.path;
+        return array.push({path: `${el.path}`});
     });
 }
 
