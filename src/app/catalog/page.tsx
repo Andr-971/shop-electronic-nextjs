@@ -18,7 +18,7 @@ export default async function Catalog() {
             return response.json();
         }
     }
-    let catalogArray = await getData(); // true
+    let catalogArray = await getData();
     let arrayPage = splitArray(catalogArray, 6);
     return (
         <>
