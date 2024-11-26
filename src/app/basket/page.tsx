@@ -22,7 +22,6 @@ const Basket = () => {
                     <div className="cart__column_one">
                         <div className="column__holder_one">
                             <div className="parameters">
-                                {/* <NextCartBtn></NextCartBtn> */}
                                 {cartParams.map((el: any, i: number) => {
                                     return (
                                         <CartParamsBox
