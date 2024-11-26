@@ -12,9 +12,8 @@ type ProductProps = {
 };
 // Вернуть список `params`, чтобы заполнить динамический сегмент [slug]
 export async function generateStaticParams() {
-    let array = []
     return productAll.map((el: any) => {
-        return array.push({path: `${el.path}`});
+        return { product: el.path };
     });
 }
 
