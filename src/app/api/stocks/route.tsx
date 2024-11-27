@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import {splitArray} from "../../../services/function" // Разбивка массива функция
 import stocksBlock from "./stocksBlock.js";
 import stockAllBlock from "../../../../public/stock_all_block"
-import { stocksApi } from "../../../../public/path";
 
 // Отправка GET json на клиента
 export async function GET(req: Request) {

@@ -10,7 +10,6 @@ import filter from "../../public/svg/filter.svg";
 import Select from "../utils/Select.jsx";
 import nameCategory from "../../public/categoryProducts";
 import { useFilterCatalog, useFilterData } from "../store";
-import { catalogApi } from "../../public/path";
 import { domen } from "../../public/path";
 import Pagination from "../utils/Pagination";
 import ProductСard from "../components/ProductСard"
@@ -79,7 +78,7 @@ const CatalogPage = ({ arrayPage }: any) => {
     const [pageNum, setPageNum] = useState(startPage);
     const [arrPage, setArrPage] = useState(arrayPage[0]);
     const catalogSelect:any = useRef(null)
-    const catalogData = async () => {
+    const stockData = async () => {
         let response = await fetch(`${domen}/api/catalog`, {
             method: "POST",
             body: JSON.stringify({
@@ -96,11 +95,10 @@ const CatalogPage = ({ arrayPage }: any) => {
         });
     };
     useEffect(() => {
-        catalogData();
+        stockData();
     }, [setArrPage]);
-
     useEffect(() => {
-        catalogData();
+        stockData();
         document.title = "Каталог | страница " + pageNum;
     }, [pageNum]);
     useEffect(() => {

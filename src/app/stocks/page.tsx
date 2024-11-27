@@ -2,7 +2,6 @@ import Breadcrumbs from "../../utils/Breadcrumbs.jsx";
 import { Metadata } from "next";
 import TitleH1 from "../../components/TitleH1";
 import StockPage from "../../components/StockPage";
-import { stocksApi } from "../../../public/path";
 import { splitArray } from "../../services/function";
 import stockAllBlock from "../../../public/stock_all_block.js"
 
@@ -12,13 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default async function stocks() {
-    async function getData(): Promise<any> {
-        let response = await fetch(`${stocksApi}`);
-        if (response.ok) {
-            return response.json();
-        }
-    }
-    // let stockArray = await getData(); // true
     let stockArray = stockAllBlock;
     let arrayPage = splitArray(stockArray, 4);
     return (

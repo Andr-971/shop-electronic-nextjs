@@ -3,15 +3,14 @@ import React from "react"
 import { useEffect, useState } from "react";
 import Pagination from "../utils/Pagination";
 import Stock from "../components/Stock";
-import { stocksApi } from "../../public/path";
-
+import { domen } from "../../public/path";
 
 const StockPage = ({ arrayPage }: any) => {
     let startPage = "1";
     const [pageNum, setPageNum] = useState(startPage);
     const [arrPage, setArrPage] = useState(arrayPage[0]);
     const stockData = async () => {
-        let response = await fetch(`${stocksApi}`, {
+        let response = await fetch(`${domen}/api/stocks`, {
             method: "POST",
             body: JSON.stringify({
                 title: `Акции | страница ${pageNum}`,

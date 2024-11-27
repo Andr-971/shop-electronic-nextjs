@@ -3,7 +3,7 @@ import Breadcrumbs from "../../utils/Breadcrumbs.jsx";
 import { Metadata } from "next";
 import TitleH1 from "../../components/TitleH1";
 import CatalogPage from "../../components/CatalogPage"
-import { catalogApi } from "../../../public/path";
+import productAll from "../../../public/productAll.js"
 import { splitArray } from "../../services/function";
 
 export const metadata: Metadata = {
@@ -12,14 +12,7 @@ export const metadata: Metadata = {
     };
 
 export default async function Catalog() {
-    async function getData(): Promise<any> {
-        let response = await fetch(`${catalogApi}`);
-        if (response.ok) {
-            return response.json();
-        }
-    }
-    let catalogArray = await getData();
-    let arrayPage = splitArray(catalogArray, 6);
+    let arrayPage = splitArray(productAll, 6);
     return (
         <>
             <section className="section-catalog">
