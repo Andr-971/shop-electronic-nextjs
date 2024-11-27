@@ -27,5 +27,5 @@ export async function POST(req: Request) {
     const catalogArray = productAll; // Запрос с сервера на массив
     // const catalogArray = await getData(); // Запрос с сервера на массив
     const arrayPage = splitArray(catalogArray, 6); // Разбивка массива на страницы по 6
-    return NextResponse.json(arrayPage[+page.page - 1]);
+    return NextResponse.json(arrayPage[+page.page - 1]); // Ответ на клиента
 }
