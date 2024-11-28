@@ -57,7 +57,6 @@ export function futureData(n) {
     let curr = new Date();
     let date = new Date(curr.getFullYear(), curr.getMonth() + 1, 0);
     if (currentTime.getDate() + n > date.getDate()) {
-        console.log(n);
         n = (currentTime.getDate() + n) % date.getDate();
         return n;
     }
