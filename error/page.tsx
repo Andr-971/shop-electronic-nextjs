@@ -34,7 +34,7 @@ export default function AuthErrorPage() {
                 </h5>
                 <div className="font-normal text-gray-700 dark:text-gray-400">
                     {errorMap[error] ||
-                        "Please contact us if this error persists."}
+                        "Пожалуйста, свяжитесь с нами, если эта ошибка сохранится."}
                 </div>
             </a>
         </div>
